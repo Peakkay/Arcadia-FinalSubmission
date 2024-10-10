@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class NPCManager : Singleton<NPCManager>
 {
-    public void SpawnNPC(string npcName)
+    // Array or list to hold NPCs
+    public NPCController[] npcs;
+
+    private void Start()
     {
-        // Logic to spawn an NPC
+        // Initialize NPCs if needed
+        foreach (var npc in npcs)
+        {
+            // Initialize each NPC here
+            Debug.Log($"NPC Initialized: {npc.name}");
+        }
     }
 
-    public void InteractWithNPC(string npcName)
+    public void InteractWithNPC(NPCController npc)
     {
-        // Logic to interact with an NPC
+        // Handle interaction logic
+        npc.Interact();
     }
 }
+
 

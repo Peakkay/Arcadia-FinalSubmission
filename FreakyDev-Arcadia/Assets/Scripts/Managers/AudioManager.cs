@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public void PlaySound(string soundName)
+    public AudioSource backgroundMusic;
+
+    private void Start()
     {
-        // Logic to play sound effects
+        PlayBackgroundMusic();
     }
 
-    public void PlayBackgroundMusic(AudioClip clip)
+    public void PlayBackgroundMusic()
     {
-        // Logic to play background music
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.Play();
+        }
+    }
+
+    public void PlaySoundEffect(AudioClip clip)
+    {
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
     }
 }
+
 

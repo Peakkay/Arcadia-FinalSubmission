@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     public int enemyHealth = 50;
-    public int experienceReward = 20;  // Experience given to the player when the enemy is defeated
 
 
     void Start()
@@ -76,14 +75,6 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
-        // Reward the player with experience when the enemy dies
-        PlayerController player = FindObjectOfType<PlayerController>();
-        if (player != null)
-        {
-            player.GainExperience(experienceReward);
-        }
-        GetComponent<LootTable>().DropLoot();
-        // Destroy the enemy object
         Destroy(gameObject);
     }
 }

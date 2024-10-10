@@ -8,12 +8,34 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
+        // Get the PlayerMovement component attached to the same GameObject
         playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        // You could add more complex input handling here, like special abilities
+        HandleInput();
+    }
+
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            playerMovement.MovePlayerTo(new Vector3(0, playerMovement.tileSize, 0)); // Move up
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            playerMovement.MovePlayerTo(new Vector3(0, -playerMovement.tileSize, 0)); // Move down
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            playerMovement.MovePlayerTo(new Vector3(-playerMovement.tileSize, 0, 0)); // Move left
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            playerMovement.MovePlayerTo(new Vector3(playerMovement.tileSize, 0, 0)); // Move right
+        }
     }
 }
+
 

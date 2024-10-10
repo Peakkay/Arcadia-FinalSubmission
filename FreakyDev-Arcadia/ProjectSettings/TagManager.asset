@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Interactable
+  - Obstacle
+  - NPC
+  - QuestItem
+  - SpawnPoint
+  - TIle
   layers:
   - Default
   - TransparentFX
@@ -11,13 +18,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemies
+  - Obstacles
+  - Interactables
+  - Background
+  - UI
+  - TileMap
   - 
   - 
   - 

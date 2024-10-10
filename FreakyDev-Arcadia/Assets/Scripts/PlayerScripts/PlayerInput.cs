@@ -4,38 +4,43 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
 
-    void Start()
+    private void Start()
     {
-        // Get the PlayerMovement component attached to the same GameObject
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    private void Update()
     {
         HandleInput();
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        // Check for movement keys and ensure the player is not currently moving
+        if (!playerMovement.IsMoving) // Check if the player is currently moving
         {
-            playerMovement.MovePlayerTo(new Vector3(0, playerMovement.tileSize, 0)); // Move up
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            playerMovement.MovePlayerTo(new Vector3(0, -playerMovement.tileSize, 0)); // Move down
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            playerMovement.MovePlayerTo(new Vector3(-playerMovement.tileSize, 0, 0)); // Move left
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            playerMovement.MovePlayerTo(new Vector3(playerMovement.tileSize, 0, 0)); // Move right
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                playerMovement.Move(Vector3.up);
+                Debug.Log("W called");
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                playerMovement.Move(Vector3.left);
+                Debug.Log("A called");
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                playerMovement.Move(Vector3.down);
+                Debug.Log("S called");
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                playerMovement.Move(Vector3.right);
+                Debug.Log("D called");
+            }
         }
     }
 }
-
-

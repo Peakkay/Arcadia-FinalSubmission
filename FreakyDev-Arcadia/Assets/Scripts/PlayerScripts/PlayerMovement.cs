@@ -4,71 +4,103 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float tileSize = 1.0f;
-    public float moveSpeed = 5.0f;
-    private Vector3 targetPosition;
-    private bool isMoving = false;
+    public float moveSpeed = 5f; // Speed of the player
+    public float tileSize = 1f;   // Size of each tile (1 unit)
 
-    void Start()
+    private Vector3 targetPosition;
+    private bool isMoving = false; // Check if the player is moving
+
+    private void Start()
     {
+        // Start at the current position
         targetPosition = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        if (isMoving)
+        Move(); // Always attempt to move
+    }
+
+    public void Move(Vector3 direction)
+    {
+        // Only allow movement if not currently moving
+        if (!isMoving)
         {
-            MovePlayer();
+            // Calculate the new target position
+            Vector3 newPosition = targetPosition + direction * tileSize;
+
+            // Check if the new position is clear
+            if (IsPathClear(newPosition))
+            {
+                targetPosition = newPosition; // Set the new target position
+                isMoving = true; // Start moving
+            }
         }
         else
         {
-            HandleInput();
+            // If already moving and the key is still held down, do not change target
+            return; // Don't do anything if already moving
         }
     }
 
-    void HandleInput()
+    private bool IsPathClear(Vector3 newPosition)
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && CanMove(Vector3.up))
+        // Check if the new position overlaps with any colliders
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(newPosition, tileSize / 2); // Check entire tile area
+        foreach (var hitCollider in hitColliders)
         {
-            MovePlayerTo(Vector3.up * tileSize);
+            if (hitCollider.gameObject.CompareTag("Obstacle"))
+            {
+                return false; // Path is blocked if any obstacle is in the tile
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && CanMove(Vector3.down))
-        {
-            MovePlayerTo(Vector3.down * tileSize);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && CanMove(Vector3.left))
-        {
-            MovePlayerTo(Vector3.left * tileSize);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && CanMove(Vector3.right))
-        {
-            MovePlayerTo(Vector3.right * tileSize);
-        }
+        return true; // Path is clear
     }
 
-    public void MovePlayerTo(Vector3 direction)
+    private void Move()
     {
-        targetPosition += direction;
-        isMoving = true;
-    }
-
-    void MovePlayer()
-    {
+        // Move smoothly to the target position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        if (transform.position == targetPosition)
+
+        // Snap to target position when close enough
+        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
         {
-            isMoving = false;
+            transform.position = targetPosition; // Snap to the target position
+            isMoving = false; // Stop moving
+
+            // Check if the key is still pressed for continuous movement
+            HandleContinuousMovement();
         }
     }
 
-    bool CanMove(Vector3 direction)
+    private void HandleContinuousMovement()
     {
-        // Check for collision in the target direction
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, tileSize);
-        return hit.collider == null; // Can move if there's no hit
+        // Check if movement keys are still pressed and set new target position
+        if (Input.GetKey(KeyCode.W) && IsPathClear(targetPosition + Vector3.up * tileSize))
+        {
+            targetPosition += Vector3.up * tileSize;
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.A) && IsPathClear(targetPosition + Vector3.left * tileSize))
+        {
+            targetPosition += Vector3.left * tileSize;
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.S) && IsPathClear(targetPosition + Vector3.down * tileSize))
+        {
+            targetPosition += Vector3.down * tileSize;
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.D) && IsPathClear(targetPosition + Vector3.right * tileSize))
+        {
+            targetPosition += Vector3.right * tileSize;
+            isMoving = true;
+        }
+    }
+
+    // Public property to expose the isMoving variable
+    public bool IsMoving
+    {
+        get { return isMoving; }
     }
 }
-
-
-
-

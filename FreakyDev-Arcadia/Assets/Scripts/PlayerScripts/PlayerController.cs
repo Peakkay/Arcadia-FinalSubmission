@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dodge());
             nextDodgeTime = Time.time + dodgeCooldown;
         }
-        if (Input.GetButtonDown("Block"))
+/*        if (Input.GetButtonDown("Block"))
         {
             isBlocking = true;
             // animator.SetBool("isBlocking", true);
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             isBlocking = false;
             // animator.SetBool("isBlocking", false);
-        }
+        }*/
         RegenerateStamina();
     }
 

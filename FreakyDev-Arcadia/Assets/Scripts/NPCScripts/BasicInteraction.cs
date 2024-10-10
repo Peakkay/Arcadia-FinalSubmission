@@ -6,7 +6,6 @@ public class BasicInteraction : MonoBehaviour
 {
     public float interactionDistance = 2f; // Maximum distance for interaction
     public LayerMask interactableLayer; // Layer for interactable objects
-
     private Camera mainCamera;
 
     void Start()
@@ -27,18 +26,23 @@ public class BasicInteraction : MonoBehaviour
         // Get the player's position
         Vector3 playerPosition = transform.position;
 
-        // Cast a ray from the player's position to check for interactable objects
-        RaycastHit2D hit = Physics2D.Raycast(playerPosition, mainCamera.transform.forward, interactionDistance, interactableLayer);
-        
-        if (hit.collider != null)
+        // Check for all colliders in the interaction layer
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPosition, interactionDistance, interactableLayer);
+
+        foreach (var hitCollider in hitColliders)
         {
             // If an interactable object is hit, call its interaction method
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            IInteractable interactable = hitCollider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact();
+                // Check distance to the interactable
+                float distanceToInteractable = Vector2.Distance(playerPosition, hitCollider.transform.position);
+                if (distanceToInteractable <= interactionDistance)
+                {
+                    interactable.Interact();
+                    break; // Exit the loop after interacting
+                }
             }
         }
     }
 }
-

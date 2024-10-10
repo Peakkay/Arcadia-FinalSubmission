@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusEffectHandler : MonoBehaviour
+/*public class StatusEffectHandler : MonoBehaviour
 {
     private Coroutine poisonCoroutine;
 
@@ -36,5 +36,5 @@ public class StatusEffectHandler : MonoBehaviour
             elapsed += 1f;
         }
     }
-}
+}*/
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+/*public class PlayerController : MonoBehaviour
 {
     // Variables to track player stats
     public int maxHealth = 100;  // Maximum health
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dodge());
             nextDodgeTime = Time.time + dodgeCooldown;
         }
-/*        if (Input.GetButtonDown("Block"))
+        if (Input.GetButtonDown("Block"))
         {
             isBlocking = true;
             // animator.SetBool("isBlocking", true);
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             isBlocking = false;
             // animator.SetBool("isBlocking", false);
-        }*/
+        }
         RegenerateStamina();
     }
 
@@ -193,5 +193,5 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has died.");
         // Handle death logic (e.g., respawn or game over)
     }
-}
+}*/
 

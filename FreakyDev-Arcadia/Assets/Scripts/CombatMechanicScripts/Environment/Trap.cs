@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+/*public class Trap : MonoBehaviour
 {
     public int damage = 20;
     public float activationDelay = 1f;
@@ -25,5 +25,5 @@ public class Trap : MonoBehaviour
         // Reactivate trap after a delay if needed
         isActive = true;
     }
-}
+}*/
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Poison Effect", menuName = "Status Effects/Poison")]
+/*[CreateAssetMenu(fileName = "New Poison Effect", menuName = "Status Effects/Poison")]
 public class PoisonEffect : StatusEffect
 {
     public int damagePerSecond;
@@ -16,5 +16,5 @@ public class PoisonEffect : StatusEffect
     {
         target.GetComponent<StatusEffectHandler>().StopPoison();
     }
-}
+}*/
 

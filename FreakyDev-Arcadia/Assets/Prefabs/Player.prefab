@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6733417877712672136}
   - component: {fileID: 8223064844932452982}
   - component: {fileID: 4519060934285028149}
-  - component: {fileID: 681603616295754138}
   - component: {fileID: 4269107884344803729}
   - component: {fileID: 3402109692256077320}
   - component: {fileID: 2449050383537108606}
   - component: {fileID: 5417755524187550562}
+  - component: {fileID: 420700988643777461}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,12 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efee753d1ca106d4eb936a83352c101a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  experience: 0
-  experienceToNextLevel: 100
-  strength: 0
-  defense: 0
-  intelligence: 0
+  maxHP: 100
+  attackDamage: 20
 --- !u!114 &4519060934285028149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,38 +66,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   tileSize: 1
---- !u!114 &681603616295754138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621090134877791111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd46009ef7d969c45b35df7f7cb42336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  blockDefenseValue: 10
-  moveSpeed: 5
-  attackRange: 1
-  attackRate: 1
-  attackDamage: 25
-  attackPoint: {fileID: 0}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  spells: []
-  dodgeSpeed: 10
-  dodgeDuration: 0.2
-  dodgeCooldown: 1
-  isBlocking: 0
-  maxStamina: 100
-  currentStamina: 0
-  staminaRegenRate: 5
-  attackStaminaCost: 20
-  blockStaminaCost: 10
 --- !u!50 &4269107884344803729
 Rigidbody2D:
   serializedVersion: 4
@@ -215,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1963287284, guid: 143d13bb8387ad448aec5025eec61076, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,7 +187,7 @@ SpriteRenderer:
   m_Size: {x: 0.14, y: 0.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5417755524187550562
@@ -239,3 +203,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
+--- !u!114 &420700988643777461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621090134877791111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3f3d13c0c684d4abc9a078a9df999f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

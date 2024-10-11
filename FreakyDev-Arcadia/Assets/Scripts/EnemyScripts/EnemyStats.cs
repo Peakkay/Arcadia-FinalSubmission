@@ -6,6 +6,7 @@ public class EnemyStats : MonoBehaviour
     public int maxHP = 50;              // Maximum health for the enemy
     public int CurrentHP { get; private set; } // Current health
     public int attackDamage = 10;       // Attack damage
+    public bool isQuestEnemy; // Indicates if this enemy is part of a quest
 
     private void Start()
     {
@@ -32,5 +33,9 @@ public class EnemyStats : MonoBehaviour
         {
             Debug.Log($"{enemyName} took {damage} damage. Current HP: {CurrentHP}");
         }
+    }
+    public void MarkAsQuestEnemy(bool value)
+    {
+        isQuestEnemy = value;
     }
 }

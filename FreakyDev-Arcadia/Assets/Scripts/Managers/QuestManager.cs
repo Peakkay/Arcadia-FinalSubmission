@@ -2,44 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : Singleton<QuestManager>
 {
-    public List<Quest> activeQuests; // List of active quests
+    public Quest currentQuest;
+    public List<EnemyStats> defeatedEnemies = new List<EnemyStats>();
 
-    void Start()
+    public void StartQuest(Quest quest)
     {
-        activeQuests = new List<Quest>();
-        InitializeQuests();
+        currentQuest = quest;
+        defeatedEnemies.Clear(); // Clear any previously defeated enemies
+        Debug.Log("Quest Started: " + currentQuest.questName);
     }
 
-    // Initialize quests (could also be loaded from a file or database)
-    void InitializeQuests()
+    public void CompleteQuest()
     {
-        // Example quests
-        Quest quest1 = new Quest("Find the Lost Item", "Locate the lost item in the village.", new List<string> { "Search the village", "Return the item" });
-        activeQuests.Add(quest1);
-    }
-
-    // Mark a quest as completed
-    public void CompleteQuest(Quest quest)
-    {
-        if (activeQuests.Contains(quest))
+        if (currentQuest != null && !currentQuest.isCompleted)
         {
-            quest.CompleteQuest();
-            Debug.Log($"Quest '{quest.questName}' completed!");
-            // Optionally remove the quest from the list or handle rewards
+            currentQuest.isCompleted = true;
+            Debug.Log("Quest Completed: " + currentQuest.questName);
+            // Additional logic for quest completion (e.g., rewards)
         }
     }
 
-    // Display all active quests (for testing purposes)
-    public void DisplayActiveQuests()
+    public void RecordEnemyDefeated(EnemyStats enemy)
     {
-        foreach (Quest quest in activeQuests)
+        if (!defeatedEnemies.Contains(enemy))
         {
-            string status = quest.isCompleted ? "Completed" : "Active";
-            Debug.Log($"Quest: {quest.questName} - {status}");
+            defeatedEnemies.Add(enemy);
+            Debug.Log($"{enemy.enemyName} recorded as defeated.");
+
+            // Check if the quest is completed after adding the enemy
+            CheckQuestCompletion();
+        }
+    }
+
+    public void CheckQuestCompletion()
+    {
+        if (currentQuest != null && currentQuest.questType == QuestType.Combat)
+        {
+            // Check if all required enemies are defeated
+            foreach (var requiredEnemy in currentQuest.requiredEnemies)
+            {
+                if (!defeatedEnemies.Contains(requiredEnemy))
+                {
+                    return; // Exit if any required enemy is not defeated
+                }
+            }
+            CompleteQuest(); // Complete the quest if all required enemies are defeated
         }
     }
 }
-
-

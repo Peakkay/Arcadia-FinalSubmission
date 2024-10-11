@@ -1,28 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class Quest
 {
-    public string questName;          // Name of the quest
-    public string description;        // Description of the quest
-    public bool isCompleted;          // Quest completion status
-    public List<string> objectives;   // List of quest objectives
+    public string questName;
+    public string description;
+    public bool isCompleted = false;
+    public QuestType questType;
 
-    public Quest(string name, string desc, List<string> objectives)
-    {
-        questName = name;
-        description = desc;
-        isCompleted = false;
-        this.objectives = objectives;
-    }
+    // For combat quests, list the enemies required to defeat
+    public List<EnemyStats> requiredEnemies;
+}
 
-    // Mark quest as complete
-    public void CompleteQuest()
-    {
-        isCompleted = true;
-    }
+public enum QuestType
+{
+    Combat,
+    Fetch,
+    Dialogue
 }
 

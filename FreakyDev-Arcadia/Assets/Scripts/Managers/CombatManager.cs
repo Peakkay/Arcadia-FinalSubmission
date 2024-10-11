@@ -1,18 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-    public static CombatManager Instance;
+    public static CombatManager Instance; // Singleton instance
 
-    private PlayerStats player;
-    private List<EnemyStats> enemies;
-    private int currentEnemyIndex = 0;
+    public PlayerStats player; // Reference to the player
+    public List<EnemyStats> enemies; // List of enemies involved in combat
+
+    private bool playerTurn = true; // Boolean to check if it's player's turn
+    private bool combatActive = false; // Track if combat is active
 
     private void Awake()
     {
+        // Ensure only one instance of CombatManager exists
         if (Instance == null)
         {
             Instance = this;
@@ -27,83 +29,134 @@ public class CombatManager : MonoBehaviour
     {
         this.player = player;
         this.enemies = enemies;
-        currentEnemyIndex = 0;
-        Debug.Log("Combat Started!");
+
+        player.GetComponent<PlayerMovement>().canMove = false; // Disable movement during combat
+        Debug.Log("Combat started with player and enemies.");
+
         StartCoroutine(CombatLoop());
     }
 
-    private IEnumerator CombatLoop()
+private IEnumerator CombatLoop()
+{
+    // Continue the combat until player or all enemies are defeated
+    while (player.CurrentHP > 0 && enemies.Count > 0)
     {
-        while (player.CurrentHP > 0 && enemies.Count > 0)
+        if (playerTurn)
         {
-            yield return PlayerTurn();
+            Debug.Log("Player's Turn.");
+            bool actionSelected = false;
 
-            if (enemies.Count > 0)
+            // Wait for player to select an action (attack or heal)
+            while (!actionSelected)
             {
-                yield return EnemyTurn();
-            }
-        }
+                if (Input.GetKeyDown(KeyCode.A)) // A for attack
+                {
+                    PlayerAction("attack");
+                    actionSelected = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.H)) // H for heal
+                {
+                    PlayerAction("heal");
+                    actionSelected = true;
+                }
 
-        if (player.CurrentHP <= 0)
-        {
-            Debug.Log("You were defeated!");
+                yield return null; // Wait for the next frame
+            }
+
+            yield return new WaitUntil(() => !playerTurn); // Wait until player finishes action
         }
         else
         {
-            Debug.Log("You defeated the enemies!");
+            Debug.Log("Enemy's Turn.");
+            EnemyAction();
+            yield return new WaitForSeconds(2f); // Small delay for enemy action
         }
     }
 
-    private IEnumerator PlayerTurn()
+    // Check combat outcome
+    if (player.CurrentHP <= 0)
     {
-        Debug.Log("Player's Turn! Choose an action: A to Attack, H to Heal");
-        bool actionTaken = false;
+        Debug.Log("Player has been defeated.");
+    }
+    else if (enemies.Count == 0)
+    {
+        Debug.Log("All enemies defeated. Combat won.");
+    }
 
-        while (!actionTaken)
+    EndCombat();
+}
+
+public void PlayerAction(string action)
+{
+    // Attack or heal based on the action passed in
+    if (action == "attack")
+    {
+        Debug.Log("Player chose to attack.");
+        AttackEnemy();  // Call attack logic
+    }
+    else if (action == "heal")
+    {
+        Debug.Log("Player chose to heal.");
+        player.Heal(20); // Heal player by 20 HP (or any amount you choose)
+    }
+
+    // Once the action is complete, set it to the enemy's turn
+    playerTurn = false;
+}
+
+    private void AttackEnemy()
+    {
+        if (enemies.Count > 0)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            EnemyStats currentEnemy = enemies[0]; // Attack the first enemy in the list
+            player.Attack(currentEnemy);
+
+            Debug.Log($"Player attacked {currentEnemy.enemyName}. {currentEnemy.enemyName} now has {currentEnemy.CurrentHP} HP.");
+
+            // Check if the enemy is defeated
+            if (currentEnemy.CurrentHP <= 0)
             {
-                Attack();
-                actionTaken = true;
+                Debug.Log($"{currentEnemy.enemyName} has been defeated.");
+                enemies.RemoveAt(0); // Remove the defeated enemy
             }
-            else if (Input.GetKeyDown(KeyCode.H))
+
+            playerTurn = false; // End player's turn
+        }
+    }
+
+    private void EnemyAction()
+    {
+        if (enemies.Count > 0)
+        {
+            EnemyStats currentEnemy = enemies[0]; // Attack the first enemy in the list
+            currentEnemy.Attack(player);
+
+            Debug.Log($"{currentEnemy.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
+
+            // Check if player is defeated
+            if (player.CurrentHP <= 0)
             {
-                Heal(20); // Provide the healing amount, e.g., 20
-                actionTaken = true;
+                Debug.Log("Player defeated.");
             }
-            yield return null; // Wait for player input
+            else
+            {
+                playerTurn = true; // End enemy's turn, start player's turn
+            }
         }
     }
 
-    public void Attack()
+    public void EndCombat()
     {
-        EnemyStats enemy = enemies[currentEnemyIndex];
-        player.Attack(enemy);
-        Debug.Log($"You attacked {enemy.enemyName}, dealing {player.attackDamage} damage!");
+        Debug.Log("Combat ended.");
 
-        if (enemy.CurrentHP <= 0)
-        {
-            Debug.Log($"{enemy.enemyName} was defeated!");
-            enemies.RemoveAt(currentEnemyIndex);
-        }
+        player.GetComponent<PlayerMovement>().canMove = true; // Re-enable movement after combat
+
+        player = null;
+        enemies.Clear();
     }
 
-    public void Heal(int amount)
+    public bool IsCombatActive()
     {
-        player.Heal(amount);
-        Debug.Log($"You healed for {amount} HP. Your current HP: {player.CurrentHP}");
-    }
-
-    private IEnumerator EnemyTurn()
-    {
-        EnemyStats enemy = enemies[currentEnemyIndex];
-        yield return new WaitForSeconds(1f); // Simulate delay for enemy turn
-        enemy.Attack(player);
-        Debug.Log($"{enemy.enemyName} attacked you, dealing {enemy.attackDamage} damage!");
-
-        if (player.CurrentHP <= 0)
-        {
-            Debug.Log("You were defeated by the enemy!");
-        }
+        return combatActive;
     }
 }

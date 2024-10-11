@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 targetPosition;
     private bool isMoving = false; // Check if the player is moving
+    public bool canMove = true;   // Flag to control movement
 
     private void Start()
     {
@@ -18,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Move(); // Always attempt to move
+        if (canMove)
+        {
+            Move(); // Only allow movement if player can move
+        }
     }
 
     public void Move(Vector3 direction)

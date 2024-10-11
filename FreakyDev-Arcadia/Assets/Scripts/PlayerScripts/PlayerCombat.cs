@@ -11,13 +11,14 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+        // Forward the attack or heal inputs to the CombatManager's PlayerAction
         if (Input.GetKeyDown(KeyCode.A))
         {
-            CombatManager.Instance.Attack();
+            CombatManager.Instance.PlayerAction("attack");
         }
         else if (Input.GetKeyDown(KeyCode.H))
         {
-            CombatManager.Instance.Heal(20);
+            CombatManager.Instance.PlayerAction("heal");
         }
     }
 }

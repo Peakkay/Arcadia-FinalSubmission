@@ -13,7 +13,10 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        HandleInput();
+        if (playerMovement.canMove) // Check if movement is allowed
+        {
+            HandleInput();
+        }
     }
 
     private void HandleInput()

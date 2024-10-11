@@ -27,22 +27,18 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 playerMovement.Move(Vector3.up);
-                Debug.Log("W called");
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
                 playerMovement.Move(Vector3.left);
-                Debug.Log("A called");
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
                 playerMovement.Move(Vector3.down);
-                Debug.Log("S called");
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 playerMovement.Move(Vector3.right);
-                Debug.Log("D called");
             }
         }
     }

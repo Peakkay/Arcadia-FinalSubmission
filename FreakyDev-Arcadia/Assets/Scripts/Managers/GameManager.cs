@@ -1,54 +1,91 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Import Unity's Scene Management
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public string currentSceneName; // To track the current scene
-    public bool isPaused = false;    // Game pause state
-
-    void Start()
+    // Game states
+    public enum GameState
     {
-        // Initialize the game state by getting the active scene
-        currentSceneName = SceneManager.GetActiveScene().name;
+        MainMenu,
+        Playing,
+        Paused,
+        GameOver
     }
 
-    // Load a new scene
-    public void LoadScene(string sceneName)
+    public GameState CurrentState { get; private set; }
+
+    protected override void Awake()
     {
-        SceneManager.LoadScene(sceneName); // Use Unity's SceneManager to load the scene
-        currentSceneName = sceneName;      // Update current scene name
+        base.Awake();
+        CurrentState = GameState.MainMenu; // Initialize to main menu
     }
 
-    // Restart the current scene
-    public void RestartScene()
+    private void Update()
     {
-        SceneManager.LoadScene(currentSceneName); // Restart the currently active scene
+        // Handle input based on game state
+        switch (CurrentState)
+        {
+            case GameState.Playing:
+                // Example: Check for pause input
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGame();
+                }
+                break;
+            case GameState.Paused:
+                // Example: Check for resume input
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ResumeGame();
+                }
+                break;
+                // Additional states can be managed here
+        }
     }
 
-    // Pause the game
-    public void TogglePause()
+    public void StartGame()
     {
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0 : 1; // Freeze or unfreeze time
-        // Optionally show/hide pause menu UI here
+        CurrentState = GameState.Playing;
+        LoadScene("GameScene"); // Replace with your actual game scene name
     }
 
-    // Save game state (example: player position, inventory, etc.)
-    public void SaveGame()
+    public void PauseGame()
     {
-        // Implement saving logic here
-        Debug.Log("Game Saved!");
+        CurrentState = GameState.Paused;
+        Time.timeScale = 0; // Freeze game time
+        // Show pause menu UI (if implemented)
     }
 
-    // Load game state
-    public void LoadGame()
+    public void ResumeGame()
     {
-        // Implement loading logic here
-        Debug.Log("Game Loaded!");
+        CurrentState = GameState.Playing;
+        Time.timeScale = 1; // Resume game time
+        // Hide pause menu UI (if implemented)
+    }
+
+    public void GameOver()
+    {
+        CurrentState = GameState.GameOver;
+        // Show game over UI (if implemented)
+    }
+
+    public void LoadMainMenu()
+    {
+        CurrentState = GameState.MainMenu;
+        LoadScene("MainMenu"); // Replace with your actual main menu scene name
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // Stop playing in the editor
+#endif
     }
 }
-
-
-

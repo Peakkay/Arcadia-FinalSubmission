@@ -9,7 +9,6 @@ public class CombatManager : Singleton<CombatManager>
 
     private bool playerTurn = true; // Boolean to check if it's player's turn
     private bool combatActive = false; // Track if combat is active
-    private List<EnemyStats> defeatedEnemies = new List<EnemyStats>(); // Track defeated enemies for quest system
 
     public void StartCombat(PlayerStats player, List<Enemy> enemies)
     {
@@ -75,6 +74,9 @@ public class CombatManager : Singleton<CombatManager>
 
     public void PlayerAction(string action)
     {
+        // Ensure combat is active before performing actions
+        if (!combatActive) return;
+
         // Attack or heal based on the action passed in
         if (action == "attack")
         {
@@ -91,33 +93,33 @@ public class CombatManager : Singleton<CombatManager>
         playerTurn = false;
     }
 
-private void AttackEnemy()
-{
-    if (enemies.Count > 0)
+    private void AttackEnemy()
     {
-        Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
-        player.Attack(currentEnemy);
-
-        Debug.Log($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
-
-        // Check if the enemy is defeated
-        if (currentEnemy.currentHP <= 0)
+        if (enemies.Count > 0)
         {
-            Debug.Log($"{currentEnemy.enemyStats.enemyName} has been defeated.");
-            
-            // Check if this enemy is part of the quest
-            if (currentEnemy.isQuestEnemy)
-            {
-                // Mark the enemy as defeated for quest tracking
-                QuestManager.Instance.RecordEnemyDefeated(currentEnemy);
-            }
-            
-            enemies.RemoveAt(0); // Remove the defeated enemy
-        }
+            Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
+            player.Attack(currentEnemy);
 
-        playerTurn = false; // End player's turn
+            Debug.Log($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
+
+            // Check if the enemy is defeated
+            if (currentEnemy.currentHP <= 0)
+            {
+                Debug.Log($"{currentEnemy.enemyStats.enemyName} has been defeated.");
+
+                // Check if this enemy is part of any active quests
+                if (currentEnemy.isQuestEnemy)
+                {
+                    // Mark the enemy as defeated for quest tracking
+                    QuestManager.Instance.RecordEnemyDefeated(currentEnemy);
+                }
+
+                enemies.RemoveAt(0); // Remove the defeated enemy
+            }
+
+            playerTurn = false; // End player's turn
+        }
     }
-}
 
     private void EnemyAction()
     {
@@ -143,19 +145,19 @@ private void AttackEnemy()
     public void EndCombat()
     {
         Debug.Log("Combat ended.");
-        combatActive = false; // Combat is no longer active
-        player.GetComponent<PlayerMovement>().canMove = true; // Re-enable movement after combat
+        combatActive = false;
+        player.GetComponent<PlayerMovement>().canMove = true;
 
-        // Check if there is an active quest and update quest progress
-        if (QuestManager.Instance != null && QuestManager.Instance.currentQuest != null)
+        foreach (Quest activeQuest in QuestManager.Instance.activeQuests)
         {
-            Debug.Log("Tried");
-            QuestManager.Instance.CheckQuestCompletion(); // Notify QuestManager of defeated enemies
+            if (activeQuest.questType == QuestType.Combat)
+            {
+                QuestManager.Instance.CheckQuestCompletion(activeQuest);
+            }
         }
 
         player = null;
         enemies.Clear();
-        defeatedEnemies.Clear();
     }
 
     public bool IsCombatActive()

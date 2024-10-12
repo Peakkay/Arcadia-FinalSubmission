@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Fetch Apples
   isCompleted: 0
   questType: 1
-  requiredEnemies: []
+  requiredEnemies: 
   requiredItems:
   - item:
       itemName: Apple
@@ -25,5 +25,6 @@ MonoBehaviour:
       icon: {fileID: 0}
     quantity: 1
   collectedItems: []
-  dialogueLines: []
+  nPCID: 
+  dialogues: []
   currentDialogueIndex: 0

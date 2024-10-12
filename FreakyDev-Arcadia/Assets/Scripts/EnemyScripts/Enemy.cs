@@ -23,6 +23,10 @@ public class Enemy : MonoBehaviour
             currentHP = 0;
             Debug.Log($"{enemyStats.enemyName} defeated!");
             // Handle enemy death logic here (e.g., disabling the enemy)
+            if (isQuestEnemy)
+            {
+                QuestManager.Instance.RecordEnemyDefeated(this); // Record before removing
+            }
             EnemyManager.Instance.UnregisterEnemy(this);
         }
         else
@@ -40,5 +44,6 @@ public class Enemy : MonoBehaviour
     public void MarkAsQuestEnemy(bool value)
     {
         isQuestEnemy = value;
+        Debug.Log($"Marked {this.enemyStats.enemyName} as Quest Enemy");
     }
 }

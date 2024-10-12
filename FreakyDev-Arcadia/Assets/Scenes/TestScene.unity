@@ -1376,7 +1376,6 @@ MonoBehaviour:
   dialogue: Hello!
   NPCID: 6
   quest: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}
-  npcID: 6
 --- !u!61 &190114217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1691,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd39d5ac9fd7649804973079b57b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentQuest: {fileID: 0}
+  activeQuests: []
   defeatedEnemies: 
 --- !u!1 &454338796 stripped
 GameObject:
@@ -8274,6 +8273,7 @@ PrefabInstance:
     - {fileID: 3401998376896165906, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}
     - {fileID: 3230839473586589402, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}
     - {fileID: 6863979567845454861, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}
+    - {fileID: 4603287146802375025, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8699432969707686240, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}
     - {fileID: 8075289137469795427, guid: 5f79331af9eb22640a1093bb33aa0cbd, type: 3}

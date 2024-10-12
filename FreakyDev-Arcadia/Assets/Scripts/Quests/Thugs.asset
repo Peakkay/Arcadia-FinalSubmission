@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Thugs
   description: Beat The Tgugs
-  isCompleted: 0
+  isCompleted: 1
   questType: 0
   requiredEnemies: 010000000300000004000000
   requiredItems: []
   collectedItems: []
-  dialogueLines: []
+  nPCID: 
+  dialogues: []
   currentDialogueIndex: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     public List<Quest> activeQuests = new List<Quest>(); // List to hold active quests
-    public List<int> defeatedEnemies = new List<int>(); // Track defeated enemies
+    private HashSet<int> defeatedEnemies = new HashSet<int>(); // Track defeated enemies
 
     // Start a new quest
     public void StartQuest(Quest quest)
@@ -13,7 +13,20 @@ public class QuestManager : Singleton<QuestManager>
         {
             activeQuests.Add(quest);
             defeatedEnemies.Clear(); // Clear any previously defeated enemies for the new quest
+            quest.isCompleted = false; // Reset completion state
             quest.currentDialogueIndex = 0; // Reset dialogue index when starting a quest
+
+            if (quest.questType == QuestType.Combat)
+            {
+                foreach (var enemyID in quest.requiredEnemies)
+                {
+                    Enemy enemy = EnemyManager.Instance.FindEnemyByID(enemyID);
+                    if (enemy != null)
+                    {
+                        enemy.MarkAsQuestEnemy(true); // Mark enemy as quest enemy
+                    }
+                }
+            }
             Debug.Log("Quest Started: " + quest.questName);
         }
         else
@@ -37,13 +50,12 @@ public class QuestManager : Singleton<QuestManager>
     // Record an enemy as defeated
     public void RecordEnemyDefeated(Enemy enemy)
     {
-        foreach (var quest in activeQuests) // Check against all active quests
+        defeatedEnemies.Add(enemy.enemyID); // Safely add defeated enemy ID
+        foreach (var quest in new List<Quest>(activeQuests)) // Create a new list to avoid modifying while iterating
         {
-            if (quest.requiredEnemies.Contains(enemy.enemyID) && !defeatedEnemies.Contains(enemy.enemyID))
+            if (quest.requiredEnemies.Contains(enemy.enemyID))
             {
-                defeatedEnemies.Add(enemy.enemyID);
-                Debug.Log($"Recorded defeated enemy: {enemy.GetComponent<Enemy>().enemyStats.enemyName}");
-                CheckQuestCompletion(quest); // Check if this quest is complete after recording
+                CheckQuestCompletion(quest);
             }
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class QuestNPCController : NPCController
 {
     public Quest quest;  // Reference to the quest
-    public int npcID;    // Unique NPC ID to map to dialogue
 
     public override void Interact()
     {
@@ -36,7 +35,7 @@ public class QuestNPCController : NPCController
                 // Check if it's a Dialogue quest and progress dialogue
                 if (quest.questType == QuestType.Dialogue)
                 {
-                    if (quest.dialogueMap.ContainsKey(npcID))
+                    if (quest.dialogueMap.ContainsKey(NPCID))
                     {
                         DisplayNextDialogue();
                     }
@@ -83,7 +82,7 @@ public class QuestNPCController : NPCController
     private void StartDialogue()
     {
         // Check if the NPC has dialogue mapped
-        if (quest.dialogueMap.TryGetValue(npcID, out var npcDialogue))
+        if (quest.dialogueMap.TryGetValue(NPCID, out var npcDialogue))
         {
             if (quest.currentDialogueIndex < npcDialogue.Count)
             {
@@ -96,14 +95,14 @@ public class QuestNPCController : NPCController
         }
         else
         {
-            Debug.Log($"No dialogue found for NPC with ID: {npcID}");
+            Debug.Log($"No dialogue found for NPC with ID: {NPCID}");
         }
     }
 
     private void DisplayNextDialogue()
     {
         // Fetch the dialogue for this NPC
-        if (quest.dialogueMap.TryGetValue(npcID, out var npcDialogue))
+        if (quest.dialogueMap.TryGetValue(NPCID, out var npcDialogue))
         {
             // Check if there are more dialogue lines to display
             if (quest.currentDialogueIndex < npcDialogue.Count)
@@ -128,7 +127,7 @@ public class QuestNPCController : NPCController
         }
         else
         {
-            Debug.Log($"No dialogue found for NPC with ID: {npcID}");
+            Debug.Log($"No dialogue found for NPC with ID: {NPCID}");
         }
     }
 }

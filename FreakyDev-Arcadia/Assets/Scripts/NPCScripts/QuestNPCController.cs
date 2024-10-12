@@ -28,8 +28,8 @@ public class QuestNPCController : NPCController
                 return;
             }
 
-            // If the quest is already in progress
-            if (QuestManager.Instance.currentQuest == quest)
+            // Check if the quest is already in progress
+            if (QuestManager.Instance.activeQuests.Contains(quest))
             {
                 Debug.Log($"Quest '{quest.questName}' is already in progress.");
 
@@ -51,7 +51,7 @@ public class QuestNPCController : NPCController
                 {
                     if (QuestManager.Instance.CheckFetchQuestCompletion(quest))
                     {
-                        QuestManager.Instance.CompleteQuest();
+                        QuestManager.Instance.CompleteQuest(quest); // Pass the quest
                         Debug.Log($"Fetch Quest '{quest.questName}' completed.");
                     }
                 }
@@ -59,7 +59,7 @@ public class QuestNPCController : NPCController
                 // Handle combat quest completion
                 if (quest.questType == QuestType.Combat)
                 {
-                    QuestManager.Instance.CheckQuestCompletion();
+                    QuestManager.Instance.CheckQuestCompletion(quest); // Pass the quest
                 }
 
                 return; // Exit after handling the already in-progress quest
@@ -118,7 +118,7 @@ public class QuestNPCController : NPCController
                 if (quest.currentDialogueIndex >= npcDialogue.Count)
                 {
                     Debug.Log($"Dialogue for quest '{quest.questName}' completed.");
-                    QuestManager.Instance.CompleteQuest();
+                    QuestManager.Instance.CompleteQuest(quest); // Pass the quest
                 }
             }
             else

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6547667446570148118}
   - component: {fileID: 4495697210301976896}
   - component: {fileID: 4410235232506060687}
+  - component: {fileID: -4975581282132689203}
   m_Layer: 0
   m_Name: CombatNPC
   m_TagString: Untagged
@@ -112,4 +113,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: NpcName
   dialogue: Hello! Prepare To Fight
+  NPCID: 0
   enemies: []
+--- !u!114 &-4975581282132689203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5617734812807802417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8098d416fa6c7046b26f5d394eca04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 0}
+  currentHP: 0
+  isQuestEnemy: 0
+  enemyID: 0

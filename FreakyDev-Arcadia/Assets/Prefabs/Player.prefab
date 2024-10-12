@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3402109692256077320}
   - component: {fileID: 2449050383537108606}
   - component: {fileID: 5417755524187550562}
-  - component: {fileID: 420700988643777461}
+  - component: {fileID: 1618172619791975064}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -66,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   tileSize: 1
+  canMove: 1
 --- !u!50 &4269107884344803729
 Rigidbody2D:
   serializedVersion: 4
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
---- !u!114 &420700988643777461
+--- !u!114 &1618172619791975064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,6 +213,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621090134877791111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3f3d13c0c684d4abc9a078a9df999f, type: 3}
+  m_Script: {fileID: 11500000, guid: f49a284d3b636d14282377f94a259eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionDistance: 2
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0

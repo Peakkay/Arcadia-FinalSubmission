@@ -5,10 +5,13 @@ public class PlayerStats : MonoBehaviour
     public int maxHP = 100;              // Maximum health
     public int CurrentHP { get; private set; } // Current health
     public int attackDamage = 20;        // Attack damage
+    public int maxMana = 100;            // Maximum mana
+    public int CurrentMana { get;set; } // Current mana
 
     private void Start()
     {
         CurrentHP = maxHP; // Set health to maximum at the start
+        CurrentMana = maxMana; // Initialize current mana
     }
 
     // Method for the player to attack the enemy
@@ -39,4 +42,5 @@ public class PlayerStats : MonoBehaviour
             Debug.Log($"Player took {damage} damage. Current HP: {CurrentHP}");
         }
     }
+
 }

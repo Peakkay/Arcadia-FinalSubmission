@@ -32,7 +32,7 @@ public class CombatManager : Singleton<CombatManager>
                 Debug.Log("Player's Turn.");
                 bool actionSelected = false;
 
-                // Wait for player to select an action (attack or heal)
+                // Wait for player to select an action (attack, heal, or cast spell)
                 while (!actionSelected)
                 {
                     if (Input.GetKeyDown(KeyCode.A)) // A for attack
@@ -43,6 +43,11 @@ public class CombatManager : Singleton<CombatManager>
                     else if (Input.GetKeyDown(KeyCode.H)) // H for heal
                     {
                         PlayerAction("heal");
+                        actionSelected = true;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.C)) // C for casting spell
+                    {
+                        PlayerAction("castSpell");
                         actionSelected = true;
                     }
 
@@ -77,7 +82,7 @@ public class CombatManager : Singleton<CombatManager>
         // Ensure combat is active before performing actions
         if (!combatActive) return;
 
-        // Attack or heal based on the action passed in
+        // Attack, heal, or cast spell based on the action passed in
         if (action == "attack")
         {
             Debug.Log("Player chose to attack.");
@@ -87,6 +92,15 @@ public class CombatManager : Singleton<CombatManager>
         {
             Debug.Log("Player chose to heal.");
             player.Heal(20); // Heal player by 20 HP (or any amount you choose)
+        }
+        else if (action == "castSpell")
+        {
+            Debug.Log("Player chose to cast a spell.");
+            // For this example, we will cast a spell called "Fireball"
+            int spellID = 1; // Example spell ID, you can change it based on player choice
+            Enemy targetEnemy = enemies[0]; // Cast spell on the first enemy
+
+            SpellManager.Instance.CastSpell(spellID, targetEnemy); // Use SpellManager to cast spell
         }
 
         // Once the action is complete, set it to the enemy's turn

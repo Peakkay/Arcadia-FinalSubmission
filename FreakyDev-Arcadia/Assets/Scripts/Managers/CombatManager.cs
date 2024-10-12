@@ -98,9 +98,7 @@ public class CombatManager : Singleton<CombatManager>
             Debug.Log("Player chose to cast a spell.");
             // For this example, we will cast a spell called "Fireball"
             int spellID = 1; // Example spell ID, you can change it based on player choice
-            Enemy targetEnemy = enemies[0]; // Cast spell on the first enemy
-
-            SpellManager.Instance.CastSpell(spellID, targetEnemy); // Use SpellManager to cast spell
+            AttackWithSpell(spellID);
         }
 
         // Once the action is complete, set it to the enemy's turn
@@ -133,6 +131,33 @@ public class CombatManager : Singleton<CombatManager>
 
             playerTurn = false; // End player's turn
         }
+    }
+    private void AttackWithSpell(int spellID)
+    {
+        if (enemies.Count > 0)
+        {
+            Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
+            SpellManager.Instance.CastSpell(spellID, currentEnemy); // Use SpellManager to cast spell
+
+            Debug.Log($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
+
+            // Check if the enemy is defeated
+            if (currentEnemy.currentHP <= 0)
+            {
+                Debug.Log($"{currentEnemy.enemyStats.enemyName} has been defeated.");
+
+                // Check if this enemy is part of any active quests
+                if (currentEnemy.isQuestEnemy)
+                {
+                    // Mark the enemy as defeated for quest tracking
+                    QuestManager.Instance.RecordEnemyDefeated(currentEnemy);
+                }
+
+                enemies.RemoveAt(0); // Remove the defeated enemy
+            }
+
+            playerTurn = false; // End player's turn
+        }        
     }
 
     private void EnemyAction()

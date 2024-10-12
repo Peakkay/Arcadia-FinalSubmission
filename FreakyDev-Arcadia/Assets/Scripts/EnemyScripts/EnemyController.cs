@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private EnemyStats enemyStats;
+    private Enemy enemy;
 
     private void Start()
     {
-        enemyStats = GetComponent<EnemyStats>();
+        enemy = GetComponent<Enemy>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerStats playerStats = other.GetComponent<PlayerStats>();
-            List<EnemyStats> enemiesInCombat = new List<EnemyStats> { enemyStats }; // Assuming 1 enemy for simplicity
+            List<Enemy> enemiesInCombat = new List<Enemy> { enemy }; // Assuming 1 enemy for simplicity
             CombatManager.Instance.StartCombat(playerStats, enemiesInCombat);
         }
     }

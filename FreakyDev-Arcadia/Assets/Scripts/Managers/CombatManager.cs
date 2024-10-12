@@ -5,13 +5,13 @@ using UnityEngine;
 public class CombatManager : Singleton<CombatManager>
 {
     public PlayerStats player; // Reference to the player
-    public List<EnemyStats> enemies; // List of enemies involved in combat
+    public List<Enemy> enemies; // List of enemies involved in combat
 
     private bool playerTurn = true; // Boolean to check if it's player's turn
     private bool combatActive = false; // Track if combat is active
     private List<EnemyStats> defeatedEnemies = new List<EnemyStats>(); // Track defeated enemies for quest system
 
-    public void StartCombat(PlayerStats player, List<EnemyStats> enemies)
+    public void StartCombat(PlayerStats player, List<Enemy> enemies)
     {
         this.player = player;
         this.enemies = enemies;
@@ -95,15 +95,15 @@ private void AttackEnemy()
 {
     if (enemies.Count > 0)
     {
-        EnemyStats currentEnemy = enemies[0]; // Attack the first enemy in the list
+        Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
         player.Attack(currentEnemy);
 
-        Debug.Log($"Player attacked {currentEnemy.enemyName}. {currentEnemy.enemyName} now has {currentEnemy.CurrentHP} HP.");
+        Debug.Log($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
 
         // Check if the enemy is defeated
-        if (currentEnemy.CurrentHP <= 0)
+        if (currentEnemy.currentHP <= 0)
         {
-            Debug.Log($"{currentEnemy.enemyName} has been defeated.");
+            Debug.Log($"{currentEnemy.enemyStats.enemyName} has been defeated.");
             
             // Check if this enemy is part of the quest
             if (currentEnemy.isQuestEnemy)
@@ -123,10 +123,10 @@ private void AttackEnemy()
     {
         if (enemies.Count > 0)
         {
-            EnemyStats currentEnemy = enemies[0]; // Attack the first enemy in the list
+            Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
             currentEnemy.Attack(player);
 
-            Debug.Log($"{currentEnemy.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
+            Debug.Log($"{currentEnemy.enemyStats.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
 
             // Check if player is defeated
             if (player.CurrentHP <= 0)
@@ -149,6 +149,7 @@ private void AttackEnemy()
         // Check if there is an active quest and update quest progress
         if (QuestManager.Instance != null && QuestManager.Instance.currentQuest != null)
         {
+            Debug.Log("Tried");
             QuestManager.Instance.CheckQuestCompletion(); // Notify QuestManager of defeated enemies
         }
 

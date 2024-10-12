@@ -5,12 +5,13 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     public Quest currentQuest;
-    public List<EnemyStats> defeatedEnemies = new List<EnemyStats>();
+    public List<int> defeatedEnemies = new List<int>();
 
     public void StartQuest(Quest quest)
     {
         currentQuest = quest;
         defeatedEnemies.Clear(); // Clear any previously defeated enemies
+        currentQuest.currentDialogueIndex = 0; // Reset dialogue index when starting a quest
         Debug.Log("Quest Started: " + currentQuest.questName);
     }
 
@@ -24,15 +25,15 @@ public class QuestManager : Singleton<QuestManager>
         }
     }
 
-    public void RecordEnemyDefeated(EnemyStats enemy)
+    public void RecordEnemyDefeated(Enemy enemy)
     {
-        if (!defeatedEnemies.Contains(enemy))
+        if (currentQuest != null && currentQuest.requiredEnemies.Contains(enemy.enemyID))
         {
-            defeatedEnemies.Add(enemy);
-            Debug.Log($"{enemy.enemyName} recorded as defeated.");
-
-            // Check if the combat quest is completed
-            CheckQuestCompletion();
+            if (!defeatedEnemies.Contains(enemy.enemyID))
+            {
+                defeatedEnemies.Add(enemy.enemyID);
+                Debug.Log($"Recorded defeated enemy: {enemy.GetComponent<Enemy>().enemyStats.enemyName}");
+            }
         }
     }
 
@@ -68,5 +69,10 @@ public class QuestManager : Singleton<QuestManager>
             return true; // All required items collected
         }
         return false;
+    }
+        public bool CheckDialogueQuestCompletion(Quest quest)
+    {
+        // Check if the current dialogue index has reached the total number of dialogue lines
+        return quest.currentDialogueIndex >= quest.dialogueMap.Count;
     }
 }

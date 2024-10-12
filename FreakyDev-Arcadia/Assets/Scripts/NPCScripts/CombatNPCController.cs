@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombatNPCController : NPCController
 {
-    public List<EnemyStats> enemies; // List of enemies linked to this NPC
+    public List<Enemy> enemies; // List of enemies linked to this NPC
 
     public override void Interact()
     {

@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Method for the player to attack the enemy
-    public void Attack(EnemyStats enemy)
+    public void Attack(Enemy enemy)
     {
         enemy.TakeDamage(attackDamage);
     }

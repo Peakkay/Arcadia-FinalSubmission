@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3991370208260909644}
   - component: {fileID: 6547667446570148118}
-  - component: {fileID: 1355961565419797056}
   - component: {fileID: 4495697210301976896}
   - component: {fileID: 4410235232506060687}
   m_Layer: 0
@@ -47,21 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f421e6ecb409bc84fab9719477518a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1355961565419797056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5617734812807802417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c665be6276120cf4f82a4281a5bbebdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Enemy
-  maxHP: 50
-  attackDamage: 10
 --- !u!212 &4495697210301976896
 SpriteRenderer:
   m_ObjectHideFlags: 0

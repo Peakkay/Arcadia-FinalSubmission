@@ -1376,6 +1376,7 @@ MonoBehaviour:
   dialogue: Hello!
   NPCID: 6
   quest: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}
+  npcID: 6
 --- !u!61 &190114217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5833,14 +5834,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestNPC (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6905358747738906161, guid: 00f9fc543d9662f429444bfe2d381e39, type: 3}
-      propertyPath: NPCID
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6905358747738906161, guid: 00f9fc543d9662f429444bfe2d381e39, type: 3}
-      propertyPath: quest
-      value: 
-      objectReference: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}
     - target: {fileID: 8773519019080048251, guid: 00f9fc543d9662f429444bfe2d381e39, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5

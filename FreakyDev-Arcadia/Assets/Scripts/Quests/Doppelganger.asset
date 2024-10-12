@@ -19,8 +19,8 @@ MonoBehaviour:
   requiredEnemies: 
   requiredItems: []
   collectedItems: []
-  nPCID: 0300000006000000
+  nPCID: 0600000003000000
   dialogues:
-  - Let's Start
   - Wassup 'Cuh
-  currentDialogueIndex: 0
+  - Let's Start
+  currentDialogueIndex: 1

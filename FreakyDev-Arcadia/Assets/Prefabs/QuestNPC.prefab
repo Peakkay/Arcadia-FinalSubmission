@@ -173,4 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: NPCName
   dialogue: Dialogue
-  quest: {fileID: 0}
+  NPCID: 3
+  quest: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}
+  npcID: 3

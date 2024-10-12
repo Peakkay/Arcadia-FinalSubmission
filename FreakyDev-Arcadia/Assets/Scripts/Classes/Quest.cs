@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +11,10 @@ public class Quest
 
     // For combat quests, list the enemies required to defeat
     public List<EnemyStats> requiredEnemies;
+
+    // For fetch quests, list the items required to collect
+    public List<QuestItem> requiredItems;
+    public List<QuestItem> collectedItems = new List<QuestItem>(); // Track collected items
 }
 
 public enum QuestType
@@ -21,3 +24,11 @@ public enum QuestType
     Dialogue
 }
 
+
+[System.Serializable]
+public class QuestItem
+{
+    public Item item;  // The item required for the quest
+    public int quantity;
+    public int itemID => item.itemID;  // Use ItemID for comparison
+}

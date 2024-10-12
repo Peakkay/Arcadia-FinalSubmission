@@ -31,7 +31,7 @@ public class QuestManager : Singleton<QuestManager>
             defeatedEnemies.Add(enemy);
             Debug.Log($"{enemy.enemyName} recorded as defeated.");
 
-            // Check if the quest is completed after adding the enemy
+            // Check if the combat quest is completed
             CheckQuestCompletion();
         }
     }
@@ -50,5 +50,23 @@ public class QuestManager : Singleton<QuestManager>
             }
             CompleteQuest(); // Complete the quest if all required enemies are defeated
         }
+    }
+
+    public bool CheckFetchQuestCompletion(Quest quest)
+    {
+        if (quest.questType == QuestType.Fetch)
+        {
+            foreach (QuestItem requiredItem in quest.requiredItems)
+            {
+                // Check if the player has enough of the required items
+                if (!InventoryManager.Instance.HasItem(requiredItem.itemID, requiredItem.quantity))
+                {
+                    Debug.Log("Fetch Quest not completed yet. Missing items.");
+                    return false; // Missing required items
+                }
+            }
+            return true; // All required items collected
+        }
+        return false;
     }
 }

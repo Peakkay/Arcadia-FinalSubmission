@@ -17,7 +17,7 @@ public class CombatManager : Singleton<CombatManager>
         combatActive = true; // Combat is now active
 
         player.GetComponent<PlayerMovement>().canMove = false; // Disable movement during combat
-        Debug.Log("Combat started with player and enemies.");
+        LogAndDisplay("Combat started with player and enemies.");
 
         StartCoroutine(CombatLoop());
     }
@@ -29,7 +29,7 @@ public class CombatManager : Singleton<CombatManager>
         {
             if (playerTurn)
             {
-                Debug.Log("Player's Turn.");
+                LogAndDisplay("Player's Turn.");
                 bool actionSelected = false;
 
                 // Wait for player to select an action (attack, heal, or cast spell)
@@ -58,7 +58,7 @@ public class CombatManager : Singleton<CombatManager>
             }
             else
             {
-                Debug.Log("Enemy's Turn.");
+                LogAndDisplay("Enemy's Turn.");
                 EnemyAction();
                 yield return new WaitForSeconds(2f); // Small delay for enemy action
             }
@@ -67,11 +67,11 @@ public class CombatManager : Singleton<CombatManager>
         // Check combat outcome
         if (player.CurrentHP <= 0)
         {
-            Debug.Log("Player has been defeated.");
+            LogAndDisplay("Player has been defeated.");
         }
         else if (enemies.Count == 0)
         {
-            Debug.Log("All enemies defeated. Combat won.");
+            LogAndDisplay("All enemies defeated. Combat won.");
         }
 
         EndCombat();
@@ -85,17 +85,17 @@ public class CombatManager : Singleton<CombatManager>
         // Attack, heal, or cast spell based on the action passed in
         if (action == "attack")
         {
-            Debug.Log("Player chose to attack.");
+            LogAndDisplay("Player chose to attack.");
             AttackEnemy();  // Call attack logic
         }
         else if (action == "heal")
         {
-            Debug.Log("Player chose to heal.");
+            LogAndDisplay("Player chose to heal.");
             player.Heal(20); // Heal player by 20 HP (or any amount you choose)
         }
         else if (action == "castSpell")
         {
-            Debug.Log("Player chose to cast a spell.");
+            LogAndDisplay("Player chose to cast a spell.");
             // For this example, we will cast a spell called "Fireball"
             int spellID = 1; // Example spell ID, you can change it based on player choice
             Enemy targetEnemy = enemies[0]; // Cast spell on the first enemy
@@ -114,12 +114,12 @@ public class CombatManager : Singleton<CombatManager>
             Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
             player.Attack(currentEnemy);
 
-            Debug.Log($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
+            LogAndDisplay($"Player attacked {currentEnemy.enemyStats.enemyName}. {currentEnemy.enemyStats.enemyName} now has {currentEnemy.currentHP} HP.");
 
             // Check if the enemy is defeated
             if (currentEnemy.currentHP <= 0)
             {
-                Debug.Log($"{currentEnemy.enemyStats.enemyName} has been defeated.");
+                LogAndDisplay($"{currentEnemy.enemyStats.enemyName} has been defeated.");
 
                 // Check if this enemy is part of any active quests
                 if (currentEnemy.isQuestEnemy)
@@ -142,12 +142,12 @@ public class CombatManager : Singleton<CombatManager>
             Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
             currentEnemy.Attack(player);
 
-            Debug.Log($"{currentEnemy.enemyStats.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
+            LogAndDisplay($"{currentEnemy.enemyStats.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
 
             // Check if player is defeated
             if (player.CurrentHP <= 0)
             {
-                Debug.Log("Player defeated.");
+                LogAndDisplay("Player defeated.");
             }
             else
             {
@@ -158,7 +158,7 @@ public class CombatManager : Singleton<CombatManager>
 
     public void EndCombat()
     {
-        Debug.Log("Combat ended.");
+        LogAndDisplay("Combat ended.");
         combatActive = false;
         player.GetComponent<PlayerMovement>().canMove = true;
 
@@ -172,6 +172,28 @@ public class CombatManager : Singleton<CombatManager>
 
         player = null;
         enemies.Clear();
+    }
+
+    private void LogAndDisplay(string message)
+    {
+        Debug.Log(message); // Log to console
+
+        // Ensure the DialogueManager is available
+        if (DialogueManager.Instance != null)
+        {
+            // Create a new dialogue object
+            Dialogue dialogueObject = new Dialogue
+            {
+                lines = new List<string> { message }
+            };
+
+            // Start the dialogue in the DialogueManager
+            DialogueManager.Instance.StartDialogue(dialogueObject);
+        }
+        else
+        {
+            Debug.LogError("DialogueManager is not available.");
+        }
     }
 
     public bool IsCombatActive()

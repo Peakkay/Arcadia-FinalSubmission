@@ -45,6 +45,7 @@ public class DialogueManager : Singleton<DialogueManager>
         string line = dialogueQueue.Dequeue(); // This should work if dialogue.lines is defined correctly
         dialogueText.text = line; // Update the text display
     }
+    
 
     // Ends the dialogue session
     private void EndDialogue()

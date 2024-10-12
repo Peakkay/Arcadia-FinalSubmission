@@ -1,8 +1,7 @@
-using UnityEngine;
+using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue")]
-public class Dialogue : ScriptableObject
+[System.Serializable]
+public class Dialogue
 {
-    [TextArea(3, 10)] // Optional: For better visibility in the inspector
-    public string[] lines; // Array of dialogue lines
+    public List<string> lines; // List of dialogue lines
 }

@@ -47,7 +47,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     // Ends the dialogue session
-    private void EndDialogue()
+    public void EndDialogue()
     {
         isDialogueActive = false;
         dialoguePanel.SetActive(false); // Hide the dialogue panel

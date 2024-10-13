@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +15,30 @@ public class NPCController : MonoBehaviour, IInteractable
 
     // Base interaction logic for all NPCs
     public virtual void Interact()
-    {
+    {   DisplayDialogue(dialogue);
         Debug.Log($"{npcName}: {dialogue}");
         UpdateChoices();
         ChoiceManager.Instance.StartChoiceSelection();
     }
+     protected void DisplayDialogue(string text)
+    {
+        // Ensure the DialogueManager is available
+        if (DialogueManager.Instance != null)
+        {
+            // Create a new dialogue object
+            Dialogue dialogueObject = new Dialogue
+            {
+                lines = new List<string>{ $"{npcName}: {text}" }
+            };
 
+            // Start the dialogue in the DialogueManager
+            DialogueManager.Instance.StartDialogue(dialogueObject);
+        }
+        else
+        {
+            Debug.LogError("DialogueManager is not available.");
+        }
+    }
     // Method to increase corruption level
     public void CorruptNPC(int corruptionAmount)
     {

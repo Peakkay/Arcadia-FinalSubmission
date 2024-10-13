@@ -16,6 +16,15 @@ public class QuestNPCController : NPCController
 
         // Display dialogue for the NPC
         Debug.Log($"{npcName}: {dialogue}");
+        
+        // Ensure the DialogueManager is available
+        if (DialogueManager.Instance != null)
+        {
+            // Start dialogue for the NPC
+            Dialogue dialoguetext = new Dialogue { lines = new List<string> { $"{npcName}: {dialogue}" } };
+            DialogueManager.Instance.StartDialogue(dialoguetext);
+        }
+
 
         // Ensure the QuestManager is available
         if (QuestManager.Instance != null)
@@ -87,6 +96,9 @@ public class QuestNPCController : NPCController
             if (quest.currentDialogueIndex < npcDialogue.Count)
             {
                 Debug.Log($"Starting dialogue for quest '{quest.questName}': {npcDialogue[quest.currentDialogueIndex]}");
+                 // Create a new dialogue object to pass to the DialogueManager
+                Dialogue dialogue = new Dialogue { lines = new List<string> { $"{npcName}: {npcDialogue[quest.currentDialogueIndex]}" } };
+                DialogueManager.Instance.StartDialogue(dialogue);
             }
             else
             {
@@ -106,7 +118,8 @@ public class QuestNPCController : NPCController
         {
             // Check if there are more dialogue lines to display
             if (quest.currentDialogueIndex < npcDialogue.Count)
-            {
+            {   Dialogue dialogue = new Dialogue { lines = new List<string> { $"{npcName}: {npcDialogue[quest.currentDialogueIndex]}" } };
+                DialogueManager.Instance.StartDialogue(dialogue);
                 // Display the current dialogue line
                 Debug.Log($"{npcName}: {npcDialogue[quest.currentDialogueIndex]}");
 

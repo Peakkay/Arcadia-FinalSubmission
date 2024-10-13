@@ -156,23 +156,33 @@ public class CombatManager : Singleton<CombatManager>
         }
     }
 
-    public void EndCombat()
+ public void EndCombat()
+{
+    LogAndDisplay("Combat ended.");
+
+    // Start the delayed end dialogue coroutine
+    StartCoroutine(DelayedEndDialogue(2f)); // Delay for 2 seconds
+
+    combatActive = false;
+    player.GetComponent<PlayerMovement>().canMove = true;
+
+    foreach (Quest activeQuest in QuestManager.Instance.activeQuests)
     {
-        LogAndDisplay("Combat ended.");
-        combatActive = false;
-        player.GetComponent<PlayerMovement>().canMove = true;
-
-        foreach (Quest activeQuest in QuestManager.Instance.activeQuests)
+        if (activeQuest.questType == QuestType.Combat)
         {
-            if (activeQuest.questType == QuestType.Combat)
-            {
-                QuestManager.Instance.CheckQuestCompletion(activeQuest);
-            }
+            QuestManager.Instance.CheckQuestCompletion(activeQuest);
         }
-
-        player = null;
-        enemies.Clear();
     }
+
+    player = null;
+    enemies.Clear();
+}
+
+private IEnumerator DelayedEndDialogue(float delay)
+{
+    yield return new WaitForSeconds(delay); // Wait for the specified delay
+    DialogueManager.Instance.EndDialogue(); // Call EndDialogue after the delay
+}
 
     private void LogAndDisplay(string message)
     {

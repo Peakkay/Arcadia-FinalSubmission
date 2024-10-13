@@ -48,6 +48,7 @@ private void Start()
     public void PerformRealityShift(RealityState realityState)
     {
         // Change player sprite
+        Debug.Log($"Reality shift Called to {realityState.reality}");
         ChangePlayerSprite(realityState);
 
         // Change the tilemap

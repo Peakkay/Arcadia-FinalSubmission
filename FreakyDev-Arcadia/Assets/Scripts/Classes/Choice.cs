@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Choice
+[CreateAssetMenu(fileName = "NewChoice", menuName = "Choice")]
+public class Choice : ScriptableObject
 {
     public string choiceText;  // Text displayed for the choice
     public int corruptionImpact;  // Change in corruption from this choice

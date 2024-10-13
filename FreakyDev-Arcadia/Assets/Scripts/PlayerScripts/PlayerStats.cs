@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -43,4 +44,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void IncreaseStat(Stat statchange)
+    {
+        
+    }
 }

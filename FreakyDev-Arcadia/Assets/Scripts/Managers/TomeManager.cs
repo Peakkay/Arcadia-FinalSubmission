@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tome : Singleton<Tome>
+public class TomeManager : Singleton<TomeManager>
 {
     public string tomeName; // Name of the tome
     public List<Spell> spells; // List of spells contained in the tome

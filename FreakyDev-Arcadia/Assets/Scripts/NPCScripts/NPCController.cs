@@ -3,13 +3,25 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, IInteractable
 {
-    public string npcName = "NPC Name"; // Name of the NPC
-    public string dialogue = "Hello!";  // Dialogue text
+    public string npcName = "NPC Name";
+    public string dialogue = "Hello!";
     public int NPCID;
+
+    public Faction npcFaction; // New field for NPC's faction
+    public int corruptionLevel; // New field to track NPC's corruption level (0-100)
+    public bool isKeyNPC; // Flag to identify major NPCs
 
     // Base interaction logic for all NPCs
     public virtual void Interact()
     {
         Debug.Log($"{npcName}: {dialogue}");
+    }
+
+    // Method to increase corruption level
+    public void CorruptNPC(int corruptionAmount)
+    {
+        corruptionLevel += corruptionAmount;
+        if (corruptionLevel > 100) corruptionLevel = 100;
+        Debug.Log($"{npcName} corruption level: {corruptionLevel}");
     }
 }

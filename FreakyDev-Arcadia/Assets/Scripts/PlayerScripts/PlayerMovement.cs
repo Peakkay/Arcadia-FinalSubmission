@@ -100,6 +100,16 @@ public class PlayerMovement : MonoBehaviour
             targetPosition += Vector3.right * tileSize;
             isMoving = true;
         }
+
+        if(Input.GetKey(KeyCode.I))
+        {
+            Inventory inv = new Inventory();
+            inv.Start();
+            InventoryUI invui = new InventoryUI();
+            invui.UpdateInventoryUI(inv);
+
+            
+        }
     }
 
     // Public property to expose the isMoving variable

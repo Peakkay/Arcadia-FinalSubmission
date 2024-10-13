@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class Item
 {
     public string itemName;
-    public string description;
-    public int itemID;  // Unique identifier for each item
-    public Sprite icon;
+    public Sprite itemIcon;
+    public int itemID;
+    public string itemType; // e.g., "Weapon", "Potion", etc.
+    public string rarity; // e.g., "Common", "Rare", etc.
+    public string description; // Description for tooltip
+    public int itemQuantity;
 
-    public Item(string name, string desc, int id)
+    public Item(string name, Sprite icon, int id, string type, string rarity, string desc, int iq)
     {
         itemName = name;
-        description = desc;
+        itemIcon = icon;
         itemID = id;
+        itemType = type;
+        this.rarity = rarity;
+        description = desc;
+        itemQuantity = iq;
+
     }
 }
-
-

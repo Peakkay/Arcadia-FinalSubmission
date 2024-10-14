@@ -8,6 +8,7 @@ public class RealityState
     public Reality reality;
     public List<string> effects; // Effects that apply in this state
     public Color backgroundColor; // Change background based on state
+    public int CorruptionOffset;
     // Add more properties as needed
     public RealityState(Reality reality)
     {
@@ -19,7 +20,8 @@ public enum Reality
 {
     Normal,
     Corrupted,
-    Celestial
+    Celestial,
+    None
 }
 
 

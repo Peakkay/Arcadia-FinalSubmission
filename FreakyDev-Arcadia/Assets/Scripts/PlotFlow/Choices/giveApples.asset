@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8da10f077f24654fb53c229971216c9, type: 3}
-  m_Name: shiftCorrupted
+  m_Name: giveApples
   m_EditorClassIdentifier: 
-  choiceText: Corrupted Reality
+  choiceText: Apples Quest
   playercorruptionImpact: 0
   worldcorruptionImpact: 0
   newSpell: {fileID: 0}
-  targetReality: 1
-  newQuest: {fileID: 0}
+  targetReality: 3
+  newQuest: {fileID: 11400000, guid: 034a9a5be3b44334db51b917f365051b, type: 2}
   requiredWorldCorruption: 0
   requiredNPCCorruption: 0
   maxWorldCorruption: 0
   maxNPCCorruption: 0
-  minPlayerCorruption: 200
+  minPlayerCorruption: 0
   maxPlayerCorruption: 300

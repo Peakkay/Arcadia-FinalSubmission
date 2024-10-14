@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3402109692256077320}
   - component: {fileID: 2449050383537108606}
   - component: {fileID: 5417755524187550562}
-  - component: {fileID: 1618172619791975064}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -52,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   attackDamage: 20
+  maxMana: 100
 --- !u!114 &4519060934285028149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,19 +204,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
---- !u!114 &1618172619791975064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621090134877791111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49a284d3b636d14282377f94a259eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionDistance: 2
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 0

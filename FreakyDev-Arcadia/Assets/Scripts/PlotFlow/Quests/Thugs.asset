@@ -22,3 +22,12 @@ MonoBehaviour:
   nPCID: 
   dialogues: []
   currentDialogueIndex: 0
+  questReward:
+    rewardItems:
+    - {fileID: 11400000, guid: 0e5e1fe707516a743a147349cf96b4f2, type: 2}
+    playercorruptionImpact: 20
+    worldcorruptionImpact: 50
+    npccorruptionImpact: 0
+    targetNPC: {fileID: 0}
+    newSpell: {fileID: 0}
+    newQuest: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}

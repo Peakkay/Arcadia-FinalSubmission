@@ -27,7 +27,7 @@ public class CombatManager : Singleton<CombatManager>
     private IEnumerator CombatLoop()
     {
         // Continue the combat until player or all enemies are defeated
-        while (player.CurrentHP > 0 && enemies.Count > 0)
+        while (player.playerstats.CurrentHP > 0 && enemies.Count > 0)
         {
             if (playerTurn)
             {   LogAndDisplay("Player's Turn.");
@@ -70,7 +70,7 @@ public class CombatManager : Singleton<CombatManager>
         }
 
         // Check combat outcome
-        if (player.CurrentHP <= 0)
+        if (player.playerstats.CurrentHP <= 0)
         {   LogAndDisplay("Player has been defeated.");
            
         }
@@ -173,10 +173,10 @@ public class CombatManager : Singleton<CombatManager>
         {
             Enemy currentEnemy = enemies[0]; // Attack the first enemy in the list
             currentEnemy.Attack(player);
-            LogAndDisplay($"{currentEnemy.enemyStats.enemyName} attacked the player. Player now has {player.CurrentHP} HP.");
+            LogAndDisplay($"{currentEnemy.enemyStats.enemyName} attacked the player. Player now has {player.playerstats.CurrentHP} HP.");
            
             // Check if player is defeated
-            if (player.CurrentHP <= 0)
+            if (player.playerstats.CurrentHP <= 0)
             {   LogAndDisplay("Player defeated.");
                 
             }

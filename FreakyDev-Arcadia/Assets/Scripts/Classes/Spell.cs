@@ -19,9 +19,9 @@ public class Spell : ScriptableObject
         {
             // Assuming you deduct mana from the player here if they are referenced
             PlayerStats playerStats = FindObjectOfType<PlayerStats>(); // Get player stats (or pass player reference)
-            if (playerStats != null && playerStats.CurrentMana >= manaCost)
+            if (playerStats != null && playerStats.playerstats.CurrentMana >= manaCost)
             {
-                playerStats.CurrentMana -= manaCost; // Deduct mana cost
+                playerStats.playerstats.CurrentMana -= manaCost; // Deduct mana cost
                 targetEnemy.TakeDamage(damage); // Apply damage to the enemy
                 Debug.Log($"{spellName} cast on {targetEnemy.enemyStats.enemyName} for {damage} damage!");
             }

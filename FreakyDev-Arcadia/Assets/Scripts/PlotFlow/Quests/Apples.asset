@@ -18,13 +18,17 @@ MonoBehaviour:
   questType: 1
   requiredEnemies: 
   requiredItems:
-  - item:
-      itemName: Apple
-      description: Apple
-      itemID: 1
-      icon: {fileID: 0}
+  - item: {fileID: 0}
     quantity: 1
   collectedItems: []
   nPCID: 
   dialogues: []
   currentDialogueIndex: 0
+  questReward:
+    rewardItems: []
+    playercorruptionImpact: 0
+    worldcorruptionImpact: 0
+    npccorruptionImpact: 0
+    targetNPC: {fileID: 0}
+    newSpell: {fileID: 0}
+    newQuest: {fileID: 0}

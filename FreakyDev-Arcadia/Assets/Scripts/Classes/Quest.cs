@@ -24,6 +24,7 @@ public class Quest : ScriptableObject
 
     // List of objectives
     public List<QuestObjective> objectives; // List of objectives for the quest
+    public QuestReward questReward; // The reward for completing this quest
 
     public void InitializeDialogueMap()
     {

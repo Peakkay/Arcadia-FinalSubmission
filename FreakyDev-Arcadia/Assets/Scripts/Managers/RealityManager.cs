@@ -17,6 +17,7 @@ public class RealityManager : Singleton<RealityManager>
     public List<Tilemap> tilemaps;
     public List<Sprite> sprites;
     public List<Reality> reality;
+    public int worldCorruption; // The world corruption metric
 
 private void Start()
 {
@@ -51,6 +52,9 @@ private void Start()
         Debug.Log($"Reality shift Called to {realityState.reality}");
         ChangePlayerSprite(realityState);
 
+        // Adjust World Corruption
+        RealityManager.Instance.AdjustWorldCorruption(realityState.CorruptionOffset);
+
         // Change the tilemap
         ChangeTilemap(realityState);
     }
@@ -78,5 +82,11 @@ private void ChangeTilemap(RealityState realityState)
         Debug.Log($"Tilemap changed to {realityState.reality} state.");
     }
 }
+
+    public void AdjustWorldCorruption(int corruptionChange)
+    {
+        worldCorruption += corruptionChange;
+        Debug.Log($"World Corruption adjusted by {corruptionChange}. New value: {worldCorruption}");
+    }
 
 }

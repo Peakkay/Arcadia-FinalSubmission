@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8da10f077f24654fb53c229971216c9, type: 3}
-  m_Name: shiftCorrupted
+  m_Name: giveDoppelganger
   m_EditorClassIdentifier: 
-  choiceText: Corrupted Reality
+  choiceText: Doppelganger Quest
   playercorruptionImpact: 0
   worldcorruptionImpact: 0
   newSpell: {fileID: 0}
-  targetReality: 1
-  newQuest: {fileID: 0}
+  targetReality: 3
+  newQuest: {fileID: 11400000, guid: 636525432d17d99408293ef07b30703a, type: 2}
   requiredWorldCorruption: 0
   requiredNPCCorruption: 0
   maxWorldCorruption: 0
   maxNPCCorruption: 0
-  minPlayerCorruption: 200
-  maxPlayerCorruption: 300
+  minPlayerCorruption: 0
+  maxPlayerCorruption: 100

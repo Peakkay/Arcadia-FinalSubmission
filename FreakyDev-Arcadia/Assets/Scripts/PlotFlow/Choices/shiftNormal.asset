@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: shiftNormal
   m_EditorClassIdentifier: 
   choiceText: Normal Reality
-  corruptionImpact: 0
+  playercorruptionImpact: 0
+  worldcorruptionImpact: 0
   newSpell: {fileID: 0}
   targetReality: 0
   newQuest: {fileID: 0}
+  requiredWorldCorruption: 0
+  requiredNPCCorruption: 0
+  maxWorldCorruption: 0
+  maxNPCCorruption: 0
+  minPlayerCorruption: 100
+  maxPlayerCorruption: 200

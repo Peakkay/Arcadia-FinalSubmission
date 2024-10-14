@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCController : MonoBehaviour, IInteractable
@@ -13,12 +14,17 @@ public class NPCController : MonoBehaviour, IInteractable
     public bool isKeyNPC; // Flag to identify major NPCs
     public List<Choice> npcChoices;
 
+    private void Start()
+    {
+        npcFaction = FactionManager.Instance.Neutral;
+    }
+
     // Base interaction logic for all NPCs
     public virtual void Interact()
     {   DisplayDialogue(dialogue);
         Debug.Log($"{npcName}: {dialogue}");
         UpdateChoices();
-        ChoiceManager.Instance.StartChoiceSelection();
+        ChoiceManager.Instance.StartChoiceSelection(this);
     }
      protected void DisplayDialogue(string text)
     {
@@ -52,5 +58,11 @@ public class NPCController : MonoBehaviour, IInteractable
         ChoiceManager.Instance.AddChoices(npcChoices); // Add this NPC's choices
 
         // Optionally, display the choices using your UI system here
+    }
+
+    public void AdjustNPCCorruption(int corruptionChange)
+    {
+        corruptionLevel += corruptionChange;
+        Debug.Log($"{npcName}'s corruption adjusted by {corruptionChange}. New value: {corruptionLevel}");
     }
 }

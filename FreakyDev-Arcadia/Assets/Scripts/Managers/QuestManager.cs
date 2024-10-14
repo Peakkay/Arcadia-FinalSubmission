@@ -42,10 +42,55 @@ public class QuestManager : Singleton<QuestManager>
         {
             quest.isCompleted = true;
             activeQuests.Remove(quest); // Remove the quest from active quests
+            AwardQuestReward(quest.questReward);
             Debug.Log("Quest Completed: " + quest.questName);
             // Additional logic for quest completion (e.g., rewards)
         }
     }
+    public void AwardQuestReward(QuestReward reward)
+    {
+        // 1. Award items
+        if (reward.rewardItems != null && reward.rewardItems.Count > 0)
+        {
+            foreach (Item item in reward.rewardItems)
+            {
+                InventoryManager.Instance.AddItem(item);
+                Debug.Log($"Item rewarded: {item.itemName}");
+            }
+        }
+
+        // 2. Apply corruption impact
+        if (reward.playercorruptionImpact != 0)
+        {
+            FindObjectOfType<PlayerController>().IncreaseCorruption(reward.playercorruptionImpact);
+            Debug.Log($"Player Corruption impact: {reward.playercorruptionImpact}");
+        }
+        if (reward.worldcorruptionImpact != 0)
+        {
+            RealityManager.Instance.AdjustWorldCorruption(reward.worldcorruptionImpact);
+            Debug.Log($"World Corruption impact: {reward.worldcorruptionImpact}");
+        }
+        if (reward.npccorruptionImpact != 0)
+        {
+            reward.targetNPC.AdjustNPCCorruption(reward.npccorruptionImpact);
+            Debug.Log($"NPC Corruption impact: {reward.npccorruptionImpact}");
+        }
+
+        // 3. Award new spell
+        if (reward.newSpell != null)
+        {
+            TomeManager.Instance.LearnSpell(reward.newSpell);
+            Debug.Log($"New spell unlocked: {reward.newSpell.spellName}");
+        }
+
+        // 4. Start a new quest, if any
+        if (reward.newQuest != null)
+        {
+            StartQuest(reward.newQuest);
+            Debug.Log($"New quest unlocked: {reward.newQuest.questName}");
+        }
+    }
+
 
     // Record an enemy as defeated
     public void RecordEnemyDefeated(Enemy enemy)

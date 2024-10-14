@@ -11,12 +11,23 @@ public class ChoiceManager : Singleton<ChoiceManager>
     public Text choiceText; // Text component for showing the choices
 
     public bool choiceAvailable;
+
     protected override void Awake()
-    {   base.Awake();
-        ToggleChoiceUI(false); }
+    {
+        base.Awake();
+        ToggleChoiceUI(false); // Ensure UI is hidden on game start
+    }
 
     public void StartChoiceSelection(NPCController NPC)
     {
+        // Check if there are no choices for this NPC
+        if (choices.Count == 0)
+        {
+            Debug.Log("No choices available for this NPC.");
+            ToggleChoiceUI(false); // Hide the UI if no choices are available
+            return;
+        }
+
         choiceAvailable = true;
         UpdateChoiceUI(); // Update UI with available choices
         ToggleChoiceUI(true); // Show the choice panel

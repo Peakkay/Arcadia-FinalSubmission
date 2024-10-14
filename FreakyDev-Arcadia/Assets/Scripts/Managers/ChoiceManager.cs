@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,9 @@ public class ChoiceManager : Singleton<ChoiceManager>
     {
         choiceAvailable = true;
         UpdateChoiceUI(); // Update UI with available choices
+        if(!choices.Any()){
         ToggleChoiceUI(true); // Show the choice panel
+        }
         StartCoroutine(WaitForChoice(NPC)); // Start the coroutine to wait for player input
     }
 

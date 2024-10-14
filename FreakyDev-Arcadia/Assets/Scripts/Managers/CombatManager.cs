@@ -104,9 +104,7 @@ public class CombatManager : Singleton<CombatManager>
            
             // For this example, we will cast a spell called "Fireball"
             int spellID = 1; // Example spell ID, you can change it based on player choice
-            Enemy targetEnemy = enemies[0]; // Cast spell on the first enemy
-
-            SpellManager.Instance.CastSpell(spellID, targetEnemy); // Use SpellManager to cast spell
+            AttackWithSpell(spellID);
         }
 
         // Once the action is complete, set it to the enemy's turn

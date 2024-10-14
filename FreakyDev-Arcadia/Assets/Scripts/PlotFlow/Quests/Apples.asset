@@ -18,7 +18,7 @@ MonoBehaviour:
   questType: 1
   requiredEnemies: 
   requiredItems:
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: 2d9d4ad9cfc6905408213cd2fe1fac67, type: 2}
     quantity: 1
   collectedItems: []
   nPCID: 

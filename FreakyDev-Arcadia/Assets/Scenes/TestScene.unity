@@ -4710,13 +4710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40394b2bb487c634f86ae7fa759ee351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    itemName: Apples
-    description: Apples
-    itemID: 1
-    icon: {fileID: 1403348832, guid: 143d13bb8387ad448aec5025eec61076, type: 3}
-    isEquipped: 0
-    itemType: 0
+  item: {fileID: 11400000, guid: 2d9d4ad9cfc6905408213cd2fe1fac67, type: 2}
 --- !u!61 &125272101
 BoxCollider2D:
   m_ObjectHideFlags: 0

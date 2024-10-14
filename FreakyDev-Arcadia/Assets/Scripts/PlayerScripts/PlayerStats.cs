@@ -1,11 +1,15 @@
 using System.Data;
 using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerStats : MonoBehaviour
 {
 
     public Stat playerstats;
+
     private void Start()
     {
         playerstats = new Stat();
@@ -14,6 +18,31 @@ public class PlayerStats : MonoBehaviour
         playerstats.attackDamage = 20;
         playerstats.CurrentHP = playerstats.maxHP; // Set health to maximum at the start
         playerstats.CurrentMana = playerstats.maxMana; // Initialize current mana
+        StartCoroutine(PassiveRegen());
+    }
+
+    private IEnumerator PassiveRegen()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f); // Regenerate every second
+
+            // Health regeneration
+            if (playerstats.CurrentHP < playerstats.maxHP)
+            {
+                playerstats.CurrentHP += Mathf.RoundToInt(playerstats.healthRegenRate);
+                playerstats.CurrentHP = Mathf.Min(playerstats.CurrentHP, playerstats.maxHP);
+                Debug.Log("Health regenerated: " + playerstats.CurrentHP);
+            }
+
+            // Mana regeneration
+            if (playerstats.CurrentMana < playerstats.maxMana)
+            {
+                playerstats.CurrentMana += Mathf.RoundToInt(playerstats.manaRegenRate);
+                playerstats.CurrentMana = Mathf.Min(playerstats.CurrentMana, playerstats.maxMana);
+                Debug.Log("Mana regenerated: " + playerstats.CurrentMana);
+            }
+        }
     }
 
     // Method for the player to attack the enemy
@@ -60,5 +89,10 @@ public class PlayerStats : MonoBehaviour
     public void PrintStats()
     {
         Debug.Log($"");
+    }
+    public void RestoreFullHealthAndMana()
+    {
+        playerstats.CurrentHP = playerstats.maxHP;
+        playerstats.CurrentMana = playerstats.maxMana;
     }
 }

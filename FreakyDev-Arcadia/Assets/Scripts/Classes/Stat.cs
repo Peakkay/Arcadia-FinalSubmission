@@ -10,6 +10,8 @@ public class Stat
     public int attackDamage;        // Attack damage
     public int maxMana;            // Maximum mana
     public int CurrentMana; // Current mana
+    public float healthRegenRate; // Health regenerated per second
+    public float manaRegenRate;   // Mana regenerated per second
 
     public void AddStat(Stat statchange)
     {
@@ -18,6 +20,8 @@ public class Stat
         attackDamage += statchange.attackDamage;
         maxMana += statchange.maxMana;
         CurrentMana += statchange.CurrentMana;
+        healthRegenRate += statchange.healthRegenRate;
+        manaRegenRate += statchange.manaRegenRate;
     }
 
     public void RemoveStat(Stat statchange)
@@ -27,5 +31,7 @@ public class Stat
         attackDamage -= statchange.attackDamage;
         maxMana -= statchange.maxMana;
         CurrentMana -= statchange.CurrentMana;
+        healthRegenRate -= statchange.healthRegenRate;
+        manaRegenRate -= statchange.manaRegenRate;
     }
 }

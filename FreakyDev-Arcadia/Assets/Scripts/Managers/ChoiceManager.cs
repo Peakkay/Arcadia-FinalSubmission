@@ -2,23 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoiceManager : Singleton<ChoiceManager>
 {
     public List<Choice> choices; // List of available choices in this context
+    public GameObject choicePanel; // UI panel for displaying choices
+    public Text choiceText; // Text component for showing the choices
+
     public bool choiceAvailable;
+    protected override void Awake()
+    {   base.Awake();
+        ToggleChoiceUI(false); }
 
     public void StartChoiceSelection(NPCController NPC)
     {
         choiceAvailable = true;
+        UpdateChoiceUI(); // Update UI with available choices
+        ToggleChoiceUI(true); // Show the choice panel
         StartCoroutine(WaitForChoice(NPC)); // Start the coroutine to wait for player input
     }
 
     private IEnumerator WaitForChoice(NPCController NPC)
     {
-        // Present the choices first
-        PresentChoices(NPC);
-
         // Wait until the player presses a valid key corresponding to the choices
         yield return new WaitUntil(() =>
         {
@@ -43,33 +49,43 @@ public class ChoiceManager : Singleton<ChoiceManager>
             return false; // Continue waiting until a valid input is detected
         });
 
-        // Once the choice is made, clear the available choices
+        // Once the choice is made, hide the panel and clear the available choices
+        ToggleChoiceUI(false); // Hide the choice panel
         ClearChoices();
     }
 
-    public void PresentChoices(NPCController NPC)
+    // Function to present the choices in the UI
+    public void UpdateChoiceUI()
     {
-        foreach (Choice choice in choices)
+        string choiceTextContent = "";
+
+        for (int i = 0; i < choices.Count; i++)
         {
             // Check if the player can make this choice based on corruption levels
-            if (CanPlayerMakeChoice(choice, NPC))
+            if (CanPlayerMakeChoice(choices[i], null)) // Assuming NPC null here for simplicity
             {
-                Debug.Log($"{choice.choiceText}");
+                choiceTextContent += (i + 1) + ". " + choices[i].choiceText + "\n";
             }
             else
             {
-                Debug.Log($"{choice.choiceText} (Blocked due to corruption constraints)");
+                choiceTextContent += (i + 1) + ". " + choices[i].choiceText + " (Blocked)\n";
             }
         }
 
-        Debug.Log("Press the corresponding number to make a choice.");
+        choiceText.text = choiceTextContent; // Update the text display with choices
+    }
+
+    // Function to show or hide the choice panel
+    public void ToggleChoiceUI(bool show)
+    {
+        choicePanel.SetActive(show); // Show or hide the choice panel based on the 'show' parameter
     }
 
     public bool CanPlayerMakeChoice(Choice choice, NPCController NPC)
     {
         int playerCorruption = FindObjectOfType<PlayerController>().playerCorruptionLevel;
         int worldCorruption = RealityManager.Instance.worldCorruption;
-        int npcCorruption = NPC.corruptionLevel;
+        int npcCorruption = NPC != null ? NPC.corruptionLevel : 0;
 
         // Check if the player's and NPC's corruption levels are within the allowed ranges
         if (playerCorruption >= choice.minPlayerCorruption &&
@@ -89,7 +105,6 @@ public class ChoiceManager : Singleton<ChoiceManager>
 
         Choice selectedChoice = choices[choiceIndex];
         ApplyChoiceOutcome(selectedChoice, NPC); // Apply the outcome of the choice
-        ClearChoices();
     }
 
     public void ApplyChoiceOutcome(Choice choice, NPCController NPC)
@@ -145,6 +160,3 @@ public class ChoiceManager : Singleton<ChoiceManager>
         choices.AddRange(newChoices); // Add new choices to the list
     }
 }
-
-
-

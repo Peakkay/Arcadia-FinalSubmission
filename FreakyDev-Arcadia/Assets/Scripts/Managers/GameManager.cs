@@ -14,6 +14,13 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameState CurrentState { get; private set; }
+    public string currentPhase;
+    public bool phase1Completed;
+    public bool phase2Completed;
+    public bool phase3Completed;
+    public bool phase4Completed;
+    public bool phase5Completed;
+
 
     protected override void Awake()
     {
@@ -87,5 +94,67 @@ public class GameManager : Singleton<GameManager>
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // Stop playing in the editor
 #endif
+    }
+
+public void StartPhase(string phase)
+    {
+        currentPhase = phase;
+
+        if (phase == "Phase1")
+            StartPhase1(); // Initiate the first phase of the plot
+        else if (phase == "Phase2")
+            StartPhase2(); // Move to the second phase when Phase 1 is done
+        else if (phase == "Phase3")
+            StartPhase3(); // Move to the second phase when Phase 1 is done
+        else if (phase == "Phase4")
+            StartPhase4(); // Move to the second phase when Phase 1 is done
+        else if (phase == "Phase5")
+            StartPhase5(); // Move to the second phase when Phase 1 is done        
+    }
+
+    void StartPhase1()
+    {
+        // Initiate dialogues, quests, or events in Phase 1
+    }
+    public void CompletePhase1()
+    {
+        phase1Completed = true;
+        StartPhase("Phase2");
+    }
+
+    void StartPhase2()
+    {
+        // Initiate dialogues, quests, or events in Phase 2
+    }
+    public void CompletePhase2()
+    {
+        phase2Completed = true;
+        StartPhase("Phase3");
+    }
+    void StartPhase3()
+    {
+        // Initiate dialogues, quests, or events in Phase 2
+    }
+    public void CompletePhase3()
+    {
+        phase3Completed = true;
+        StartPhase("Phase4");
+    }
+    void StartPhase4()
+    {
+        // Initiate dialogues, quests, or events in Phase 2
+    }
+    public void CompletePhase4()
+    {
+        phase4Completed = true;
+        StartPhase("Phase5");
+    }
+    void StartPhase5()
+    {
+        // Initiate dialogues, quests, or events in Phase 2
+    }
+    public void DetermineEnding()
+    {
+        phase5Completed = true;
     }
 }

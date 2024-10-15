@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerMovement playerMovement;
+    public Sprite upFacingSprite;      // Assign your Up Facing sprite
+    public Sprite downFacingSprite;    // Assign your Down Facing sprite
+    public Sprite rightFacingSprite;   // Assign your Right Facing sprite
+    private SpriteRenderer spriteRenderer;    
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()

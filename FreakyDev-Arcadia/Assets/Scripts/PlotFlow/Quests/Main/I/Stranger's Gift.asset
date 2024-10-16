@@ -29,4 +29,4 @@ MonoBehaviour:
     npccorruptionImpact: 0
     targetNPC: {fileID: 0}
     newSpell: {fileID: 0}
-    newQuest: {fileID: 0}
+    newQuest: {fileID: 11400000, guid: 1a3d26adab0e8784d8c7ab9ecd12125b, type: 2}

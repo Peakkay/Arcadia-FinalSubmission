@@ -20,6 +20,15 @@ public class GameManager : Singleton<GameManager>
     public bool phase3Completed;
     public bool phase4Completed;
     public bool phase5Completed;
+    public Quest strangersGift;
+    public Quest informationGathering;
+    public Quest confrontation;
+    public Quest reflectionOrBlame;
+    public Scene phase1start;
+    public Scene phase2start;
+    public Scene phase3start;
+    public Scene phase4start;
+    public Scene phase5start;
 
 
     protected override void Awake()
@@ -54,7 +63,6 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         CurrentState = GameState.Playing;
-        LoadScene("GameScene"); // Replace with your actual game scene name
     }
 
     public void PauseGame()
@@ -115,6 +123,7 @@ public void StartPhase(string phase)
     void StartPhase1()
     {
         // Initiate dialogues, quests, or events in Phase 1
+        QuestManager.Instance.StartQuest(strangersGift);
     }
     public void CompletePhase1()
     {
@@ -125,6 +134,7 @@ public void StartPhase(string phase)
     void StartPhase2()
     {
         // Initiate dialogues, quests, or events in Phase 2
+        QuestManager.Instance.StartQuest(informationGathering);
     }
     public void CompletePhase2()
     {
@@ -133,7 +143,8 @@ public void StartPhase(string phase)
     }
     void StartPhase3()
     {
-        // Initiate dialogues, quests, or events in Phase 2
+        // Initiate dialogues, quests, or events in Phase 3
+        QuestManager.Instance.StartQuest(confrontation);
     }
     public void CompletePhase3()
     {
@@ -142,7 +153,9 @@ public void StartPhase(string phase)
     }
     void StartPhase4()
     {
-        // Initiate dialogues, quests, or events in Phase 2
+        // Initiate dialogues, quests, or events in Phase 4
+        QuestManager.Instance.StartQuest(reflectionOrBlame);
+
     }
     public void CompletePhase4()
     {

@@ -10424,6 +10424,20 @@ MonoBehaviour:
   phase3Completed: 0
   phase4Completed: 0
   phase5Completed: 0
+  strangersGift: {fileID: 0}
+  informationGathering: {fileID: 0}
+  confrontation: {fileID: 0}
+  reflectionOrBlame: {fileID: 0}
+  phase1start:
+    m_Handle: 0
+  phase2start:
+    m_Handle: 0
+  phase3start:
+    m_Handle: 0
+  phase4start:
+    m_Handle: 0
+  phase5start:
+    m_Handle: 0
 --- !u!1001 &1233139256
 PrefabInstance:
   m_ObjectHideFlags: 0

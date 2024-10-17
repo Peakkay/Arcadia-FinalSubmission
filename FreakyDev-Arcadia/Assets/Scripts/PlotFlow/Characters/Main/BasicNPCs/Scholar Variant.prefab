@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6038225598395596340, guid: 4199afe5568aa414495ec58d6cf56c30, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038225598395596340, guid: 4199afe5568aa414495ec58d6cf56c30, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6874044199381524679, guid: 4199afe5568aa414495ec58d6cf56c30, type: 3}
       propertyPath: npcName
       value: Scholar
@@ -56,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scholar Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8829924462120425586, guid: 4199afe5568aa414495ec58d6cf56c30, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1849618522, guid: 74557257048d88a45b9fd9218d7dd9c2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

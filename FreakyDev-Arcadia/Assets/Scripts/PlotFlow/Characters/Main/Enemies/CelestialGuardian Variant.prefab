@@ -12,6 +12,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: CelestialGuardian Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2011486398652365569, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_Size.x
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011486398652365569, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_Size.y
+      value: 4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011486398652365569, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 762827331, guid: 74c2991246d57b443a60f7f4e2010efd, type: 3}
+    - target: {fileID: 2011486398652365569, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651323684154924359, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4469135970028225460, guid: 29b74d7247dbe9749aa3efbf29156dbf, type: 3}
       propertyPath: npcName
       value: CelestialGuardian

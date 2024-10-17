@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: ade44c276c925dd4b86f8dd993c60f5a
+  - enabled: 1
+    path: Assets/Scenes/QuestsUI.unity
+    guid: f9089809eeac5f64d8bd92f63e4d7b3a
+  - enabled: 1
+    path: Assets/Scenes/inventory.unity
+    guid: cad1ae195dca7f043831408353c0653f
   m_configObjects: {}

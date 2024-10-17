@@ -18,6 +18,7 @@ public class Choice : ScriptableObject
     public int maxNPCCorruption = 0; // Min NPC corruption to make the choice
     public int minPlayerCorruption = 0;
     public int maxPlayerCorruption = 0;
+    public bool chosen = false;
 
     // Method to apply the outcomes of this choice
 }

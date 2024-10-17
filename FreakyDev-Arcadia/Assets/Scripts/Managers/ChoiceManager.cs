@@ -158,6 +158,7 @@ public class ChoiceManager : Singleton<ChoiceManager>
         {
             QuestManager.Instance.StartQuest(choice.newQuest);
         }
+        choice.chosen = true;
     }
 
     public void ClearChoices()

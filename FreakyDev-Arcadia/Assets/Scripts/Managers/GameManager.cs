@@ -30,6 +30,27 @@ public class GameManager : Singleton<GameManager>
     public Scene phase4start;
     public Scene phase5start;
 
+//    public int LiraelMeter;
+//    public int KieranMeter;
+//    public int CorruptionMeter;
+
+
+
+// LIST OF GAMEFLAGS
+    public bool TomeUsed;
+    public bool InvestigateAlong;
+    public bool EmbraceFirstManipulation;
+    public bool KieranAgree;
+    public bool ContinuedManipulating;
+    public bool seekAllies;
+    public bool adressFaction;
+    public bool choseDiplomacy;
+// LIST END
+
+
+
+    public GameObject player;
+
 
     protected override void Awake()
     {

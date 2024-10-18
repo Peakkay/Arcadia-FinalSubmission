@@ -48,9 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5430992450483795628, guid: b6fe17c930d5fc449a55696cb34a47b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1100076115, guid: 74c2991246d57b443a60f7f4e2010efd, type: 3}
     - target: {fileID: 5952377542918724380, guid: b6fe17c930d5fc449a55696cb34a47b3, type: 3}
       propertyPath: m_Name
       value: OrderLeader Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068651852561666282, guid: b6fe17c930d5fc449a55696cb34a47b3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068651852561666282, guid: b6fe17c930d5fc449a55696cb34a47b3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.42
       objectReference: {fileID: 0}
     - target: {fileID: 7976281344653790745, guid: b6fe17c930d5fc449a55696cb34a47b3, type: 3}
       propertyPath: npcName

@@ -9,6 +9,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3340741841001186856, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340741841001186856, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.066
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340741841001186856, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -60,9 +68,53 @@ PrefabInstance:
       propertyPath: isKeyNPC
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 14.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 28.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508601679880371211, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7696862871148378109, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
       propertyPath: m_Name
       value: Lirael Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292557434954046029, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_Size.x
+      value: 2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292557434954046029, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_Size.y
+      value: 4.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292557434954046029, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 883111988, guid: 74c2991246d57b443a60f7f4e2010efd, type: 3}
+    - target: {fileID: 8292557434954046029, guid: bd2a6b8d4cc1df94e8bc1a3ddbeaa502, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

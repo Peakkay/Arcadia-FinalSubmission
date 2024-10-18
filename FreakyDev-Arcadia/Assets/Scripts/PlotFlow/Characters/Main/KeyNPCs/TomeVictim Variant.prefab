@@ -12,9 +12,29 @@ PrefabInstance:
       propertyPath: npcName
       value: TomeVictim
       objectReference: {fileID: 0}
+    - target: {fileID: 581213197872897411, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 12.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 581213197872897411, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 30.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402325023584549829, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 786972158, guid: 74557257048d88a45b9fd9218d7dd9c2, type: 3}
     - target: {fileID: 4076620697719084661, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
       propertyPath: m_Name
       value: TomeVictim Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943977256738695072, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943977256738695072, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8943977256738695072, guid: cc879f43182328f43a9e9efa40af1f47, type: 3}
       propertyPath: m_LocalPosition.x

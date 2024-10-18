@@ -436,6 +436,7 @@ MonoBehaviour:
   qdesc: {fileID: 1393023083}
   Status: {fileID: 1837951588}
   canvas: {fileID: 1876567084}
+  questCanvas: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

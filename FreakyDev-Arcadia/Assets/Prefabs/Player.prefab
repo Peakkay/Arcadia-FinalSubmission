@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 2449050383537108606}
   - component: {fileID: 5417755524187550562}
   - component: {fileID: 6005171136417989612}
-  m_Layer: 0
+  - component: {fileID: 4324864001326561427}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   tileSize: 1
+  targetPosition: {x: 0, y: 0, z: 0}
   canMove: 1
 --- !u!50 &4269107884344803729
 Rigidbody2D:
@@ -136,8 +138,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 1.1875}
-    newSize: {x: 0.14, y: 0.19}
+    oldSize: {x: 11.5625, y: 22.5}
+    newSize: {x: 11.5625, y: 22.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -186,15 +188,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1195638945, guid: 671bce8f8da86794f82aa680ec8abc20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.14, y: 0.19}
+  m_Size: {x: 11.5625, y: 22.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5417755524187550562
@@ -212,9 +214,9 @@ MonoBehaviour:
   questcanvas: {fileID: 0}
   inventorycanvas: {fileID: 0}
   playerMovement: {fileID: 0}
-  upFacingSprite: {fileID: 0}
-  downFacingSprite: {fileID: 0}
-  rightFacingSprite: {fileID: 0}
+  upFacingSprite: {fileID: 1593476781, guid: 671bce8f8da86794f82aa680ec8abc20, type: 3}
+  downFacingSprite: {fileID: 1195638945, guid: 671bce8f8da86794f82aa680ec8abc20, type: 3}
+  rightFacingSprite: {fileID: -937437363, guid: 671bce8f8da86794f82aa680ec8abc20, type: 3}
 --- !u!114 &6005171136417989612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +233,15 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &4324864001326561427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621090134877791111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b889d06c7faf3549aa675a109c08c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

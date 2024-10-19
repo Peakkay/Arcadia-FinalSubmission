@@ -4,6 +4,7 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     public List<Quest> activeQuests = new List<Quest>(); // List to hold active quests
+    public List<Quest> completedQuests = new List<Quest>();
     private HashSet<int> defeatedEnemies = new HashSet<int>(); // Track defeated enemies
 
     // Start a new quest
@@ -44,6 +45,7 @@ public class QuestManager : Singleton<QuestManager>
             activeQuests.Remove(quest); // Remove the quest from active quests
             AwardQuestReward(quest.questReward);
             Debug.Log("Quest Completed: " + quest.questName);
+            completedQuests.Add(quest);
             // Additional logic for quest completion (e.g., rewards)
         }
     }
@@ -163,5 +165,17 @@ public class QuestManager : Singleton<QuestManager>
                 CompleteQuest(quest);
             }
         }
+    }
+
+    public bool IsQuestCompleted(int questid)
+    {
+        foreach(var quest in completedQuests)
+        {
+            if(questid == quest.questid)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

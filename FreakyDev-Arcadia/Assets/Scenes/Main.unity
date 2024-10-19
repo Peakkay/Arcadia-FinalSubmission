@@ -908,6 +908,7 @@ MonoBehaviour:
   phase1Completed: 0
   IntroSceneOver: 0
   P1Scene1Over: 0
+  P1Scene2Over: 0
   phase2Completed: 0
   phase3Completed: 0
   phase4Completed: 0
@@ -1508,6 +1509,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1781695342623313902}
+    - target: {fileID: 5523171670075562833, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+      propertyPath: TomeDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: db33ae3e905c52141b8644a774c5f5bf, type: 2}
     - target: {fileID: 5523171670075562833, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
       propertyPath: commonElements
       value: 

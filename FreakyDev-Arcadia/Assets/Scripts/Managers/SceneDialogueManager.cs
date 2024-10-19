@@ -8,6 +8,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
     public Dialogue Scene0;
     public Dialogue P1Scene1Open;
     public Dialogue P1Scene2Open;
+    public Dialogue TomeDialogue;
     public Dialogue P1Scene3Open;
     public Dialogue P1Scene4Open;
     public Dialogue P1Scene5Open;
@@ -99,7 +100,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
         if (scene.name == "AwakeningOfPower")
         {
             Debug.Log("AwakeningOfPower Loaded");
-            GameManager.Instance.P1Scene2Over = true;
+            GameManager.Instance.P1Scene1Over = true;
             GameManager.Instance.currentScene = "AwakeningOfPower";
             SceneManager.SetActiveScene(scene);
             SceneManager.MoveGameObjectToScene(commonElements, scene);
@@ -110,6 +111,40 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             }
             DialogueManager.Instance.StartDialogue(P2Scene2Open); // Null check before calling the method
             SceneManager.sceneLoaded -= OnP1Scene2Loaded;
+        }
+    }
+
+    public void StartTomeDialogue()
+    {
+        if(TomeDialogue == null)
+        {
+            TomeDialogue = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/TomePickupDialogue");
+        }
+        DialogueManager.Instance.StartDialogue(TomeDialogue);
+    }
+
+    public void StartP1Scene3()
+    {
+        SceneManager.LoadScene("FirstDecision", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP1Scene3Loaded;
+    }
+
+    private void OnP1Scene3Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "FirstDecision")
+        {
+            Debug.Log("FirstDecision Loaded");
+            GameManager.Instance.P1Scene2Over = true;
+            GameManager.Instance.currentScene = "FirstDecision";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("AwakeningOfPower");
+            if (P2Scene2Open == null)
+            {
+                P2Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
+            }
+            DialogueManager.Instance.StartDialogue(P2Scene3Open); // Null check before calling the method
+            SceneManager.sceneLoaded -= OnP1Scene3Loaded;
         }
     }
 }

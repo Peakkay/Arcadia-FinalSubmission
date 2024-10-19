@@ -111,11 +111,21 @@ public class GameManager : Singleton<GameManager>
         }
         if(currentScene == "AwakeningOfPower" && !P1Scene2Over)
         {
-            if(QuestManager.Instance.IsQuestCompleted(0))
+            if(QuestManager.Instance.IsQuestCompleted(0) && !DialogueManager.Instance.CheckTriggerDialogue(3))
             {
-                
+                SceneDialogueManager.Instance.StartTomeDialogue();
             }
         }
+        if(currentScene == "AwakeningOfPower" && !P1Scene2Over)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(3) && !DialogueManager.Instance.isDialogueActive)
+            {
+                if(MapManager.Instance.currentMap == 0)
+                {
+                    SceneDialogueManager.Instance.StartP1Scene3();
+                }
+            }
+        }        
     }
 
     public void StartGame()

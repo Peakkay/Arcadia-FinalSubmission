@@ -155,19 +155,38 @@ public class QuestManager : Singleton<QuestManager>
     // Call this to update quests each frame or based on player actions
     public void UpdateActiveQuests()
     {
-        foreach (var quest in activeQuests)
-        {
-            if (quest.questType == QuestType.Fetch && CheckFetchQuestCompletion(quest))
+        List<Quest> activeQuestsCopy = new List<Quest>(activeQuests);
+        List<Quest> questsToRemove = new List<Quest>();  // Temporary list for quests to be removed
+        List<Quest> questsToAdd = new List<Quest>();     // If you need to add new quests
+
+            foreach (var quest in activeQuestsCopy)
             {
-                CompleteQuest(quest);
+                Debug.Log(quest.questType);
+                if (quest.questType == QuestType.Fetch && CheckFetchQuestCompletion(quest))
+                {
+                    Debug.Log("fetch Called");
+                    CompleteQuest(quest);
+                }
+                else if (quest.questType == QuestType.Dialogue && CheckDialogueQuestCompletion(quest))
+                {
+                    Debug.Log("Dialogue Called");
+                    CompleteQuest(quest);
+                }
             }
 
-            if (quest.questType == QuestType.Dialogue && CheckDialogueQuestCompletion(quest))
-            {
-                CompleteQuest(quest);
-            }
+        // Now modify the original list after iteration
+        foreach (var quest in questsToRemove)
+        {
+            activeQuests.Remove(quest);
+        }
+
+        // If you're adding new quests, handle it after the iteration
+        foreach (var quest in questsToAdd)
+        {
+            activeQuests.Add(quest);
         }
     }
+
 
     public bool IsQuestCompleted(int questid)
     {

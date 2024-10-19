@@ -27,7 +27,7 @@ public class GameData
     public bool KieranAgree;
     public bool ContinuedManipulating;
     public bool seekAllies;
-    public bool adressFaction;
+    public bool addressFaction;
     public bool choseDiplomacy;
 }
 
@@ -73,7 +73,7 @@ public class SaveManager : MonoBehaviour
         data.KieranAgree = gameManager.KieranAgree;
         data.ContinuedManipulating = gameManager.ContinuedManipulating;
         data.seekAllies = gameManager.seekAllies;
-        data.adressFaction = gameManager.adressFaction;
+        data.addressFaction = gameManager.addressFaction;
         data.choseDiplomacy = gameManager.choseDiplomacy;
 
         // Serialize and save data to file
@@ -106,7 +106,7 @@ public class SaveManager : MonoBehaviour
             gameManager.KieranAgree = data.KieranAgree;
             gameManager.ContinuedManipulating = data.ContinuedManipulating;
             gameManager.seekAllies = data.seekAllies;
-            gameManager.adressFaction = data.adressFaction;
+            gameManager.addressFaction = data.addressFaction;
             gameManager.choseDiplomacy = data.choseDiplomacy;
 
             DisplayDialogue("Game loaded successfully!");

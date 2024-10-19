@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player corruption increased by {amount}. New corruption level: {playerCorruptionLevel}");
 
         CheckCorruptionEffects(); // Handle effects of corruption
+        gameObject.GetComponent<PlayerStats>().UpdateStatsBasedOnCorruption();
     }
 
     // Method to decrease corruption (for positive actions)
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player corruption decreased by {amount}. New corruption level: {playerCorruptionLevel}");
 
         CheckCorruptionEffects();
+        gameObject.GetComponent<PlayerStats>().UpdateStatsBasedOnCorruption();
     }
 
     // Check if player corruption triggers any major gameplay effects

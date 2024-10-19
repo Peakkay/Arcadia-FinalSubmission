@@ -3,12 +3,15 @@ using Unity.VisualScripting;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 
 public class PlayerStats : MonoBehaviour
 {
 
     public Stat playerstats;
+    public int baseAttackDamage;
+    public int baseHealth;
 
     private void Start()
     {
@@ -94,5 +97,20 @@ public class PlayerStats : MonoBehaviour
     {
         playerstats.CurrentHP = playerstats.maxHP;
         playerstats.CurrentMana = playerstats.maxMana;
+    }
+    public void UpdateStatsBasedOnCorruption()
+    {
+        int corruption = gameObject.GetComponent<PlayerController>().playerCorruptionLevel + RealityManager.Instance.worldCorruption;
+        // Increase attack damage with corruption (e.g., 1% increase in attack per corruption point)
+        playerstats.attackDamage = baseAttackDamage + corruption / 100 * baseAttackDamage;
+
+        // Decrease max health with corruption (e.g., lose 1% max health per corruption point)
+        playerstats.maxHP = baseHealth - corruption / 100 * baseHealth;
+
+        // Ensure current health doesn't exceed max health after update
+        if (playerstats.CurrentHP > playerstats.maxHP)
+        {
+            playerstats.CurrentHP = playerstats.maxHP;
+        }
     }
 }

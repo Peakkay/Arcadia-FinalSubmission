@@ -87,6 +87,7 @@ private void ChangeTilemap(RealityState realityState)
     {
         worldCorruption += corruptionChange;
         Debug.Log($"World Corruption adjusted by {corruptionChange}. New value: {worldCorruption}");
+        FindObjectOfType<PlayerStats>().UpdateStatsBasedOnCorruption();
     }
 
 }

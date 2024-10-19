@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8da10f077f24654fb53c229971216c9, type: 3}
   m_Name: TesttheTome'sPower_Use
   m_EditorClassIdentifier: 
-  choiceText: 
+  choiceText: Use the Tome
   playercorruptionImpact: 0
   worldcorruptionImpact: 0
   statImpact:
@@ -26,9 +26,10 @@ MonoBehaviour:
   newSpell: {fileID: 0}
   targetReality: 3
   newQuest: {fileID: 0}
-  requiredWorldCorruption: 0
-  requiredNPCCorruption: 0
-  maxWorldCorruption: 0
-  maxNPCCorruption: 0
-  minPlayerCorruption: 0
-  maxPlayerCorruption: 0
+  requiredWorldCorruption: -10000
+  requiredNPCCorruption: -10000
+  maxWorldCorruption: 10000
+  maxNPCCorruption: 10000
+  minPlayerCorruption: -10000
+  maxPlayerCorruption: 10000
+  chosen: 0

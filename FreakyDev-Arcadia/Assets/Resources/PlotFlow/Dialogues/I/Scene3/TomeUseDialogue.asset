@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562e3212fff09844eb143b0250b1c1dc, type: 3}
+  m_Name: TomeUseDialogue
+  m_EditorClassIdentifier: 
+  lines:
+  - "\u201CLet\u2019s see what this can really do!\u201D"
+  - 'Criminal: WHAT IS HAPPENING TO ME !!!!!!!!!'
+  - '"THE TOME IT... IT''S REALLLL THIS POWER IT''S WHAT I YEARNED FOR ALL ALONG"'
+  dialogueID: 6

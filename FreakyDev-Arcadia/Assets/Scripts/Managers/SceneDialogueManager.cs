@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
     public Dialogue P1Scene2Open;
     public Dialogue TomeDialogue;
     public Dialogue P1Scene3Open;
+    public Dialogue CriminalDialogue =  new Dialogue();
+    public bool startedCriminalScene;
     public Dialogue P1Scene4Open;
     public Dialogue P1Scene5Open;
     public Dialogue P1Scene6Open;
@@ -85,6 +88,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             MapManager.Instance.ChangeMap(4);
             SceneManager.UnloadSceneAsync("IntroScene");
             DialogueManager.Instance.StartDialogue(P1Scene1Open);
+            NPCManager.Instance.updateNPCList();
             SceneManager.sceneLoaded -= OnP1Scene1Loaded;
         }
     }
@@ -110,6 +114,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
                 P2Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/OpeningDialogue");
             }
             DialogueManager.Instance.StartDialogue(P2Scene2Open); // Null check before calling the method
+            NPCManager.Instance.updateNPCList();
             SceneManager.sceneLoaded -= OnP1Scene2Loaded;
         }
     }
@@ -139,12 +144,54 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             SceneManager.SetActiveScene(scene);
             SceneManager.MoveGameObjectToScene(commonElements, scene);
             SceneManager.UnloadSceneAsync("AwakeningOfPower");
-            if (P2Scene2Open == null)
+            if (P1Scene3Open == null)
             {
-                P2Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
+                P1Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
             }
-            DialogueManager.Instance.StartDialogue(P2Scene3Open); // Null check before calling the method
+            DialogueManager.Instance.StartDialogue(P1Scene3Open); // Null check before calling the method
+            NPCManager.Instance.updateNPCList();
             SceneManager.sceneLoaded -= OnP1Scene3Loaded;
+        }
+    }
+
+    public void StartCriminalScene()
+    {
+        Choice use = Resources.Load<Choice>("PlotFlow/Choices/Main/I/TesttheTome'sPower_Use");
+        Choice observe = Resources.Load<Choice>("PlotFlow/Choices/Main/I/TesttheTome'sPower_Observe");
+        if(use.chosen)
+        {
+            CriminalDialogue = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/TomeUseDialogue");
+        }
+        else if(observe.chosen)
+        {
+            CriminalDialogue = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/TomeObserveDialogue");
+        }
+        startedCriminalScene = true;
+        DialogueManager.Instance.StartDialogue(CriminalDialogue);
+    }
+    public void StartP1Scene4()
+    {
+        SceneManager.LoadScene("ConsequenceOfChoice", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP1Scene4Loaded;
+    }
+
+    private void OnP1Scene4Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "ConsequenceOfChoice")
+        {
+            Debug.Log("FConsequenceOfChoice Loaded");
+            GameManager.Instance.P1Scene3Over = true;
+            GameManager.Instance.currentScene = "ConsequenceOfChoice";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("FirstDecision");
+            if (P1Scene4Open == null)
+            {
+                P1Scene4Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene4/OpeningDialogue");
+            }
+            DialogueManager.Instance.StartDialogue(P1Scene4Open); // Null check before calling the method
+            MapManager.Instance.ChangeMap(4);
+            SceneManager.sceneLoaded -= OnP1Scene4Loaded;
         }
     }
 }

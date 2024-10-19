@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5417755524187550562}
   - component: {fileID: 6005171136417989612}
   - component: {fileID: 4324864001326561427}
+  - component: {fileID: 128127602135464891}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -59,6 +60,8 @@ MonoBehaviour:
     CurrentMana: 0
     healthRegenRate: 0
     manaRegenRate: 0
+  baseAttackDamage: 0
+  baseHealth: 0
 --- !u!114 &4519060934285028149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,3 +248,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b889d06c7faf3549aa675a109c08c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &128127602135464891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621090134877791111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6344746a0c04e2f4494c71c61d4b291a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCorruptionLevel: 0

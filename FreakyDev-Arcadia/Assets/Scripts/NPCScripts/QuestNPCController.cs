@@ -8,6 +8,7 @@ public class QuestNPCController : NPCController
 
     public override void Interact()
     {
+        base.Interact();
         // Initialize the dialogue map if it's not already initialized
         if (quest.dialogueMap == null || quest.dialogueMap.Count == 0)
         {

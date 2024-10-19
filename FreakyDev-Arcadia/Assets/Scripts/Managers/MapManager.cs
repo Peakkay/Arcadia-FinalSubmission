@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-    public void ShowMap()
-    {
-        // Logic to display the world map
-    }
+    public List<GameObject> Maps;
+    public int currentMap;
 
-    public void TravelToLocation(string locationName)
+    public void Start()
     {
-        // Logic to travel to a specified location
+        currentMap = 4;
+    }
+    public void ChangeMap(int MapID)
+    {
+        foreach(var map in Maps)
+        {
+            map.SetActive(false);
+        }
+        Maps[MapID].SetActive(true);
+        currentMap = MapID;
     }
 }
 

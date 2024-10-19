@@ -8,7 +8,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [Header("UI Elements")]
     public GameObject dialoguePanel; // Panel for the dialogue UI
     public Text dialogueText;         // Text component for the dialogue text
-
+    public List<Dialogue> TriggeredDialogues;
     private Queue<string> dialogueQueue; // Queue to manage the dialogue lines
     private bool isDialogueActive;
 
@@ -27,7 +27,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             dialogueQueue.Enqueue(line);
         }
-
+        TriggeredDialogues.Add(dialogue);
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
         DisplayNextLine();
@@ -59,5 +59,17 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             DisplayNextLine();
         }
+    }
+
+    public bool CheckTriggerDialogue(int dialogueID)
+    {  
+        foreach(var dialogue in TriggeredDialogues)
+        {
+            if(dialogue.dialogueID == dialogueID)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

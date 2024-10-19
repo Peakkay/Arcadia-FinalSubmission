@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: ade44c276c925dd4b86f8dd993c60f5a
   - enabled: 1
@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/inventory.unity
     guid: cad1ae195dca7f043831408353c0653f
+  - enabled: 1
+    path: Assets/Scenes/CommonUI.unity
+    guid: 1255fc204eb92c94d9715a12fe2a5457
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 05c5a1886d40eff4cb99150014d0e832
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 2996261f1433f654a9a48f090f3efa03
+  - enabled: 1
+    path: Assets/Scenes/I (Awakening)/OrdinaryLife.unity
+    guid: f5bb0e63aac81a349b7b75877d5f9514
   m_configObjects: {}

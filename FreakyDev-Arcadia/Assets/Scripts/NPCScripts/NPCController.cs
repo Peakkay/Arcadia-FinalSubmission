@@ -22,6 +22,10 @@ public class NPCController : MonoBehaviour, IInteractable
     // Base interaction logic for all NPCs
     public virtual void Interact()
     {   DisplayDialogue(dialogue);
+        if(GetComponent<DialogueTrigger>() != null)
+        {
+            GetComponent<DialogueTrigger>().TriggerDialogue();
+        }
         Debug.Log($"{npcName}: {dialogue}");
         UpdateChoices();
         ChoiceManager.Instance.StartChoiceSelection(this);
@@ -65,4 +69,5 @@ public class NPCController : MonoBehaviour, IInteractable
         corruptionLevel += corruptionChange;
         Debug.Log($"{npcName}'s corruption adjusted by {corruptionChange}. New value: {corruptionLevel}");
     }
+
 }

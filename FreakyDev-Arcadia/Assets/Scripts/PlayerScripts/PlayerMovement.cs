@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // Speed of the player
     public float tileSize = 1f;   // Size of each tile (1 unit)
 
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
     private bool isMoving = false; // Check if the player is moving
     public bool canMove = true;   // Flag to control movement
 

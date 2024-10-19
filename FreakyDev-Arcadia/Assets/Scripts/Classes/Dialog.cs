@@ -7,4 +7,5 @@ public class Dialogue : ScriptableObject
 {
     [TextArea(3, 10)] // Optional: For better visibility in the inspector
     public List<string> lines; // Array of dialogue lines
+    public int dialogueID;
 }

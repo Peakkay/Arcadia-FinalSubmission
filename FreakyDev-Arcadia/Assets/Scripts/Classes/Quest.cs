@@ -5,6 +5,7 @@ using UnityEngine;
 public class Quest : ScriptableObject
 {
     public string questName;
+    public int questid;
     public string description;
     public bool isCompleted = false;
     public QuestType questType;

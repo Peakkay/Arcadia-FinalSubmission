@@ -1,51 +1,116 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneDialogueManager : MonoBehaviour
+public class SceneDialogueManager : Singleton<SceneDialogueManager>
 {
-    public PlayerDialogueManager playerDialogueManager;
+    public GameObject commonElements;
+    public GameObject player;
+    public Dialogue Scene0;
+    public Dialogue P1Scene1Open;
+    public Dialogue P1Scene2Open;
+    public Dialogue P1Scene3Open;
+    public Dialogue P1Scene4Open;
+    public Dialogue P1Scene5Open;
+    public Dialogue P1Scene6Open;
+    public Dialogue P1PhaseTransition;
+    public Dialogue P2Scene1Open;
+    public Dialogue P2Scene2Open;
+    public Dialogue P2Scene3Open;
+    public Dialogue P2Scene4Open;
+    public Dialogue P2Scene5Open;
+    public Dialogue P2Scene6Open;
+    public Dialogue P2PhaseTransition;
+    public Dialogue P3Scene1Open;
+    public Dialogue P3Scene2Open;
+    public Dialogue P3Scene3Open;
+    public Dialogue P3Scene4Open;
+    public Dialogue P3Scene5Open;
+    public Dialogue P3Scene6Open;
+    public Dialogue P3PhaseTransition;
+    public Dialogue P4Scene1Open;
+    public Dialogue P4Scene2Open;
+    public Dialogue P4Scene3Open;
+    public Dialogue P4Scene4Open;
+    public Dialogue P4Scene5Open;
+    public Dialogue P4Scene6Open;
+    public Dialogue P4PhaseTransition;
 
-    // Store dialogues for different scenes
-    public Dialogue scene1Dialogue;
-    public Dialogue scene2Dialogue;
-    public Dialogue defaultDialogue;
-
-    private void Start()
+    protected override void Awake()
     {
-        // Ensure we find the PlayerDialogueManager in the scene
-        if (playerDialogueManager == null)
+        base.Awake();
+        Debug.Log("SceneDialogueManager Awake");
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void StartScene0()
+    {
+        Debug.Log("StartScene0 Called");
+        SceneManager.LoadScene("IntroScene", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnScene0Loaded; // Subscribe to the sceneLoaded event
+    }
+
+    private void OnScene0Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "IntroScene")
         {
-            playerDialogueManager = FindObjectOfType<PlayerDialogueManager>();
+            GameManager.Instance.currentPhase = "Phase1";
+            GameManager.Instance.currentScene = "IntroScene";
+            Debug.Log("IntroScene Loaded");
+            SceneManager.SetActiveScene(scene); // Now safe to set it as the active scene
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            DialogueManager.Instance.StartDialogue(Scene0);
+
+            // Unsubscribe from the event to avoid multiple triggers
+            SceneManager.sceneLoaded -= OnScene0Loaded;
         }
-
-        // Add listener for scene load event
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void StartP1Scene1()
     {
-        // Choose the correct dialogue based on the scene
-        Dialogue newDialogue = GetSceneDialogue(scene.name);
-        playerDialogueManager.SetNewDialogue(newDialogue);
+        SceneManager.LoadScene("OrdinaryLife", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP1Scene1Loaded;
     }
 
-    private Dialogue GetSceneDialogue(string sceneName)
+    private void OnP1Scene1Loaded(Scene scene, LoadSceneMode mode)
     {
-        // Choose dialogue based on scene name
-        switch (sceneName)
+        if (scene.name == "OrdinaryLife")
         {
-            case "OrdinaryLife":
-                return scene1Dialogue;
-            case "AwakeningOfPower":
-                return scene2Dialogue;
-            default:
-                return defaultDialogue; // Default dialogue if no match
+            Debug.Log("OrdinaryLife Loaded");
+            GameManager.Instance.IntroSceneOver = true;
+            GameManager.Instance.currentScene = "OrdinaryLife";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            player.SetActive(true);
+            MapManager.Instance.ChangeMap(4);
+            SceneManager.UnloadSceneAsync("IntroScene");
+            DialogueManager.Instance.StartDialogue(P1Scene1Open);
+            SceneManager.sceneLoaded -= OnP1Scene1Loaded;
         }
     }
 
-    private void OnDestroy()
+    public void StartP1Scene2()
     {
-        // Remove the listener when the object is destroyed
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.LoadScene("AwakeningOfPower", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP1Scene2Loaded;
+    }
+
+    private void OnP1Scene2Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "AwakeningOfPower")
+        {
+            Debug.Log("AwakeningOfPower Loaded");
+            GameManager.Instance.P1Scene2Over = true;
+            GameManager.Instance.currentScene = "AwakeningOfPower";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("OrdinaryLife");
+            if (P2Scene2Open == null)
+            {
+                P2Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/OpeningDialogue");
+            }
+            DialogueManager.Instance.StartDialogue(P2Scene2Open); // Null check before calling the method
+            SceneManager.sceneLoaded -= OnP1Scene2Loaded;
+        }
     }
 }
+

@@ -15,7 +15,11 @@ public class GameManager : Singleton<GameManager>
 
     public GameState CurrentState { get; private set; }
     public string currentPhase;
+    public string currentScene;
     public bool phase1Completed;
+    public bool IntroSceneOver = false;
+    public bool P1Scene1Over;
+    public bool P1Scene2Over;
     public bool phase2Completed;
     public bool phase3Completed;
     public bool phase4Completed;
@@ -24,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     public Quest informationGathering;
     public Quest confrontation;
     public Quest reflectionOrBlame;
+    public Scene Scene0;
     public Scene phase1start;
     public Scene phase2start;
     public Scene phase3start;
@@ -34,7 +39,13 @@ public class GameManager : Singleton<GameManager>
 //    public int KieranMeter;
 //    public int CorruptionMeter;
 
+//LIST OF SCENEFLAGS
+    public bool introDialogueFinished;
 
+    public bool enterLibrary;
+    public bool pickupTome;
+
+// LIST END
 
 // LIST OF GAMEFLAGS
     public bool TomeUsed;
@@ -43,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     public bool KieranAgree;
     public bool ContinuedManipulating;
     public bool seekAllies;
-    public bool adressFaction;
+    public bool addressFaction;
     public bool choseDiplomacy;
 // LIST END
 
@@ -56,6 +67,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         CurrentState = GameState.MainMenu; // Initialize to main menu
+        SceneDialogueManager.Instance.StartScene0();
     }
 
     private void Update()
@@ -78,6 +90,31 @@ public class GameManager : Singleton<GameManager>
                 }
                 break;
                 // Additional states can be managed here
+        }
+
+        if(currentScene == "IntroScene" && !IntroSceneOver)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(0) && !DialogueManager.Instance.isDialogueActive)
+            {
+                Debug.Log("IntroOver");
+                SceneDialogueManager.Instance.StartP1Scene1();
+                StartPhase1();
+            }
+        }
+        if(currentScene == "OrdinaryLife" && !P1Scene1Over)
+        {
+            if(MapManager.Instance.currentMap==1)
+            {
+                Debug.Log("P1Scene1Over");
+                SceneDialogueManager.Instance.StartP1Scene2();
+            }
+        }
+        if(currentScene == "AwakeningOfPower" && !P1Scene2Over)
+        {
+            if(QuestManager.Instance.IsQuestCompleted(0))
+            {
+                
+            }
         }
     }
 

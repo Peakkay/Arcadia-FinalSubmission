@@ -127,8 +127,10 @@ public class QuestManager : Singleton<QuestManager>
     // Check fetch quest completion
     public bool CheckFetchQuestCompletion(Quest quest)
     {
+        Debug.Log("Called");
         if (quest.questType == QuestType.Fetch)
         {
+            Debug.Log("Fetch");
             foreach (QuestItem requiredItem in quest.requiredItems)
             {
                 // Check if the player has enough of the required items

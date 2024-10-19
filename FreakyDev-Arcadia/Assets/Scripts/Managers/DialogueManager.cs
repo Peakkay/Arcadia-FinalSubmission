@@ -10,12 +10,13 @@ public class DialogueManager : Singleton<DialogueManager>
     public Text dialogueText;         // Text component for the dialogue text
     public List<Dialogue> TriggeredDialogues;
     private Queue<string> dialogueQueue; // Queue to manage the dialogue lines
-    private bool isDialogueActive;
+    public bool isDialogueActive;
 
     protected override void Awake()
     {
         base.Awake(); // Ensure the singleton setup is called
         dialogueQueue = new Queue<string>();
+        TriggeredDialogues = new List<Dialogue>();
         dialoguePanel.SetActive(false); // Hide the panel initially
     }
 

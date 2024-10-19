@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Stranger's Gift
   m_EditorClassIdentifier: 
   questName: The Stranger's Gift
-  description: Engage with Lirael and either obtain the Tome or Cautiously Retreat
+  questid: 0
+  description: Examine the strange Aura
   isCompleted: 0
-  questType: 2
+  questType: 1
   requiredEnemies: 
-  requiredItems: []
+  requiredItems:
+  - item: {fileID: 11400000, guid: 34b5275e6162df147bc76845d9b26d58, type: 2}
+    quantity: 1
   collectedItems: []
   nPCID: 
   dialogues: []

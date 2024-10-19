@@ -60,7 +60,8 @@ public class InventoryManager : Singleton<InventoryManager>
     public void AddItem(Item newItem)
     {
         items.Add(newItem);
-        Debug.Log($"Added {newItem.itemName} to inventory.");
+        Debug.Log($"{newItem.itemName} has been added to inventory");
+        QuestManager.Instance.UpdateActiveQuests();
     }
 
     // Remove item from inventory

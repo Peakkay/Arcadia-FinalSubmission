@@ -15,6 +15,7 @@ public class Transporter : MonoBehaviour
     void Start()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     // Update is called once per frame

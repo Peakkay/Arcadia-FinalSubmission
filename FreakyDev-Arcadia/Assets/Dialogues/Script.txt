@@ -44,7 +44,7 @@ them.
 
 ### Cue Go To Street
 
- Scene 2: First Decision
+ Scene 3: First Decision
 
  The protagonist tests the Tome’s power on a Criminal NPC in an alley. They observe the NPC 
 harassing a pedestrian.
@@ -83,84 +83,10 @@ Protagonist's Thought:
 
 
 
-Here’s a script outline for the first phase of "Infinity Ascendant," introducing players to the world, the protagonist's initial motivations, and the discovery of the Ascendant Tome.
-
-Phase 1: Awakening
-Setting:
-The game begins in a modern city filled with hidden secrets. The atmosphere is dark and moody, with neon lights flickering and shadows lurking in alleyways. The protagonist lives an ordinary life, feeling unfulfilled and yearning for power.
-
-Script Outline
-Scene 1: Ordinary Life
-[Background Music: Soft, melancholic melody]
-
-[Visuals: The protagonist’s room, cluttered with books and papers.]
-
-Protagonist (Inner Thoughts):
-“Every day feels the same… I have dreams, ambitions. But here I am, stuck in this mundane life.”
-
-[The player can interact with objects in the room: books about ancient artifacts, notes on power dynamics, and a laptop with news about mysterious events.]
-
-[After interaction, the screen fades to black.]
-
-Scene 2: Mysterious Encounter
-[Background Music: Suspenseful tones rise.]
-
-[Visuals: The city streets at night, rain pouring down. The protagonist walks home when they encounter a mysterious figure cloaked in shadows.]
-
-Mysterious Figure:
-“Seeking something beyond your grasp, are you?”
-
-Protagonist:
-“Who are you? What do you want?”
-
-Mysterious Figure:
-“You possess the spark of ambition. I can offer you a chance… the Ascendant Tome awaits. But tread carefully, for it holds both power and peril.”
-
-[The figure hands the protagonist a small, ancient-looking book that glows faintly.]
-
-Protagonist (Inner Thoughts):
-“This is it… the power I’ve been searching for.”
-
-Scene 3: The Awakening of Power
-[Background Music: Rising orchestral music, signifying a transformation.]
-
-[Visuals: A dimly lit room where the protagonist sits with the Tome open, pages flipping on their own. Magical symbols glow as they absorb the information.]
-
-Protagonist:
-“What is this? I can feel the power coursing through me… but… what are these strange symbols?”
-
-[Flashback sequences showing glimpses of potential powers: manipulating reality, controlling elements, influencing others.]
-
-Elysia (Voiceover):
-“Power comes at a price. With every spell, the fabric of reality will bend. Use it wisely, or face the consequences.”
-
-Scene 4: First Decision
-[Background Music: Tense, decision-making ambiance.]
-
-[Visuals: The protagonist stands at a crossroads in a park, contemplating their first use of the Tome. They see people around them, unaware of the power they hold.]
-
-Protagonist (Inner Thoughts):
-“Should I test the Tome’s power? I could change my life in an instant. But what if it leads to something darker?”
-
-[Options appear on screen: 1. Use the Tome to gain an immediate advantage (e.g., control an NPC). 2. Choose to observe and learn about the Tome before using it.]
-
-Option 1 (Use the Tome):
-Protagonist:
-“Let’s see what this can really do!”
-
-[The screen shifts to a nearby NPC, who is suddenly influenced to assist the protagonist.]
-
-Option 2 (Observe):
-Protagonist:
-“No… I need to understand this power better first.”
-
-[The protagonist takes time to learn about the Tome, reading its warnings and history.]
-
-
 ### Shift to Room
 
 
-Scene 5: Consequence of Choice
+Scene 4: Consequence of Choice
 [Background Music: Dramatic shift based on the player's choice.]
 
 If Option 1 was chosen:
@@ -175,7 +101,7 @@ Protagonist (Inner Thoughts):
 
 
 
-Scene 6: Introduction to the Conflict
+Scene 5: Introduction to the Conflict
 [Background Music: Intense, escalating music that foreshadows upcoming challenges.]
 ### Quest Read Newspaper
 [Visuals: {Reading Newspaper} News reports and rumors spread about a rising threat in the city—other power seekers and factions emerging.]
@@ -189,7 +115,7 @@ Protagonist:
 
 ### Cue Load Bg Visual
 
-Scene 7: Phase Transition
+Scene 6: Phase Transition
 [Background Music: Powerful, building music.]
 
 [Visuals: A panoramic view of the city as the protagonist looks out from a rooftop, determination in their eyes.]

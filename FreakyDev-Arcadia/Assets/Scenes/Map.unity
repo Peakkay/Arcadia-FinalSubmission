@@ -35936,6 +35936,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6349f52e2761afe4c8a1c8f818561141, type: 3}
+--- !u!1001 &664814211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016208905794165725, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249865958609996639, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_Name
+      value: WailingMarshes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+--- !u!1 &664814212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3249865958609996639, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+  m_PrefabInstance: {fileID: 664814211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910889784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880542028121084459, guid: f1ba42c7b69bb634ea1c682e96a77c50, type: 3}
@@ -35995,6 +36057,7 @@ MonoBehaviour:
   - {fileID: 2006201797}
   - {fileID: 910889784}
   - {fileID: 139142031}
+  - {fileID: 664814212}
   currentMap: 0
 --- !u!1001 &1217768072
 PrefabInstance:
@@ -39119,5 +39182,6 @@ SceneRoots:
   - {fileID: 2026848842}
   - {fileID: 2096532354}
   - {fileID: 2015842746}
+  - {fileID: 664814211}
   - {fileID: 1875914078}
   - {fileID: 942479161}

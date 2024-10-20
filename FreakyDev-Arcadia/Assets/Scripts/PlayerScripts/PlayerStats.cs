@@ -35,9 +35,7 @@ public class PlayerStats : MonoBehaviour
             {
                 playerstats.CurrentHP += Mathf.RoundToInt(playerstats.healthRegenRate);
                 playerstats.CurrentHP = Mathf.Min(playerstats.CurrentHP, playerstats.maxHP);
-                Debug.Log("Health regenerated: " + playerstats.CurrentHP);
             }
-
             // Mana regeneration
             if (playerstats.CurrentMana < playerstats.maxMana)
             {

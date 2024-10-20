@@ -15,14 +15,15 @@ MonoBehaviour:
   questName: LiraelQuest
   questid: 70
   description: 
-  isCompleted: 0
+  isCompleted: 1
   questType: 2
   requiredEnemies: 
   requiredItems: []
   collectedItems: []
   nPCID: 46000000
-  dialogues: []
-  currentDialogueIndex: 0
+  dialogues:
+  - ..
+  currentDialogueIndex: 1
   questReward:
     rewardItems: []
     playercorruptionImpact: 0

@@ -35988,6 +35988,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WailingMarshes
       objectReference: {fileID: 0}
+    - target: {fileID: 3249865958609996639, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989866531334626033, guid: 4a80453eb8257bd4096fe341dcfece5b, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36419,6 +36427,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1204605046429388765, guid: 8db2050e58d7db84b9636047af107e59, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204605046429388765, guid: 8db2050e58d7db84b9636047af107e59, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1204605046429388765, guid: 8db2050e58d7db84b9636047af107e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2

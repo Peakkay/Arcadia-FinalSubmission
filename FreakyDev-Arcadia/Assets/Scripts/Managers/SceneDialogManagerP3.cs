@@ -121,6 +121,7 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
             Quest Newsquest = new Quest();
             Newsquest = Resources.Load<Quest>("PlotFlow/Quests/Main/III/LiraelQuest");
             QuestManager.Instance.StartQuest(Newsquest);
+           
             SceneManager.sceneLoaded -= OnP3Scene3Loaded;
         }
     }
@@ -141,22 +142,18 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
             SceneManager.SetActiveScene(scene);
             SceneManager.MoveGameObjectToScene(commonElements, scene);
             SceneManager.UnloadSceneAsync("Consequence of Power");
-
             MapManager.Instance.ChangeMap(5);
 
             if (P3Scene4Open == null)
             {
                 P3Scene4Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/III/Rise of Antogonist/Dialogue 4");
             }
-
-            if (P3Scene4Open != null)
-            {
-                DialogueManager.Instance.StartDialogue(P3Scene4Open);
-            }
-            else
-            {
-                Debug.LogError("Dialogue for P3Scene4Open not found!");
-            }
+             
+            Quest Newsquest1 = new Quest();
+            Newsquest1 = Resources.Load<Quest>("PlotFlow/Quests/Main/III/AzraelQuest");
+            QuestManager.Instance.StartQuest(Newsquest1);
+            
+          
 
             SceneManager.sceneLoaded -= OnP3Scene4Loaded;
         }
@@ -188,12 +185,39 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
             {
                 DialogueManager.Instance.StartDialogue(P3Scene5Open);
             }
-            else
-            {
-                Debug.LogError("Dialogue for P3Scene5Open not found!");
-            }
+          
 
             SceneManager.sceneLoaded -= OnP3Scene5Loaded;
+        }
+    }
+      public void StartP3Scene6()
+    {
+        SceneManager.LoadScene("Consequence of Battle", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP3Scene6Loaded;
+    }
+     public void OnP3Scene6Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Consequence of Battle")
+        {
+            Debug.Log("Consequence of Battle");
+            GameManagerP3.Instance.P3Scene5Over = true;
+            GameManagerP3.Instance.currentScene = "Consequence of Battle";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("TheFinalConfrontation");
+            MapManager.Instance.ChangeMap(9);
+            if (P3Scene6Open == null)
+            {   Debug.Log("Hello");
+                P3Scene6Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/III/Consequence of Battle/Dialogue 6");
+            }
+
+            if (P3Scene6Open != null)
+            {   Debug.Log("Hello");
+                DialogueManager.Instance.StartDialogue(P3Scene6Open);
+            }
+          
+
+            SceneManager.sceneLoaded -= OnP3Scene6Loaded;
         }
     }
 }

@@ -170,6 +170,11 @@ MonoBehaviour:
   P3Scene6Over: 0
   P3PhaseTransition: 0
   phase3Completed: 0
+  trigger1: 1
+  trigger2: 1
+  trigger3: 1
+  trigger4: 1
+  trigger5: 1
   player: {fileID: 288884513}
   currentPhase: 
   currentScene: 
@@ -236,8 +241,8 @@ MonoBehaviour:
   P3Scene2Open: {fileID: 11400000, guid: 8266ddd25a1957b41a14b7d6cb4b0982, type: 2}
   P3Scene3Open: {fileID: 11400000, guid: ecc570ea70871014e9dbbd93b04f24c8, type: 2}
   P3Scene4Open: {fileID: 11400000, guid: 97c5466bf8be42f439b853bc919b29d1, type: 2}
-  P3Scene5Open: {fileID: 0}
-  P3Scene6Open: {fileID: 0}
+  P3Scene5Open: {fileID: 11400000, guid: 93f7c6b90b2b2bb428a47010105e522e, type: 2}
+  P3Scene6Open: {fileID: 11400000, guid: 1fce24c1b3c893c4ab2ded784b11777f, type: 2}
   P3PhaseTransition: {fileID: 0}
   commonElements: {fileID: 859107873}
   player: {fileID: 288884513}

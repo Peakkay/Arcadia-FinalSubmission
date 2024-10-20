@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141947341906516001, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8141947341906516001, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -191,13 +191,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lirael Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1358598226673849518, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5733948670332766411, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5733948670332766411, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5733948670332766411, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -233,12 +237,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3978093160334027803, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
+    - {fileID: 4295469020681646824, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 801465838025193758, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1198684606}
+    - targetCorrespondingSourceObject: {fileID: 801465838025193758, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1198684607}
   m_SourcePrefab: {fileID: 100100000, guid: 0c8a22e76ef723540a2f7be46111505d, type: 3}
 --- !u!1 &1198684605 stripped
 GameObject:
@@ -257,13 +265,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2018b3c620d8c43b4a5aae81552c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: NPC Name
-  dialogue: Hello!
+  npcName: Lirael
+  dialogue: .
   NPCID: 70
   corruptionLevel: 0
   isKeyNPC: 0
   npcChoices: []
   quest: {fileID: 11400000, guid: 739ba316fe23b0a40aabf4f3479effa1, type: 2}
+--- !u!61 &1198684607
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198684605}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.125, y: 28.875}
+    newSize: {x: 2.26, y: 4.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.125, y: 28.875}
+  m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

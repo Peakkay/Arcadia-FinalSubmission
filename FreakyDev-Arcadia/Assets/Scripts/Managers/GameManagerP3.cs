@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,11 @@ public class GameManagerP3 : Singleton<GameManagerP3>
     public bool trigger1=true;
     public bool trigger2=true;
 
+     public bool trigger3=true;
+     
+     public bool trigger4=true;
+
+     public bool trigger5=true;
     public GameObject player;
     public string currentPhase;
     public string currentScene;
@@ -139,12 +145,14 @@ public class GameManagerP3 : Singleton<GameManagerP3>
                 }
             }
         }
-
-        if (currentScene == "Rise of Antagonist" && !P3Scene4Over)
+         if (QuestManager.Instance.IsQuestCompleted(71) && trigger3)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogManagerP3.Instance.P3Scene4Open);
+                trigger3=false;
+            }
+        if (currentScene == "Rise of Antogonist" && !P3Scene4Over)
         {
-            if (DialogueManager.Instance != null && 
-                DialogueManager.Instance.CheckTriggerDialogue(72) && 
-                !DialogueManager.Instance.isDialogueActive)
+            if (QuestManager.Instance.IsQuestCompleted(71))
             {
                 Debug.Log("P3Scene4Over");
                 P3Scene4Over = true;
@@ -154,6 +162,28 @@ public class GameManagerP3 : Singleton<GameManagerP3>
                 }
             }
         }
+         if (currentScene == "TheFinalConfrontation" && !P3Scene5Over && trigger4)
+         {
+              List<Enemy> azraelfight = new List<Enemy>();
+              azraelfight.AddRange(FindObjectsOfType<Enemy>());
+              CombatManager.Instance.StartCombat(player.GetComponent<PlayerStats>(),azraelfight);
+              trigger4=false;
+
+         }
+
+         if(DialogueManager.Instance != null && 
+                DialogueManager.Instance.CheckTriggerDialogue(73) && 
+                !DialogueManager.Instance.isDialogueActive && !CombatManager.Instance.combatActive && trigger5)
+                {
+                      Debug.Log("P3Scene5Over");
+                      P3Scene5Over = true;
+                    if (SceneDialogManagerP3.Instance != null)
+                    {
+                    SceneDialogManagerP3.Instance.StartP3Scene6();
+                    }
+                    trigger5=false;
+
+                }
     }
 
     public void StartGame()

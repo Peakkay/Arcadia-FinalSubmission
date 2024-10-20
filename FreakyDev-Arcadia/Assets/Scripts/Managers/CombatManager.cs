@@ -8,7 +8,7 @@ public class CombatManager : Singleton<CombatManager>
     public List<Enemy> enemies; // List of enemies involved in combat
 
     private bool playerTurn = true; // Boolean to check if it's player's turn
-    private bool combatActive = false; // Track if combat is active
+    public bool combatActive = false; // Track if combat is active
 
     public void StartCombat(PlayerStats player, List<Enemy> enemies)
     {
@@ -72,11 +72,11 @@ public class CombatManager : Singleton<CombatManager>
         // Check combat outcome
         if (player.playerstats.CurrentHP <= 0)
         {   LogAndDisplay("Player has been defeated.");
-           
+             yield return new WaitForSeconds(2f); 
         }
         else if (enemies.Count == 0)
         {   LogAndDisplay("All enemies defeated. Combat won.");
-           
+             yield return new WaitForSeconds(2f); 
         }
 
         EndCombat();
@@ -90,7 +90,7 @@ public class CombatManager : Singleton<CombatManager>
         // Attack, heal, or cast spell based on the action passed in
         if (action == "attack")
         {   LogAndDisplay("Player chose to attack.");
-           
+            
             AttackEnemy();  // Call attack logic
         }
         else if (action == "heal")
@@ -194,8 +194,8 @@ public class CombatManager : Singleton<CombatManager>
         StartCoroutine(DelayedEndDialogue(2f)); 
         combatActive = false;
         player.GetComponent<PlayerMovement>().canMove = true;
-
-        foreach (Quest activeQuest in QuestManager.Instance.activeQuests)
+        List<Quest> questcopy = new List<Quest>(QuestManager.Instance.activeQuests);
+        foreach (Quest activeQuest in questcopy)
         {
             if (activeQuest.questType == QuestType.Combat)
             {

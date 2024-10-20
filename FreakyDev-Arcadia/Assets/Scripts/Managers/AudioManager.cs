@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public AudioSource backgroundMusic;
+    public AudioSource musicSource; // The AudioSource component for playing music
+    public AudioClip backgroundMusic; // The music track to loop
 
-    private void Start()
+    protected override void Awake()
     {
-        PlayBackgroundMusic();
+        base.Awake();
+
+        if (musicSource == null)
+        {
+            Debug.LogError("AudioSource not assigned.");
+        }
+
+        // Set the music clip and make it loop
+        musicSource.clip = backgroundMusic;
+        musicSource.loop = true;
+
+        // Play the music
+        PlayMusic();
     }
 
-    public void PlayBackgroundMusic()
+    // Function to play the music
+    public void PlayMusic()
     {
-        if (backgroundMusic != null)
+        if (!musicSource.isPlaying)
         {
-            backgroundMusic.Play();
+            musicSource.Play(); // Play the assigned background music
         }
     }
 
-    public void PlaySoundEffect(AudioClip clip)
+    // Function to stop the music
+    public void StopMusic()
     {
-        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop(); // Stop the music
+        }
     }
 }
-
-

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562e3212fff09844eb143b0250b1c1dc, type: 3}
+  m_Name: OpeningDialogue
+  m_EditorClassIdentifier: 
+  lines:
+  - 'Kieran: Have you lost your mind?'
+  - "Kieran: You\u2019re playing with forces you don\u2019t understand!"
+  - "\u201CI\u2019m gaining power! Why can\u2019t you see that?\u201D"
+  - "Kieran: This isn\u2019t the way. We could find another path."
+  - "\u201CShould I listen to Kieran?\""
+  - "He\u2019s right\u2026 but the power is intoxicating.\u201D"
+  dialogueID: 17

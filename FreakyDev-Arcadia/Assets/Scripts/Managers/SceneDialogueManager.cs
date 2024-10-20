@@ -7,6 +7,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
 {
     public GameObject commonElements;
     public GameObject player;
+    public GameObject bgvisual;
     public Dialogue Scene0;
     public Dialogue P1Scene1Open;
     public Dialogue P1Scene2Open;
@@ -25,7 +26,11 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
     public Dialogue P2Scene1Open;
     public Dialogue InfoDialogue;
     public Dialogue P2Scene2Open;
+    public Dialogue ManipulateDialogue;
+    public bool startedManipulate;
     public Dialogue P2Scene3Open;
+    public NPCController kieran;
+    public Dialogue kieranReply;
     public Dialogue P2Scene4Open;
     public Dialogue P2Scene5Open;
     public Dialogue P2Scene6Open;
@@ -68,8 +73,8 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             Debug.Log("IntroScene Loaded");
             SceneManager.SetActiveScene(scene); // Now safe to set it as the active scene
             SceneManager.MoveGameObjectToScene(commonElements, scene);
+            Scene0 = Resources.Load<Dialogue>("PlotFlow/Dialogues/Scene0/Intro");
             DialogueManager.Instance.StartDialogue(Scene0);
-
             // Unsubscribe from the event to avoid multiple triggers
             SceneManager.sceneLoaded -= OnScene0Loaded;
         }
@@ -93,8 +98,8 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             player.SetActive(true);
             MapManager.Instance.ChangeMap(4);
             SceneManager.UnloadSceneAsync("IntroScene");
+            P1Scene1Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene1/OpeningDialogue");
             DialogueManager.Instance.StartDialogue(P1Scene1Open);
-            NPCManager.Instance.updateNPCList();
             SceneManager.sceneLoaded -= OnP1Scene1Loaded;
         }
     }
@@ -119,8 +124,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             {
                 P1Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/OpeningDialogue");
             }
-            DialogueManager.Instance.StartDialogue(P1Scene1Open); // Null check before calling the method
-            NPCManager.Instance.updateNPCList();
+            DialogueManager.Instance.StartDialogue(P1Scene2Open); // Null check before calling the method
             SceneManager.sceneLoaded -= OnP1Scene2Loaded;
         }
     }
@@ -155,7 +159,6 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
                 P1Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
             }
             DialogueManager.Instance.StartDialogue(P1Scene3Open); // Null check before calling the method
-            NPCManager.Instance.updateNPCList();
             SceneManager.sceneLoaded -= OnP1Scene3Loaded;
         }
     }
@@ -256,6 +259,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             Debug.Log("PhaseTransition Loaded");
             GameManager.Instance.P1Scene5Over = true;
             GameManager.Instance.currentScene = "PhaseTransition";
+            bgvisual.SetActive(true);
             SceneManager.SetActiveScene(scene);
             SceneManager.MoveGameObjectToScene(commonElements, scene);
             SceneManager.UnloadSceneAsync("IntroductionToConflict");
@@ -283,6 +287,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             SceneManager.SetActiveScene(scene);
             SceneManager.MoveGameObjectToScene(commonElements, scene);
             SceneManager.UnloadSceneAsync("PhaseTransition");
+            bgvisual.SetActive(false);
             MapManager.Instance.ChangeMap(2);
             player.SetActive(true);
             player.transform.position = new Vector3(-5,2,0);
@@ -316,10 +321,90 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             SceneManager.UnloadSceneAsync("GatheringInformation");
             MapManager.Instance.ChangeMap(3);
             player.transform.position = new Vector3(-8,-9,0);
-            player.GetComponent<PlayerMovement>().targetPosition = new Vector3(-8,-9,0);
+            player.GetComponent<PlayerMovement>().targetPosition = new Vector3(-8,-5,0);
             P2Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene2/OpeningDialogue");
             DialogueManager.Instance.StartDialogue(P2Scene2Open); // Null check before calling the method
             SceneManager.sceneLoaded -= OnP2Scene2Loaded;
+        }
+    }
+
+    public void Manipulate()
+    {
+        ManipulateDialogue = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene2/ManipulateDialogue");
+        DialogueManager.Instance.StartDialogue(ManipulateDialogue);
+        startedManipulate = true;
+    }
+
+    public void StartP2Scene3()
+    {
+        SceneManager.LoadScene("IntroductionOfKieran", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP2Scene3Loaded;
+    }
+
+    private void OnP2Scene3Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "IntroductionOfKieran")
+        {
+            Debug.Log("IntroductionOfKieran Loaded");
+            GameManager.Instance.P2Scene2Over = true;
+            GameManager.Instance.currentScene = "IntroductionOfKieran";
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("FirstManipulation");
+            MapManager.Instance.ChangeMap(0);
+            player.transform.position = new Vector3(20,-20,0);
+            player.GetComponent<PlayerMovement>().targetPosition = new Vector3(20,-20,0);
+            P2Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene3/OpeningDialogue");
+            DialogueManager.Instance.StartDialogue(P2Scene3Open); // Null check before calling the method
+            SceneManager.sceneLoaded -= OnP2Scene3Loaded;
+        }
+    }
+    public void KieranDecision()
+    {
+        kieran = FindObjectOfType<NPCController>();
+        kieran.npcChoices.Add(Resources.Load<Choice>("Plotflow/Choices/Main/II/Scene3/KieranAgree"));
+        kieran.npcChoices.Add(Resources.Load<Choice>("Plotflow/Choices/Main/II/Scene3/KieranDisagree"));
+        kieran.UpdateChoices();
+        ChoiceManager.Instance.StartChoiceSelection(kieran);
+        GameManager.Instance.KieranChoiceStarted = true;
+        Choice kieranagree = Resources.Load<Choice>("Plotflow/Choices/Main/II/Scene3/KieranAgree");
+        GameManager.Instance.KieranAgree = (kieranagree.chosen)?true:false;
+    }
+
+    public void KieranReply()
+    {
+        if(GameManager.Instance.KieranAgree)
+        {
+            kieranReply = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene3/kieranAgreeReply");
+        }
+        else{
+            kieranReply = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene3/kieranDisagreeReply");
+        }
+        DialogueManager.Instance.StartDialogue(kieranReply);
+    }
+    public void StartP2Scene4()
+    {
+        SceneManager.LoadScene("P3Transition", LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnP2Scene4Loaded;
+    }
+
+    private void OnP2Scene4Loaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "P3Transition")
+        {
+            Debug.Log("P3Transition Loaded");
+            GameManager.Instance.P2Scene3Over = true;
+            GameManager.Instance.currentScene = "P3Transition";
+            bgvisual.SetActive(true);
+            SceneManager.SetActiveScene(scene);
+            SceneManager.MoveGameObjectToScene(commonElements, scene);
+            SceneManager.UnloadSceneAsync("IntroductionOfKieran");
+            MapManager.Instance.NoMap();
+            player.SetActive(false);
+            GameManager.Instance.PhaseTransitionStarted = true;
+            P2Scene4Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/II/Scene4/OpeningDialogue");
+            DialogueManager.Instance.StartDialogue(P2Scene4Open); // Null check before calling the method
+            SceneManager.sceneLoaded -= OnP2Scene4Loaded;
         }
     }
 }

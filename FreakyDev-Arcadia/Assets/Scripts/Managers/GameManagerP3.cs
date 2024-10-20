@@ -22,6 +22,9 @@ public class GameManagerP3 : Singleton<GameManagerP3>
     public bool P3PhaseTransition;
     public bool phase3Completed;
 
+    public bool trigger1=true;
+    public bool trigger2=true;
+
     public GameObject player;
     public string currentPhase;
     public string currentScene;
@@ -49,6 +52,7 @@ public class GameManagerP3 : Singleton<GameManagerP3>
 
         if (SceneDialogManagerP3.Instance != null)
         {
+            Debug.Log("Start");
             SceneDialogManagerP3.Instance.StartP3Scene1();
         }
         else
@@ -59,8 +63,7 @@ public class GameManagerP3 : Singleton<GameManagerP3>
 
     private void Update()
     {
-        Debug.Log("Current Scene: " + currentScene);
-        Debug.Log("Current GameState: " + CurrentState);
+       
 
         switch (CurrentState)
         {
@@ -83,7 +86,7 @@ public class GameManagerP3 : Singleton<GameManagerP3>
 
         // Scene checks and transitions
         if (currentScene == "Reality Starts to Break" && !P3Scene1Over)
-        {
+        {  
             if (DialogueManager.Instance != null && 
                 DialogueManager.Instance.CheckTriggerDialogue(69) && 
                 !DialogueManager.Instance.isDialogueActive)
@@ -96,6 +99,11 @@ public class GameManagerP3 : Singleton<GameManagerP3>
                 }
             }
         }
+          if (SceneDialogManagerP3.Instance.P3Scene2Open != null && QuestManager.Instance.IsQuestCompleted(69) && trigger1)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogManagerP3.Instance.P3Scene2Open);
+                trigger1=false;
+            }
 
         if (currentScene == "ConfrontationWithRivals" && !P3Scene2Over)
         {
@@ -111,6 +119,11 @@ public class GameManagerP3 : Singleton<GameManagerP3>
                 }
             }
         }
+        if (SceneDialogManagerP3.Instance.P3Scene3Open != null && QuestManager.Instance.IsQuestCompleted(70) && trigger2)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogManagerP3.Instance.P3Scene3Open);
+                trigger2=false;
+            }
 
         if (currentScene == "Consequence of Power" && !P3Scene3Over)
         {

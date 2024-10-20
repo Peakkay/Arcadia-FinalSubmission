@@ -33,7 +33,7 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
             Debug.Log("Reality Starts to Break");
 
             // Make sure the scene is set as the active scene
-            GameManager.Instance.currentScene = "Reality Starts to Break";
+            GameManagerP3.Instance.currentScene = "Reality Starts to Break";
             SceneManager.SetActiveScene(scene);
 
             // Ensure common elements and player are moved to the correct scene and activated
@@ -90,14 +90,7 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
                 P3Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/III/ConfrontationWithRivals/Dialogue 2");
             }
 
-            if (P3Scene2Open != null)
-            {
-                DialogueManager.Instance.StartDialogue(P3Scene2Open);
-            }
-            else
-            {
-                Debug.LogError("Dialogue for P3Scene2Open not found!");
-            }
+           
 
             SceneManager.sceneLoaded -= OnP3Scene2Loaded;
         }
@@ -125,15 +118,9 @@ public class SceneDialogManagerP3 : Singleton<SceneDialogManagerP3>
                 P3Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/III/Consequence of Power/Dialogue 3");
             }
 
-            if (P3Scene3Open != null)
-            {
-                DialogueManager.Instance.StartDialogue(P3Scene3Open);
-            }
-            else
-            {
-                Debug.LogError("Dialogue for P3Scene3Open not found!");
-            }
-
+            Quest Newsquest = new Quest();
+            Newsquest = Resources.Load<Quest>("PlotFlow/Quests/Main/III/LiraelQuest");
+            QuestManager.Instance.StartQuest(Newsquest);
             SceneManager.sceneLoaded -= OnP3Scene3Loaded;
         }
     }

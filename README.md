@@ -1,3 +1,15 @@
+Import file onto Unity Editor:
+In Heirarchy from Assets/Scene Load Main, Map, common UI, inventory, quest UI
+In Heirarchy from from each phase I,II,III,IV put the scenes
+
+Unload all the phase specific scenes in editor keep Main, Map, common UI, inventory,quest UI Loaded (Not remove but loaded)
+Play
+
+
+
+
+
+
 Instructions:Use W,A,S,D to move the player.
 Escape to pause the game
 Space to resume game

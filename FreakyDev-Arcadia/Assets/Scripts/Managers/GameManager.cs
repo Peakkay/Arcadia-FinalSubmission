@@ -27,11 +27,14 @@ public class GameManager : Singleton<GameManager>
     public bool PhaseTransitionStarted;
     public bool phase2Completed;
     public bool P2Scene1Over;
+    public bool P2Scene2Over;
+    public bool P2Scene3Over;
+    public bool KieranChoiceStarted;
     public bool phase3Completed;
     public bool phase4Completed;
     public bool phase5Completed;
     public Quest strangersGift;
-    public Quest informationGathering;
+    public Quest twistingTheFactions;
     public Quest confrontation;
     public Quest reflectionOrBlame;
     public Scene Scene0;
@@ -182,31 +185,59 @@ public class GameManager : Singleton<GameManager>
             if(DialogueManager.Instance.CheckTriggerDialogue(12) && !DialogueManager.Instance.isDialogueActive)
             {
                 SceneDialogueManager.Instance.StartP2Scene1();
-                StartPhase2();
+                CompletePhase1();
             }
         }
-        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
-        {
-            if(DialogueManager.Instance.CheckTriggerDialogue(12)&& !DialogueManager.Instance.CheckTriggerDialogue(13) && !DialogueManager.Instance.isDialogueActive)
-            {
-                SceneDialogueManager.Instance.StartP2Scene1();
-                StartPhase2();
-            }
-        }
-        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
+
+        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed) // && P1Scene6Over && phase1Completed
         {
             if(DialogueManager.Instance.CheckTriggerDialogue(13)&& !DialogueManager.Instance.CheckTriggerDialogue(14) && !DialogueManager.Instance.isDialogueActive)
             {
                 SceneDialogueManager.Instance.StartInfo();
             }
         }
-        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
+        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed) //  && P1Scene6Over && phase1Completed
         {
             if(DialogueManager.Instance.CheckTriggerDialogue(14) && !DialogueManager.Instance.isDialogueActive)
             {
                 SceneDialogueManager.Instance.StartP2Scene2();
             }
-        } 
+        }
+        if(currentScene == "FirstManipulation" && !P2Scene2Over && P1Scene6Over && phase1Completed) //  && P1Scene6Over && phase1Completed
+        {
+            if(QuestManager.Instance.IsQuestCompleted(4) && DialogueManager.Instance.CheckTriggerDialogue(15) && !SceneDialogueManager.Instance.startedManipulate && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.Manipulate();
+            }
+        }
+        if(currentScene == "FirstManipulation" && !P2Scene2Over) //  && P1Scene6Over && phase1Completed
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(16) && currentScene !="IntroductionOfKieran" && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartP2Scene3();
+            }
+        }
+        if(currentScene == "IntroductionOfKieran" && !P2Scene3Over && P2Scene2Over) //  && P1Scene6Over && phase1Completed
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(17)&& !KieranChoiceStarted && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.KieranDecision();
+            }
+        }
+        if(currentScene == "IntroductionOfKieran" && !P2Scene3Over && P2Scene2Over) //  && P1Scene6Over && phase1Completed
+        {
+            if( !(DialogueManager.Instance.CheckTriggerDialogue(18)||DialogueManager.Instance.CheckTriggerDialogue(19))&&KieranChoiceStarted && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable)
+            {
+                SceneDialogueManager.Instance.KieranReply();
+            }
+        }
+        if(currentScene == "IntroductionOfKieran" && !P2Scene3Over && P2Scene2Over) //  && P1Scene6Over && phase1Completed
+        {
+            if((DialogueManager.Instance.CheckTriggerDialogue(18)||DialogueManager.Instance.CheckTriggerDialogue(19))&&KieranChoiceStarted && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable)
+            {
+                SceneDialogueManager.Instance.StartP2Scene4();
+            }
+        }
     }
 
     public void StartGame()
@@ -280,11 +311,10 @@ public void StartPhase(string phase)
         StartPhase("Phase2");
     }
 
-    void StartPhase2()
+    public void StartPhase2()
     {
         // Initiate dialogues, quests, or events in Phase 2
-        CompletePhase1();
-        QuestManager.Instance.StartQuest(informationGathering);
+        QuestManager.Instance.StartQuest(twistingTheFactions);
     }
     public void CompletePhase2()
     {

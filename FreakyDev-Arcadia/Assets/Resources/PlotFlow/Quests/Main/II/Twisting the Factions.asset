@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Twisting the Factions
   m_EditorClassIdentifier: 
   questName: Twisting the Factions
+  questid: 4
   description: Manipulate a rival leader
   isCompleted: 0
-  questType: 0
+  questType: 2
   requiredEnemies: 
   requiredItems: []
   collectedItems: []
-  nPCID: 
-  dialogues: []
-  currentDialogueIndex: 0
+  nPCID: 05000000
+  dialogues:
+  - Hello Child!
+  currentDialogueIndex: 1
   questReward:
     rewardItems: []
     playercorruptionImpact: 0
@@ -29,4 +31,4 @@ MonoBehaviour:
     npccorruptionImpact: 0
     targetNPC: {fileID: 0}
     newSpell: {fileID: 0}
-    newQuest: {fileID: 11400000, guid: dcdc6265f19d64c4fac17426ac217957, type: 2}
+    newQuest: {fileID: 0}

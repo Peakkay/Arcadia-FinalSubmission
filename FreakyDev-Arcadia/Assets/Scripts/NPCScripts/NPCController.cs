@@ -56,7 +56,7 @@ public class NPCController : MonoBehaviour, IInteractable
         if (corruptionLevel > 100) corruptionLevel = 100;
         Debug.Log($"{npcName} corruption level: {corruptionLevel}");
     }
-    private void UpdateChoices()
+    public void UpdateChoices()
     {
         ChoiceManager.Instance.ClearChoices(); // Clear existing choices
         ChoiceManager.Instance.AddChoices(npcChoices); // Add this NPC's choices

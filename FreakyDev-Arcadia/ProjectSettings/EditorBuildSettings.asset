@@ -38,4 +38,52 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/I (Awakening)/FirstDecision.unity
     guid: 853e3817892594344bbc62fffd81d440
+  - enabled: 1
+    path: Assets/Scenes/I (Awakening)/ConsequenceOfChoice.unity
+    guid: 5e724be236001274f8e7f2cb5c69a719
+  - enabled: 1
+    path: Assets/Scenes/I (Awakening)/IntroductionToConflict.unity
+    guid: cb01cd05fa6735046a5808b0bc745548
+  - enabled: 1
+    path: Assets/Scenes/I (Awakening)/PhaseTransition.unity
+    guid: 38c77959172b07e4c9dec0b533626794
+  - enabled: 1
+    path: Assets/Scenes/II (The Manipulation)/GatheringInformation.unity
+    guid: b3cf668ae6cac8646aeb6ca815358854
+  - enabled: 1
+    path: Assets/Scenes/II (The Manipulation)/FirstManipulation.unity
+    guid: bc4a914965084b941a4d6a05bc9f8f06
+  - enabled: 1
+    path: Assets/Scenes/II (The Manipulation)/IntroductionOfKieran.unity
+    guid: f783728cd48df944394e24c74d4fcd4d
+  - enabled: 1
+    path: Assets/Scenes/II (The Manipulation)/P3Transition.unity
+    guid: 61223675764bf7e4c95515695b72e6e8
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/Reality Starts to Break.unity
+    guid: 0c80d4c4e0903d64e8a2ae46c1905257
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/ConfrontationWithRivals.unity
+    guid: 0861b26e1c16a5d4c95210628b903395
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/Consequence of Power.unity
+    guid: 60dcb5196ae871749a9531a743e06c89
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/Consequence of Battle.unity
+    guid: 1502d9722da6b344c954a5ae3819f441
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/Rise of Antogonist.unity
+    guid: 69fbbfc2f284dbe43aa77fd869d70852
+  - enabled: 1
+    path: Assets/Scenes/III (The Rising Threat)/TheFinalConfrontation.unity
+    guid: d898b7599c114d540b57a947ac6d0eaf
+  - enabled: 1
+    path: Assets/Scenes/IV (The Reckoning)/SearchForRedemption.unity
+    guid: c873a0f489bc1084581461e92344ada5
+  - enabled: 1
+    path: Assets/Scenes/IV (The Reckoning)/FIndingBalance.unity
+    guid: 891a9ef8fc9e8e74083ba62eb61893a3
+  - enabled: 1
+    path: Assets/Scenes/IV (The Reckoning)/RebuildingRelationships.unity
+    guid: 8a743d2d1494913429a3257458a96d28
   m_configObjects: {}

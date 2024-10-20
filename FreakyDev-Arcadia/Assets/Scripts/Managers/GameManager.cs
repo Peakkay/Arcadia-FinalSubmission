@@ -368,7 +368,7 @@ public class GameManager : Singleton<GameManager>
 
                 }
 
-        if(!DialogueManager.Instance.isDialogueActive && !trigger5 && P3Scene5Over)
+        if(!DialogueManager.Instance.isDialogueActive && !trigger5 && DialogueManager.Instance.CheckTriggerDialogue(74)&& currentScene != "SearchForRedemption")
         {
             SceneDialogueManager.Instance.startP4Scene1();
         }
@@ -394,7 +394,7 @@ public class GameManager : Singleton<GameManager>
                 SceneDialogueManager.Instance.startKieranDialogue();
             }
 
-            if( keiranFound && DialogueManager.Instance.CheckTriggerDialogue(411) && !DialogueManager.Instance.isDialogueActive)
+            if( keiranFound && DialogueManager.Instance.CheckTriggerDialogue(411) && !DialogueManager.Instance.isDialogueActive && currentScene != "FindingBalance")
             {
                 Debug.Log("dia finished");
                 currentScene = "FindingBalance";
@@ -413,7 +413,7 @@ public class GameManager : Singleton<GameManager>
                 SceneDialogueManager.Instance.startLisrealDia();
             }
 
-            if(lisraelFound && DialogueManager.Instance.CheckTriggerDialogue(421) && !DialogueManager.Instance.isDialogueActive)
+            if(lisraelFound && DialogueManager.Instance.CheckTriggerDialogue(421) && !DialogueManager.Instance.isDialogueActive && currentScene != "RebuildingRelationships")
             {
                 Debug.Log("dia finished");
                 currentScene = "RebuildingRelationships";

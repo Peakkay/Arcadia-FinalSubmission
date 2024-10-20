@@ -644,7 +644,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
 
             
            // DialogueManager.Instance.StartDialogue(d411);
-           SceneManager.UnloadSceneAsync("SCENE4");
+           SceneManager.UnloadSceneAsync("Consequence of Battle");
         SceneManager.sceneLoaded -= OnP4Scene1Loaded;
 
         

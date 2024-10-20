@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 18df9310b0e26254e8e55e7d200095ca
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - P3Scene1Open: {instanceID: 0}
+  - P3Scene2Open: {instanceID: 0}
+  - P3Scene3Open: {instanceID: 0}
+  - P3Scene4Open: {instanceID: 0}
+  - P3Scene5Open: {instanceID: 0}
+  - P3Scene6Open: {instanceID: 0}
+  - P3PhaseTransition: {instanceID: 0}
+  - commonElements: {fileID: 940594668146576240, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+  - player: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

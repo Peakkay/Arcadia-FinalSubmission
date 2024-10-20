@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +30,7 @@ public class GameManager : Singleton<GameManager>
     public bool P2Scene1Over;
     public bool P2Scene2Over;
     public bool P2Scene3Over;
+    public bool P2Scene4Over;
     public bool KieranChoiceStarted;
     public bool phase3Completed;
     public bool phase4Completed;
@@ -43,6 +45,22 @@ public class GameManager : Singleton<GameManager>
     public Scene phase3start;
     public Scene phase4start;
     public Scene phase5start;
+
+    public bool P3Scene1Over;
+    public bool P3Scene2Over;
+    public bool P3Scene3Over;
+    public bool P3Scene4Over;
+    public bool P3Scene5Over;
+    public bool P3Scene6Over;
+    public bool P3PhaseTransition;
+
+    public bool trigger1=true;
+    public bool trigger2=true;
+     public bool trigger3=true;
+     
+     public bool trigger4=true;
+
+     public bool trigger5=true;
 
 //    public int LiraelMeter;
 //    public int KieranMeter;
@@ -238,6 +256,109 @@ public class GameManager : Singleton<GameManager>
                 SceneDialogueManager.Instance.StartP2Scene4();
             }
         }
+        if(currentScene == "P3Transition" && !P2Scene4Over && P2Scene3Over) //  && P1Scene6Over && phase1Completed
+        {
+            if((DialogueManager.Instance.CheckTriggerDialogue(18)||DialogueManager.Instance.CheckTriggerDialogue(19))&&KieranChoiceStarted && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable)
+            {
+                SceneDialogueManager.Instance.StartP3Scene1();
+                CompletePhase2();
+            }
+        }
+        if (currentScene == "Reality Starts to Break" && !P3Scene1Over)
+        {  
+            if (DialogueManager.Instance != null && 
+                DialogueManager.Instance.CheckTriggerDialogue(69) && 
+                !DialogueManager.Instance.isDialogueActive)
+            {
+                Debug.Log("P3Scene1Over");
+                P3Scene1Over = true;
+                if (SceneDialogueManager.Instance != null)
+                {
+                    SceneDialogueManager.Instance.StartP3Scene2();
+                }
+            }
+        }
+          if (SceneDialogueManager.Instance.P3Scene2Open != null && QuestManager.Instance.IsQuestCompleted(69) && trigger1)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogueManager.Instance.P3Scene2Open);
+                trigger1=false;
+            }
+
+        if (currentScene == "ConfrontationWithRivals" && !P3Scene2Over)
+        {
+            if (DialogueManager.Instance != null && 
+                DialogueManager.Instance.CheckTriggerDialogue(70) && 
+                !DialogueManager.Instance.isDialogueActive)
+            {
+                Debug.Log("P3Scene2Over");
+                P3Scene2Over = true;
+                if (SceneDialogueManager.Instance != null)
+                {
+                    SceneDialogueManager.Instance.StartP3Scene3();
+                }
+            }
+        }
+        if (SceneDialogueManager.Instance.P3Scene3Open != null && QuestManager.Instance.IsQuestCompleted(70) && trigger2)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogueManager.Instance.P3Scene3Open);
+                trigger2=false;
+            }
+
+        if (currentScene == "Consequence of Power" && !P3Scene3Over)
+        {
+            if (DialogueManager.Instance != null && 
+                DialogueManager.Instance.CheckTriggerDialogue(71)
+                )
+            {
+                Debug.Log("P3Scene3Over");
+                P3Scene3Over = true;
+                if (SceneDialogueManager.Instance != null)
+                {
+                    SceneDialogueManager.Instance.StartP3Scene4();
+                }
+            }
+        }
+        if (SceneDialogueManager.Instance.P3Scene4Open != null && QuestManager.Instance.IsQuestCompleted(71) && trigger3)
+            {  
+                DialogueManager.Instance.StartDialogue(SceneDialogueManager.Instance.P3Scene4Open);
+                trigger3=false;
+            }
+
+        if (currentScene == "Rise of Antogonist" && !P3Scene4Over)
+        {
+            if (DialogueManager.Instance != null && 
+                QuestManager.Instance.IsQuestCompleted(71)
+                )
+            {
+                Debug.Log("P3Scene4Over");
+                P3Scene4Over = true;
+                if (SceneDialogueManager.Instance != null)
+                {
+                    SceneDialogueManager.Instance.StartP3Scene5();
+                }
+            }
+        }
+         if (currentScene == "TheFinalConfrontation" && !P3Scene5Over && trigger4)
+         {
+              List<Enemy> azraelfight = new List<Enemy>();
+              azraelfight.AddRange(FindObjectsOfType<Enemy>());
+              CombatManager.Instance.StartCombat(player.GetComponent<PlayerStats>(),azraelfight);
+              trigger4=false;
+
+         }
+
+         if(DialogueManager.Instance != null && !trigger4 &&
+                !DialogueManager.Instance.isDialogueActive && !CombatManager.Instance.combatActive && trigger5)
+                {
+                      Debug.Log("P3Scene5Over");
+                      P3Scene5Over = true;
+                    if (SceneDialogueManager.Instance != null)
+                    {
+                    SceneDialogueManager.Instance.StartP3Scene6();
+                    }
+                    trigger5=false;
+
+                }
     }
 
     public void StartGame()

@@ -367,7 +367,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1411351262}
   - {fileID: 877217347}
   - {fileID: 945155664}
   - {fileID: 1029257122}
@@ -693,6 +692,11 @@ MonoBehaviour:
 --- !u!1 &910889784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 940594668146576240, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+  m_PrefabInstance: {fileID: 1781695342623313901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &910889785 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6250067242769278614, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
   m_PrefabInstance: {fileID: 1781695342623313901}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &926240658
@@ -1206,12 +1210,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411351261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 265405488}
+  m_Father: {fileID: 910889785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1411351263
 MonoBehaviour:
@@ -1240,6 +1244,7 @@ MonoBehaviour:
   P2Scene1Over: 0
   P2Scene2Over: 0
   P2Scene3Over: 0
+  P2Scene4Over: 0
   KieranChoiceStarted: 0
   phase3Completed: 0
   phase4Completed: 0
@@ -1260,6 +1265,18 @@ MonoBehaviour:
     m_Handle: 0
   phase5start:
     m_Handle: 0
+  P3Scene1Over: 0
+  P3Scene2Over: 0
+  P3Scene3Over: 0
+  P3Scene4Over: 0
+  P3Scene5Over: 0
+  P3Scene6Over: 0
+  P3PhaseTransition: 0
+  trigger1: 1
+  trigger2: 1
+  trigger3: 1
+  trigger4: 1
+  trigger5: 1
   introDialogueFinished: 0
   enterLibrary: 1
   pickupTome: 0
@@ -1271,7 +1288,7 @@ MonoBehaviour:
   seekAllies: 0
   addressFaction: 0
   choseDiplomacy: 0
-  player: {fileID: 0}
+  player: {fileID: 1781695342623313902}
 --- !u!1 &1426032507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1944,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6250067242769278614, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1411351262}
     - targetCorrespondingSourceObject: {fileID: 8869290436647334761, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 654301588}

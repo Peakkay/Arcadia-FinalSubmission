@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562e3212fff09844eb143b0250b1c1dc, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  lines:
+  - "\"I\u2019ve watched this world crumble under the weight of its own greed and
+    injustice.\""
+  - '"The powerful rule like gods, while the rest of us are left to scrape by, forgotten."'
+  - "\"I used to believe things could change\u2014that there was hope for something
+    better.\""
+  - "\"But hope is a fool\u2019s dream, isn\u2019t it? No one is coming to save us.\""
+  - '"No one cares.But if I had the power... "'
+  - "\"I wouldn\u2019t just change this world\u2014I would remake it.\""
+  - "\"I wouldn\u2019t be another nameless face in the crowd, crushed by the weight
+    of the system.\""
+  - '" I would tear it all down and rebuild it, my way."'
+  - '"No more weakness. No more failure. I would become something... more."
+
+'
+  - '"If only I had the means..."'
+  dialogueID: 0

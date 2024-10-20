@@ -73,8 +73,8 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             Debug.Log("IntroScene Loaded");
             SceneManager.SetActiveScene(scene); // Now safe to set it as the active scene
             SceneManager.MoveGameObjectToScene(commonElements, scene);
+            Scene0 = Resources.Load<Dialogue>("PlotFlow/Dialogues/Scene0/Intro");
             DialogueManager.Instance.StartDialogue(Scene0);
-
             // Unsubscribe from the event to avoid multiple triggers
             SceneManager.sceneLoaded -= OnScene0Loaded;
         }
@@ -98,8 +98,9 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             player.SetActive(true);
             MapManager.Instance.ChangeMap(4);
             SceneManager.UnloadSceneAsync("IntroScene");
-            DialogueManager.Instance.StartDialogue(P1Scene2Open);
-            NPCManager.Instance.updateNPCList();
+            P1Scene1Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene1/OpeningDialogue");
+            DialogueManager.Instance.StartDialogue(P1Scene1Open);
+            AudioManager.Instance.PlayMusic(0);
             SceneManager.sceneLoaded -= OnP1Scene1Loaded;
         }
     }
@@ -124,8 +125,8 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             {
                 P1Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/OpeningDialogue");
             }
-            DialogueManager.Instance.StartDialogue(P1Scene1Open); // Null check before calling the method
-            NPCManager.Instance.updateNPCList();
+            AudioManager.Instance.PlayMusic(2);
+            DialogueManager.Instance.StartDialogue(P1Scene2Open); // Null check before calling the method
             SceneManager.sceneLoaded -= OnP1Scene2Loaded;
         }
     }
@@ -160,7 +161,7 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
                 P1Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
             }
             DialogueManager.Instance.StartDialogue(P1Scene3Open); // Null check before calling the method
-            NPCManager.Instance.updateNPCList();
+            AudioManager.Instance.StopMusic();
             SceneManager.sceneLoaded -= OnP1Scene3Loaded;
         }
     }

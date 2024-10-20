@@ -20,5 +20,14 @@ public class MapManager : Singleton<MapManager>
         Maps[MapID].SetActive(true);
         currentMap = MapID;
     }
+
+    public void NoMap()
+    {
+        foreach(var map in Maps)
+        {
+            map.SetActive(false);
+        }
+        currentMap = -1;
+    }
 }
 

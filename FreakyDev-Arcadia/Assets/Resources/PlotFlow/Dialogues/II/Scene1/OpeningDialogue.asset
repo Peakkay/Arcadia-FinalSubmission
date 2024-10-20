@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562e3212fff09844eb143b0250b1c1dc, type: 3}
   m_Name: OpeningDialogue
   m_EditorClassIdentifier: 
-  lines: []
-  dialogueID: 0
+  lines:
+  - 'Phase 2: The Manipulation
+
+'
+  - 'Setting:
+
+    The protagonist begins to experiment with their powers,'
+  - ' gaining allies and manipulating events in the city.'
+  dialogueID: 13

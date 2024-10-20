@@ -59,8 +59,7 @@ public class GameManagerP3 : Singleton<GameManagerP3>
 
     private void Update()
     {
-        Debug.Log("Current Scene: " + currentScene);
-        Debug.Log("Current GameState: " + CurrentState);
+       
 
         switch (CurrentState)
         {
@@ -83,7 +82,7 @@ public class GameManagerP3 : Singleton<GameManagerP3>
 
         // Scene checks and transitions
         if (currentScene == "Reality Starts to Break" && !P3Scene1Over)
-        {
+        {   Debug.Log("Hello");
             if (DialogueManager.Instance != null && 
                 DialogueManager.Instance.CheckTriggerDialogue(69) && 
                 !DialogueManager.Instance.isDialogueActive)

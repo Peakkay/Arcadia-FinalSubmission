@@ -398,8 +398,10 @@ MonoBehaviour:
   P3Scene5Over: 0
   P3Scene6Over: 0
   P3PhaseTransition: 0
-  currentPhase: 
-  currentScene: 
+  phase3Completed: 0
+  player: {fileID: 2044017038}
+  currentPhase: 3
+  currentScene: 2
   Confrontation: {fileID: 11400000, guid: 17c88f55551c27d4cbe42daf72798700, type: 2}
 --- !u!4 &1177727883
 Transform:
@@ -502,15 +504,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18df9310b0e26254e8e55e7d200095ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P3Scene1Open: {fileID: 0}
-  P3Scene2Open: {fileID: 0}
-  P3Scene3Open: {fileID: 0}
-  P3Scene4Open: {fileID: 0}
+  P3Scene1Open: {fileID: 11400000, guid: 8b63178f8b6c7f749b354d0e346e9ee1, type: 2}
+  P3Scene2Open: {fileID: 11400000, guid: 8266ddd25a1957b41a14b7d6cb4b0982, type: 2}
+  P3Scene3Open: {fileID: 11400000, guid: ecc570ea70871014e9dbbd93b04f24c8, type: 2}
+  P3Scene4Open: {fileID: 11400000, guid: 97c5466bf8be42f439b853bc919b29d1, type: 2}
   P3Scene5Open: {fileID: 0}
   P3Scene6Open: {fileID: 0}
   P3PhaseTransition: {fileID: 0}
-  commonElements: {fileID: 0}
-  player: {fileID: 0}
+  commonElements: {fileID: 2044017039}
+  player: {fileID: 2044017038}
 --- !u!4 &1954014547
 Transform:
   m_ObjectHideFlags: 0
@@ -668,10 +670,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1561124073336813874, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+    - {fileID: 7183941121954799662, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+--- !u!1 &2044017038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6973468214844659731, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+  m_PrefabInstance: {fileID: 2044017037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2044017039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 940594668146576240, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
+  m_PrefabInstance: {fileID: 2044017037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

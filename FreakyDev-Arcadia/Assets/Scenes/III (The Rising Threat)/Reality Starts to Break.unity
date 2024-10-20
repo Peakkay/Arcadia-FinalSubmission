@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P3Scene1Open: {fileID: 11400000, guid: 8b63178f8b6c7f749b354d0e346e9ee1, type: 2}
-  P3Scene2Open: {fileID: 0}
-  P3Scene3Open: {fileID: 0}
-  P3Scene4Open: {fileID: 0}
+  P3Scene2Open: {fileID: 11400000, guid: 8266ddd25a1957b41a14b7d6cb4b0982, type: 2}
+  P3Scene3Open: {fileID: 11400000, guid: ecc570ea70871014e9dbbd93b04f24c8, type: 2}
+  P3Scene4Open: {fileID: 11400000, guid: 97c5466bf8be42f439b853bc919b29d1, type: 2}
   P3Scene5Open: {fileID: 0}
   P3Scene6Open: {fileID: 0}
   P3PhaseTransition: {fileID: 0}

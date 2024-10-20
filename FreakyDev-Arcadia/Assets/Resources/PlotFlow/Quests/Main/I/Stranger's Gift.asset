@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Stranger's Gift
   m_EditorClassIdentifier: 
   questName: The Stranger's Gift
+  questid: 0
   description: Engage with Lirael and either obtain the Tome or Cautiously Retreat
   isCompleted: 0
-  questType: 2
+  questType: 1
   requiredEnemies: 
-  requiredItems: []
+  requiredItems:
+  - item: {fileID: 11400000, guid: 33cbe096a0473b24695cb8a756d6987f, type: 2}
+    quantity: 1
   collectedItems: []
   nPCID: 
   dialogues: []
@@ -29,4 +32,4 @@ MonoBehaviour:
     npccorruptionImpact: 0
     targetNPC: {fileID: 0}
     newSpell: {fileID: 0}
-    newQuest: {fileID: 11400000, guid: 1a3d26adab0e8784d8c7ab9ecd12125b, type: 2}
+    newQuest: {fileID: 11400000, guid: a8a7320bf362c6240a593be340c766e5, type: 2}

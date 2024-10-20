@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AetherCharacters
       objectReference: {fileID: 0}
+    - target: {fileID: 5338122910314041511, guid: 641a8bc1929ee4a46a7aac56ad9eb6b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6954148191698733726, guid: 641a8bc1929ee4a46a7aac56ad9eb6b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

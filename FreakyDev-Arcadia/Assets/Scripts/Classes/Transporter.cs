@@ -28,6 +28,7 @@ public class Transporter : MonoBehaviour
             player.transform.position = targetTransform;
             MapManager.Instance.ChangeMap(targetMapID);
             characters.SetActive(true);
+            NPCManager.Instance.updateNPCList();
             sceneChange = true;
         }
     }

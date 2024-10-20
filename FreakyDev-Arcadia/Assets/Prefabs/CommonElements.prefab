@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4205730664225887790}
   - {fileID: 3073539957389884325}
   - {fileID: 6911413730934324965}
+  - {fileID: 5444187541289793994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1561124073336813874
@@ -82,9 +83,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonElements: {fileID: 0}
+  player: {fileID: 0}
   Scene0: {fileID: 0}
   P1Scene1Open: {fileID: 11400000, guid: a2681d8e0ba8f2d4382d96687e27baee, type: 2}
   P1Scene2Open: {fileID: 11400000, guid: 001f56302f0353f47b36a147e380b401, type: 2}
+  TomeDialogue: {fileID: 0}
   P1Scene3Open: {fileID: 0}
   P1Scene4Open: {fileID: 0}
   P1Scene5Open: {fileID: 0}
@@ -359,6 +362,51 @@ MonoBehaviour:
   sprites: []
   reality: 
   worldCorruption: 0
+--- !u!1 &8722347605724247805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5444187541289793994}
+  - component: {fileID: 8087628718466518108}
+  m_Layer: 0
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5444187541289793994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722347605724247805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6250067242769278614}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8087628718466518108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722347605724247805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6546396542bed40ac8d6345768b8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcList: []
 --- !u!1001 &6065297654467654939
 PrefabInstance:
   m_ObjectHideFlags: 0

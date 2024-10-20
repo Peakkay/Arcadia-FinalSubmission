@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public bool IntroSceneOver = false;
     public bool P1Scene1Over;
     public bool P1Scene2Over;
+    public bool P1Scene3Over;
     public bool phase2Completed;
     public bool phase3Completed;
     public bool phase4Completed;
@@ -101,7 +102,7 @@ public class GameManager : Singleton<GameManager>
                 StartPhase1();
             }
         }
-        if(currentScene == "OrdinaryLife" && !P1Scene1Over)
+        if(currentScene == "OrdinaryLife" && !P1Scene1Over && IntroSceneOver)
         {
             if(MapManager.Instance.currentMap==1)
             {
@@ -109,14 +110,14 @@ public class GameManager : Singleton<GameManager>
                 SceneDialogueManager.Instance.StartP1Scene2();
             }
         }
-        if(currentScene == "AwakeningOfPower" && !P1Scene2Over)
+        if(currentScene == "AwakeningOfPower" && !P1Scene2Over && P1Scene1Over)
         {
             if(QuestManager.Instance.IsQuestCompleted(0) && !DialogueManager.Instance.CheckTriggerDialogue(3))
             {
                 SceneDialogueManager.Instance.StartTomeDialogue();
             }
         }
-        if(currentScene == "AwakeningOfPower" && !P1Scene2Over)
+        if(currentScene == "AwakeningOfPower" && !P1Scene2Over && P1Scene1Over)
         {
             if(DialogueManager.Instance.CheckTriggerDialogue(3) && !DialogueManager.Instance.isDialogueActive)
             {
@@ -126,6 +127,20 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }        
+        if(currentScene == "FirstDecision" && !P1Scene3Over && P1Scene2Over)
+        {
+            if(QuestManager.Instance.IsQuestCompleted(1) && ChoiceManager.Instance.choices.Count == 0 && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable && !SceneDialogueManager.Instance.startedCriminalScene)
+            {
+                SceneDialogueManager.Instance.StartCriminalScene();
+            }
+        }
+        if(currentScene == "FirstDecision" && !P1Scene3Over && P1Scene2Over)
+        {
+            if((DialogueManager.Instance.CheckTriggerDialogue(6) || DialogueManager.Instance.CheckTriggerDialogue(5)) && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable)
+            {
+                SceneDialogueManager.Instance.StartP1Scene4();
+            }
+        }
     }
 
     public void StartGame()

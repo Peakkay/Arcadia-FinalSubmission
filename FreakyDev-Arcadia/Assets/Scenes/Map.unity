@@ -147,7 +147,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4332072763484023870, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4614287865117759768, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_SortingOrder
@@ -159,7 +159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360792728425167073, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8141947341906516001, guid: 6f50883224654264ba7f55a45fee139b, type: 3}
       propertyPath: m_LocalPosition.x

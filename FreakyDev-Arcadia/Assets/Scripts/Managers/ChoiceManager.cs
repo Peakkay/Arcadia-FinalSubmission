@@ -29,7 +29,8 @@ public class ChoiceManager : Singleton<ChoiceManager>
         }
 
         choiceAvailable = true;
-        UpdateChoiceUI(); // Update UI with available choices
+        Debug.Log("SelectionStarted");
+        UpdateChoiceUI(NPC); // Update UI with available choices
         ToggleChoiceUI(true); // Show the choice panel
         StartCoroutine(WaitForChoice(NPC)); // Start the coroutine to wait for player input
     }
@@ -66,14 +67,13 @@ public class ChoiceManager : Singleton<ChoiceManager>
     }
 
     // Function to present the choices in the UI
-    public void UpdateChoiceUI()
+    public void UpdateChoiceUI(NPCController npc)
     {
         string choiceTextContent = "";
-
         for (int i = 0; i < choices.Count; i++)
         {
             // Check if the player can make this choice based on corruption levels
-            if (CanPlayerMakeChoice(choices[i], null)) // Assuming NPC null here for simplicity
+            if (CanPlayerMakeChoice(choices[i], npc)) // Assuming NPC null here for simplicity
             {
                 choiceTextContent += (i + 1) + ". " + choices[i].choiceText + "\n";
             }
@@ -82,7 +82,7 @@ public class ChoiceManager : Singleton<ChoiceManager>
                 choiceTextContent += (i + 1) + ". " + choices[i].choiceText + " (Blocked)\n";
             }
         }
-
+        Debug.Log(choiceTextContent);
         choiceText.text = choiceTextContent; // Update the text display with choices
     }
 
@@ -94,6 +94,22 @@ public class ChoiceManager : Singleton<ChoiceManager>
 
     public bool CanPlayerMakeChoice(Choice choice, NPCController NPC)
     {
+        if (choice == null)
+        {
+            Debug.LogError("Choice is null");
+            return false; // Exit if choice is null
+        }
+        if (NPC == null)
+        {
+            Debug.LogError("NPC is null");
+            return false; // Exit if NPC is null
+        }
+        var playerController = FindObjectOfType<PlayerController>();
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController not found.");
+            return false; // Exit if PlayerController is null
+        }
         int playerCorruption = FindObjectOfType<PlayerController>().playerCorruptionLevel;
         int worldCorruption = RealityManager.Instance.worldCorruption;
         int npcCorruption = NPC != null ? NPC.corruptionLevel : 0;

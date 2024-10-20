@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5164d7cede60950468e030567b82eca4, type: 3}
-  m_Name: Shadows In the Ranks
+  m_Name: LiraelQuest
   m_EditorClassIdentifier: 
-  questName: Shadows in the Ranks
+  questName: LiraelQuest
+  questid: 70
   description: 
   isCompleted: 0
-  questType: 0
+  questType: 2
   requiredEnemies: 
   requiredItems: []
   collectedItems: []
-  nPCID: 
+  nPCID: 46000000
   dialogues: []
   currentDialogueIndex: 0
   questReward:

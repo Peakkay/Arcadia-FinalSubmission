@@ -53,6 +53,7 @@ public class GameManager : Singleton<GameManager>
     public bool P3Scene5Over;
     public bool P3Scene6Over;
     public bool P3PhaseTransition;
+    public bool P4Scene1Over;
 
     public bool trigger1=true;
     public bool trigger2=true;
@@ -83,6 +84,13 @@ public class GameManager : Singleton<GameManager>
     public bool seekAllies;
     public bool addressFaction;
     public bool choseDiplomacy;
+    public Quest ReflectionOfBlame;
+    public Quest BurdenOfPower;
+    public Quest findKieran;
+    public Quest findLisrael;
+
+    bool keiranFound = false;
+    bool lisraelFound = false;
 // LIST END
 
 
@@ -359,6 +367,67 @@ public class GameManager : Singleton<GameManager>
                     trigger5=false;
 
                 }
+
+        if(!DialogueManager.Instance.isDialogueActive && !trigger5 && P3Scene5Over)
+        {
+            SceneDialogueManager.Instance.startP4Scene1();
+        }
+
+
+        if(currentScene == "SearchForRedemption")
+        {
+
+            if (DialogueManager.Instance != null && 
+                DialogueManager.Instance.CheckTriggerDialogue(411) && 
+                !DialogueManager.Instance.isDialogueActive && keiranFound)
+                {
+                    Debug.Log("p4s1 over");
+                    P4Scene1Over = true;
+                    SceneDialogueManager.Instance.startP4Scene2();
+                }
+            
+            if(QuestManager.Instance.IsQuestCompleted(411)  && !DialogueManager.Instance.CheckTriggerDialogue(411) && !keiranFound)
+            {
+                Debug.Log("kieran found");
+                keiranFound = true;
+
+                SceneDialogueManager.Instance.startKieranDialogue();
+            }
+
+            if( keiranFound && DialogueManager.Instance.CheckTriggerDialogue(411) && !DialogueManager.Instance.isDialogueActive)
+            {
+                Debug.Log("dia finished");
+                currentScene = "FindingBalance";
+              SceneDialogueManager.Instance.startP4Scene2();
+              QuestManager.Instance.StartQuest(findLisrael);
+            }
+        }
+
+        if(currentScene == "FindingBalance")
+        {
+             if(QuestManager.Instance.IsQuestCompleted(421)  && !DialogueManager.Instance.CheckTriggerDialogue(421) && !lisraelFound)
+            {
+                Debug.Log("lisrael found");
+                lisraelFound = true;
+
+                SceneDialogueManager.Instance.startLisrealDia();
+            }
+
+            if(lisraelFound && DialogueManager.Instance.CheckTriggerDialogue(421) && !DialogueManager.Instance.isDialogueActive)
+            {
+                Debug.Log("dia finished");
+                currentScene = "RebuildingRelationships";
+              SceneDialogueManager.Instance.startP4Scene3();
+             // QuestManager.Instance.StartQuest(findLisrael);
+            }
+
+            // if(QuestManager.Instance.IsQuestCompleted(421))
+            // {
+            //     Debug.Log("quest comp");
+            //     SceneDialogueManager.Instance.startLisrealDia();
+            // }
+        }
+
     }
 
     public void StartGame()

@@ -100,7 +100,6 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             SceneManager.UnloadSceneAsync("IntroScene");
             P1Scene1Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene1/OpeningDialogue");
             DialogueManager.Instance.StartDialogue(P1Scene1Open);
-            AudioManager.Instance.PlayMusic(0);
             SceneManager.sceneLoaded -= OnP1Scene1Loaded;
         }
     }
@@ -125,7 +124,6 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
             {
                 P1Scene2Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene2/OpeningDialogue");
             }
-            AudioManager.Instance.PlayMusic(2);
             DialogueManager.Instance.StartDialogue(P1Scene2Open); // Null check before calling the method
             SceneManager.sceneLoaded -= OnP1Scene2Loaded;
         }
@@ -161,7 +159,6 @@ public class SceneDialogueManager : Singleton<SceneDialogueManager>
                 P1Scene3Open = Resources.Load<Dialogue>("PlotFlow/Dialogues/I/Scene3/OpeningDialogue");
             }
             DialogueManager.Instance.StartDialogue(P1Scene3Open); // Null check before calling the method
-            AudioManager.Instance.StopMusic();
             SceneManager.sceneLoaded -= OnP1Scene3Loaded;
         }
     }

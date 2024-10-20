@@ -689,8 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 0}
-  musicTracks: []
-  transitionDuration: 1
+  backgroundMusic: {fileID: 0}
 --- !u!1 &910889784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 940594668146576240, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}
@@ -1015,17 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1004931613}
-  musicTracks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  transitionDuration: 1
+  backgroundMusic: {fileID: 8300000, guid: 4f5361e86ec5a3e4abb85af333d1e9c6, type: 3}
 --- !u!114 &1179659258 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 655348094255049208, guid: 05b49a2ef2dfb834aabfaba6818f04f3, type: 3}

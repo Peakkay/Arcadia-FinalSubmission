@@ -21,7 +21,12 @@ public class GameManager : Singleton<GameManager>
     public bool P1Scene1Over;
     public bool P1Scene2Over;
     public bool P1Scene3Over;
+    public bool P1Scene4Over;
+    public bool P1Scene5Over;
+    public bool P1Scene6Over;
+    public bool PhaseTransitionStarted;
     public bool phase2Completed;
+    public bool P2Scene1Over;
     public bool phase3Completed;
     public bool phase4Completed;
     public bool phase5Completed;
@@ -131,6 +136,8 @@ public class GameManager : Singleton<GameManager>
         {
             if(QuestManager.Instance.IsQuestCompleted(1) && ChoiceManager.Instance.choices.Count == 0 && !DialogueManager.Instance.isDialogueActive && !ChoiceManager.Instance.choiceAvailable && !SceneDialogueManager.Instance.startedCriminalScene)
             {
+                Choice use = Resources.Load<Choice>("PlotFlow/Choices/Main/I/TesttheTome'sPower_Use");
+                TomeUsed = (use.chosen)?true:false;
                 SceneDialogueManager.Instance.StartCriminalScene();
             }
         }
@@ -141,6 +148,65 @@ public class GameManager : Singleton<GameManager>
                 SceneDialogueManager.Instance.StartP1Scene4();
             }
         }
+        if(currentScene == "ConsequenceOfChoice" && !P1Scene4Over && P1Scene3Over)
+        {
+            if((DialogueManager.Instance.CheckTriggerDialogue(7)||DialogueManager.Instance.CheckTriggerDialogue(8)) && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartP1Scene5();
+            }
+        }
+        if(currentScene == "IntroductionToConflict" && !P1Scene5Over && P1Scene4Over)
+        {
+            if(QuestManager.Instance.IsQuestCompleted(2) && !SceneDialogueManager.Instance.startedLirael && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartGoToLiraelDialogue();
+            }
+        }
+        if(currentScene == "IntroductionToConflict" && !P1Scene5Over && P1Scene4Over)
+        {
+            if(QuestManager.Instance.IsQuestCompleted(3) && !DialogueManager.Instance.CheckTriggerDialogue(11) &!DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartLiraelDialogue();
+            }
+        }
+        if(currentScene == "IntroductionToConflict" && !P1Scene5Over && P1Scene4Over)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(11)&& !DialogueManager.Instance.CheckTriggerDialogue(12)&& !PhaseTransitionStarted && !DialogueManager.Instance.isDialogueActive && currentScene !="PhaseTransition")
+            {
+                Debug.Log("Start Transition");
+                SceneDialogueManager.Instance.StartP1Scene6();
+            }
+        }
+        if(currentScene == "PhaseTransition" && !P1Scene6Over && P1Scene5Over)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(12) && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartP2Scene1();
+                StartPhase2();
+            }
+        }
+        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(12)&& !DialogueManager.Instance.CheckTriggerDialogue(13) && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartP2Scene1();
+                StartPhase2();
+            }
+        }
+        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(13)&& !DialogueManager.Instance.CheckTriggerDialogue(14) && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartInfo();
+            }
+        }
+        if(currentScene == "GatheringInformation" && !P2Scene1Over && P1Scene6Over && phase1Completed)
+        {
+            if(DialogueManager.Instance.CheckTriggerDialogue(14) && !DialogueManager.Instance.isDialogueActive)
+            {
+                SceneDialogueManager.Instance.StartP2Scene2();
+            }
+        } 
     }
 
     public void StartGame()
@@ -217,6 +283,7 @@ public void StartPhase(string phase)
     void StartPhase2()
     {
         // Initiate dialogues, quests, or events in Phase 2
+        CompletePhase1();
         QuestManager.Instance.StartQuest(informationGathering);
     }
     public void CompletePhase2()
